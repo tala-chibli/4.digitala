@@ -2,260 +2,83 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>For Digitala</title>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --pastel-pink: #ffd1dc;
-            --pastel-purple: #e0bbf4;
-            --pastel-blue: #cce5ff;
-            --pastel-green: #d0f0c0;
-            --pastel-yellow: #fff5ba;
-            --text-dark: #1c1c1c;
-            --glass-bg: rgba(255, 255, 255, 0.3);
-            --border-glow: rgba(255, 255, 255, 0.4);
-            --shadow-glow: rgba(0, 0, 0, 0.05);
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Digitala</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --pink-main: #ffd1dc;
+      --pink-light: #ffe6ec;
+      --pink-deep: #f5a9b8;
+      --purple: #e0bbf4;
+      --blue: #e3f2fd;
+      --green: #f0fdf4;
+      --yellow: #fffce0;
+      --text-dark: #2c2c2c;
+      --glass-bg: rgba(255, 240, 246, 0.6);
+      --border-glow: rgba(255, 182, 193, 0.4);
+      --shadow-glow: rgba(255, 182, 193, 0.2);
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        html,
-        body {
-            height: 100%;
-            scroll-behavior: smooth;
-            font-family: 'Manrope', sans-serif;
-            background: linear-gradient(135deg, var(--pastel-pink), var(--pastel-purple), var(--pastel-blue), var(--pastel-green), var(--pastel-yellow));
-            background-size: 300% 300%;
-            animation: pastelShift 20s ease infinite;
-            overflow-x: hidden;
-            color: var(--text-dark);
-        }
+    html,
+    body {
+      height: 100%;
+      scroll-behavior: smooth;
+      font-family: 'Manrope', sans-serif;
+      background: linear-gradient(135deg, var(--pink-main), var(--pink-light), var(--yellow));
+      background-size: 300% 300%;
+      animation: pastelFlow 15s ease infinite;
+      overflow-x: hidden;
+      color: var(--text-dark);
+    }
 
-        @keyframes pastelShift {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
+    @keyframes pastelFlow {
+      0% {
+        background-position: 0% 50%;
+      }
 
-        body {
-            padding: 60px 20px;
-        }
+      50% {
+        background-position: 100% 50%;
+      }
 
-        header {
-            text-align: center;
-            margin-bottom: 80px;
-            animation: fadeInUp 1.2s ease;
-        }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
 
-        .logo-title {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
+    body {
+      padding: 60px 20px;
+    }
 
-        .logo {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid white;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-        }
+    header {
+      text-align: center;
+      margin-bottom: 80px;
+      animation: fadeInUp 1.2s ease;
+    }
 
-        .title-text {
-            max-width: 500px;
-        }
+    .logo-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
 
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            background: linear-gradient(90deg, var(--pastel-purple), var(--pastel-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    .logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid white;
+      box-shadow: 0 4px 12px var(--shadow-glow);
+    }
 
-        header p {
-            font-size: 1.2rem;
-            margin-top: 10px;
-            opacity: 0.8;
-        }
-
-        .services {
-            max-width: 1200px;
-            margin: 0 auto;
-            animation: fadeInUp 1.4s ease;
-        }
-
-        .services h2 {
-            text-align: center;
-            font-size: 2.8rem;
-            color: var(--pastel-purple);
-            margin-bottom: 50px;
-        }
-
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border-glow);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px var(--shadow-glow);
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .service-card:hover {
-            transform: scale(1.03);
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: var(--pastel-blue);
-        }
-
-        .service-card p {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        .contact {
-            margin-top: 100px;
-            text-align: center;
-            animation: fadeInUp 1.7s ease;
-        }
-
-        .contact h2 {
-            font-size: 2.4rem;
-            color: var(--pastel-green);
-            margin-bottom: 30px;
-        }
-
-        .contact-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .contact-links a {
-            background: var(--pastel-yellow);
-            color: #333;
-            text-decoration: none;
-            padding: 14px 28px;
-            border-radius: 30px;
-            font-weight: 600;
-            letter-spacing: 0.3px;
-            transition: 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-links a:hover {
-            background: var(--pastel-pink);
-            color: #000;
-        }
-
-        footer {
-            margin-top: 80px;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2.5rem;
-                text-align: center;
-            }
-
-            .logo-title {
-                flex-direction: column;
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-    <!-- ==== Header ==== -->
-    <header>
-        <div class="logo-title">
-            <img src="https://imgur.com/FXNRead.png" alt="Digitala Logo" class="logo">
-            <div class="title-text">
-                <h1>For Digitala</h1>
-                <p>Where design meets perfection. Powered by Tala Chibli.</p>
-            </div>
-        </div>
-    </header>
-
-    <!-- ==== Services ==== -->
-    <section class="services">
-        <h2>My Services</h2>
-        <div class="service-grid">
-            <div class="service-card">
-                <h3>Graphic Design</h3>
-                <p>Social media content, visual identity, cards, ads, and customized design to match your brand energy.</p>
-            </div>
-            <div class="service-card">
-                <h3>Web Development</h3>
-                <p>Creating, redesigning, and upgrading websites with clean UI and smooth UX.</p>
-            </div>
-            <div class="service-card">
-                <h3>Editing Magic</h3>
-                <p>Photoshop perfection + high-impact video editing for characters, products, or promos.</p>
-            </div>
-            <div class="service-card">
-                <h3>Extras</h3>
-                <p>CVs, cover letters, PowerPoints, portfolios — I got you covered from start to finish.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==== Contact ==== -->
-    <section class="contact">
-        <h2>Get in Touch</h2>
-        <div class="contact-links">
-            <a href="https://wa.me/71732045" target="_blank"><span>WhatsApp</span></a>
-            <a href="https://www.instagram.com/4.digitala" target="_blank"><span>Instagram</span></a>
-        </div>
-    </section>
-
-    <footer>
-        <p>© 2025 For Digitala. Site by Tala Chibli. All rights reserved.</p>
-    </footer>
-
-</body>
-
-</html>
+    .title-text {
+      max-width: 500p
