@@ -5,22 +5,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>For Digitala</title>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --hot-pink: #d81e5b; /* deep fuchsia */
-      --soft-purple: #7b3fbf;
-      --cool-blue: #3458db;
-      --warm-orange: #f28c28;
-      --sunny-yellow: #f7d154;
+      --hot-pink: #ff3b8d;
+      --soft-purple: #9b59b6;
+      --bright-blue: #3498db;
+      --sunny-yellow: #f1c40f;
+      --warm-orange: #e67e22;
 
-      --text-light: #fff;
-      --bg-dark: #1a1a1a;
-      --card-bg: #2a2a2a;
+      --bg-pink: #ffe6f1;
+      --card-bg: #fff0f6;
 
-      --shadow-pink: rgba(216, 30, 91, 0.35);
-      --shadow-purple: rgba(123, 63, 191, 0.3);
-      --shadow-blue: rgba(52, 88, 219, 0.3);
+      --text-dark: #2c2c2c;
+      --shadow-pink: rgba(255, 59, 141, 0.4);
     }
 
     * {
@@ -30,20 +28,19 @@
     }
 
     body {
-      font-family: 'Manrope', sans-serif;
-      background: var(--bg-dark);
-      color: var(--text-light);
-      padding: 60px 24px;
-      min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-pink);
+      color: var(--text-dark);
+      padding: 60px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      min-height: 100vh;
     }
 
     header {
       text-align: center;
       margin-bottom: 80px;
-      max-width: 900px;
     }
 
     .logo-title {
@@ -59,86 +56,87 @@
       height: 90px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid var(--hot-pink);
-      box-shadow: 0 0 12px var(--shadow-pink);
+      border: 4px solid var(--hot-pink);
+      box-shadow: 0 0 15px var(--shadow-pink);
       transition: transform 0.3s ease;
     }
 
     .logo:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 24px var(--shadow-pink);
+      transform: scale(1.15);
+      box-shadow: 0 0 30px var(--shadow-pink);
     }
 
     h1 {
-      font-weight: 800;
+      font-weight: 700;
       font-size: 3.8rem;
-      background: linear-gradient(90deg, var(--hot-pink), var(--soft-purple));
+      background: linear-gradient(90deg, var(--hot-pink), var(--soft-purple), var(--bright-blue));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      letter-spacing: 3px;
       user-select: none;
-      letter-spacing: 2px;
     }
 
     header p {
       margin-top: 12px;
+      font-weight: 500;
       font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--warm-orange);
-      opacity: 0.85;
+      color: var(--hot-pink);
       user-select: none;
+      text-shadow: 1px 1px 3px #ffa6c2;
     }
 
     /* Services Section */
     .services {
-      width: 100%;
       max-width: 1200px;
+      width: 100%;
       margin-bottom: 100px;
     }
 
     .services h2 {
       text-align: center;
       font-size: 3rem;
+      font-weight: 700;
       color: var(--hot-pink);
       margin-bottom: 60px;
-      letter-spacing: 1.5px;
-      font-weight: 700;
+      letter-spacing: 2px;
       text-transform: uppercase;
       user-select: none;
     }
 
     .service-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 36px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
     }
 
     .service-card {
       background: var(--card-bg);
-      border-radius: 20px;
-      padding: 30px 28px;
-      box-shadow: 0 8px 20px rgba(216, 30, 91, 0.15);
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      border-radius: 25px;
+      padding: 30px 25px;
+      box-shadow: 0 10px 20px rgba(255, 59, 141, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: default;
+      border: 3px solid transparent;
     }
 
     .service-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 14px 35px var(--shadow-pink);
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(255, 59, 141, 0.4);
+      border-color: var(--hot-pink);
     }
 
     .service-card h3 {
+      font-size: 1.7rem;
       font-weight: 700;
-      font-size: 1.8rem;
       margin-bottom: 18px;
-      color: var(--sunny-yellow);
+      color: var(--bright-blue);
       user-select: none;
     }
 
     .service-card p {
-      font-weight: 400;
       font-size: 1.1rem;
-      line-height: 1.6;
-      color: #eee;
+      color: #444;
+      line-height: 1.5;
       user-select: none;
     }
 
@@ -146,48 +144,47 @@
     .contact {
       text-align: center;
       max-width: 900px;
+      margin-bottom: 60px;
     }
 
     .contact h2 {
       font-size: 2.8rem;
       font-weight: 700;
-      color: var(--cool-blue);
-      margin-bottom: 40px;
+      color: var(--soft-purple);
+      margin-bottom: 35px;
       user-select: none;
     }
 
     .contact-links {
       display: flex;
       justify-content: center;
-      gap: 28px;
+      gap: 25px;
       flex-wrap: wrap;
     }
 
     .contact-links a {
       background: var(--hot-pink);
-      color: var(--text-light);
-      padding: 16px 44px;
-      border-radius: 40px;
-      font-weight: 700;
-      font-size: 1.2rem;
+      color: white;
       text-decoration: none;
-      box-shadow: 0 5px 18px var(--shadow-pink);
-      transition: background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+      font-weight: 600;
+      font-size: 1.2rem;
+      padding: 14px 38px;
+      border-radius: 35px;
+      box-shadow: 0 5px 15px rgba(255, 59, 141, 0.5);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
       user-select: none;
+      display: inline-block;
     }
 
     .contact-links a:hover {
-      background: var(--soft-purple);
-      color: var(--sunny-yellow);
-      box-shadow: 0 8px 28px var(--shadow-purple);
+      background: var(--bright-blue);
+      box-shadow: 0 8px 25px rgba(52, 152, 219, 0.6);
     }
 
     footer {
-      margin-top: 100px;
-      font-size: 1rem;
-      color: var(--warm-orange);
       font-weight: 600;
-      letter-spacing: 1px;
+      color: var(--warm-orange);
+      letter-spacing: 1.2px;
       text-align: center;
       user-select: none;
     }
@@ -212,7 +209,7 @@
       }
 
       .contact-links a {
-        padding: 14px 32px;
+        padding: 12px 28px;
         font-size: 1rem;
       }
     }
@@ -235,30 +232,21 @@
     <div class="service-grid">
       <div class="service-card">
         <h3>Graphic Design</h3>
-        <p>
-          Social Media (Reels, Posts, Stories), Visual Identity (Logo, Mockups), Cards (Invitations,
-          Business), Advertisements, & Custom Design
-        </p>
+        <p>Social Media (Reels, Posts, Stories), Visual Identity (Logo, Mockups), Cards (Invitations,
+          Business), Advertisements, & Custom Design</p>
       </div>
       <div class="service-card">
         <h3>Web Development</h3>
-        <p>
-          Building web pages, improving user interfaces for websites, and modifying and updating existing
-          websites.
-        </p>
+        <p>Building web pages, improving user interfaces for websites, and modifying and updating existing
+          websites.</p>
       </div>
       <div class="service-card">
         <h3>Photoshop & Video Editing</h3>
-        <p>
-          Professional photo editing (for characters, products...), promotional image design, video editing.
-        </p>
+        <p>Professional photo editing (for characters, products...), promotional image design, video editing.</p>
       </div>
       <div class="service-card">
         <h3>Extra Services</h3>
-        <p>
-          Create CV/Resume and Cover Letter, design portfolio, implement projects and presentations (Microsoft
-          Office).
-        </p>
+        <p>Create CV/Resume and Cover Letter, design portfolio, implement projects and presentations (Microsoft Office).</p>
       </div>
     </div>
   </section>
