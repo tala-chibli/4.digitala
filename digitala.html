@@ -2,266 +2,262 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>For Digitala</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --hot-pink: #ff3b8d;
-      --soft-purple: #9b59b6;
-      --bright-blue: #3498db;
-      --sunny-yellow: #f1c40f;
-      --warm-orange: #e67e22;
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>For Digitala</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --cream-beige: #f3ece4;
+            --vintage-brown: #5a4634;
+            --soft-black: #2e2e2e;
+            --frame-gold: #a78c6b;
+            --mild-shadow: rgba(90, 70, 52, 0.3);
 
-      --bg-pink: #ffe6f1;
-      --card-bg: #fff0f6;
+            --bg-main: #fdfaf7;
+            --card-bg: #f7f3ef;
 
-      --text-dark: #2c2c2c;
-      --shadow-pink: rgba(255, 59, 141, 0.4);
-    }
+            --text-dark: #2b2b2b;
+        }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--bg-pink);
-      color: var(--text-dark);
-      padding: 60px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-main);
+            color: var(--text-dark);
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-    header {
-      text-align: center;
-      margin-bottom: 80px;
-    }
+        header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
 
-    .logo-title {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+        .logo-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
 
-    .logo {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid var(--hot-pink);
-      box-shadow: 0 0 15px var(--shadow-pink);
-      transition: transform 0.3s ease;
-    }
+        .logo {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--frame-gold);
+            box-shadow: 0 0 15px var(--mild-shadow);
+            transition: transform 0.3s ease;
+        }
 
-    .logo:hover {
-      transform: scale(1.15);
-      box-shadow: 0 0 30px var(--shadow-pink);
-    }
+        .logo:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 30px var(--mild-shadow);
+        }
 
-    h1 {
-      font-weight: 700;
-      font-size: 3.8rem;
-      background: linear-gradient(90deg, var(--hot-pink), var(--soft-purple), var(--bright-blue));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      letter-spacing: 3px;
-      user-select: none;
-    }
+        h1 {
+            font-weight: 700;
+            font-size: 3.8rem;
+            color: var(--vintage-brown);
+            letter-spacing: 3px;
+            user-select: none;
+        }
 
-    header p {
-      margin-top: 12px;
-      font-weight: 500;
-      font-size: 1.3rem;
-      color: var(--hot-pink);
-      user-select: none;
-      text-shadow: 1px 1px 3px #ffa6c2;
-    }
+        header p {
+            margin-top: 12px;
+            font-weight: 500;
+            font-size: 1.3rem;
+            color: var(--soft-black);
+            user-select: none;
+            text-shadow: 1px 1px 3px #d6cfc9;
+        }
 
-    /* Services Section */
-    .services {
-      max-width: 1200px;
-      width: 100%;
-      margin-bottom: 100px;
-    }
+        .services {
+            max-width: 1200px;
+            width: 100%;
+            margin-bottom: 100px;
+        }
 
-    .services h2 {
-      text-align: center;
-      font-size: 3rem;
-      font-weight: 700;
-      color: var(--hot-pink);
-      margin-bottom: 60px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      user-select: none;
-    }
+        .services h2 {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--vintage-brown);
+            margin-bottom: 60px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            user-select: none;
+        }
 
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
 
-    .service-card {
-      background: var(--card-bg);
-      border-radius: 25px;
-      padding: 30px 25px;
-      box-shadow: 0 10px 20px rgba(255, 59, 141, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: default;
-      border: 3px solid transparent;
-    }
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 25px;
+            padding: 30px 25px;
+            box-shadow: 0 10px 20px var(--mild-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: default;
+            border: 3px solid transparent;
+        }
 
-    .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(255, 59, 141, 0.4);
-      border-color: var(--hot-pink);
-    }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px var(--mild-shadow);
+            border-color: var(--frame-gold);
+        }
 
-    .service-card h3 {
-      font-size: 1.7rem;
-      font-weight: 700;
-      margin-bottom: 18px;
-      color: var(--bright-blue);
-      user-select: none;
-    }
+        .service-card h3 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--soft-black);
+            user-select: none;
+        }
 
-    .service-card p {
-      font-size: 1.1rem;
-      color: #444;
-      line-height: 1.5;
-      user-select: none;
-    }
+        .service-card p {
+            font-size: 1.1rem;
+            color: #444;
+            line-height: 1.5;
+            user-select: none;
+        }
 
-    /* Contact Section */
-    .contact {
-      text-align: center;
-      max-width: 900px;
-      margin-bottom: 60px;
-    }
+        .contact {
+            text-align: center;
+            max-width: 900px;
+            margin-bottom: 60px;
+        }
 
-    .contact h2 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: var(--soft-purple);
-      margin-bottom: 35px;
-      user-select: none;
-    }
+        .contact h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--vintage-brown);
+            margin-bottom: 35px;
+            user-select: none;
+        }
 
-    .contact-links {
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      flex-wrap: wrap;
-    }
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
 
-    .contact-links a {
-      background: var(--hot-pink);
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.2rem;
-      padding: 14px 38px;
-      border-radius: 35px;
-      box-shadow: 0 5px 15px rgba(255, 59, 141, 0.5);
-      transition: background 0.3s ease, box-shadow 0.3s ease;
-      user-select: none;
-      display: inline-block;
-    }
+        .contact-links a {
+            background: var(--vintage-brown);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            padding: 14px 38px;
+            border-radius: 35px;
+            box-shadow: 0 5px 15px var(--mild-shadow);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+            user-select: none;
+            display: inline-block;
+        }
 
-    .contact-links a:hover {
-      background: var(--bright-blue);
-      box-shadow: 0 8px 25px rgba(52, 152, 219, 0.6);
-    }
+        .contact-links a:hover {
+            background: var(--soft-black);
+            box-shadow: 0 8px 25px rgba(46, 46, 46, 0.4);
+        }
 
-    footer {
-      font-weight: 600;
-      color: var(--warm-orange);
-      letter-spacing: 1.2px;
-      text-align: center;
-      user-select: none;
-    }
+        footer {
+            font-weight: 600;
+            color: var(--frame-gold);
+            letter-spacing: 1.2px;
+            text-align: center;
+            user-select: none;
+        }
 
-    /* Responsive */
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2.8rem;
-      }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.8rem;
+            }
 
-      .logo {
-        width: 70px;
-        height: 70px;
-      }
+            .logo {
+                width: 70px;
+                height: 70px;
+            }
 
-      .services h2 {
-        font-size: 2.4rem;
-      }
+            .services h2 {
+                font-size: 2.4rem;
+            }
 
-      .contact h2 {
-        font-size: 2.2rem;
-      }
+            .contact h2 {
+                font-size: 2.2rem;
+            }
 
-      .contact-links a {
-        padding: 12px 28px;
-        font-size: 1rem;
-      }
-    }
-  </style>
+            .contact-links a {
+                padding: 12px 28px;
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <header>
-    <div class="logo-title">
-      <img src="https://i.imgur.com/FXNRead.png" alt="Digitala Logo" class="logo" />
-      <div>
-        <h1>For Digitala</h1>
-        <p>Where design meets perfection. Powered by Tala Chibli.</p>
-      </div>
-    </div>
-  </header>
+    <header>
+        <div class="logo-title">
+            <img src="https://i.imgur.com/FXNRead.png" alt="Digitala Logo" class="logo" />
+            <div>
+                <h1>For Digitala</h1>
+                <p>Where design meets perfection. Powered by Tala Chibli.</p>
+            </div>
+        </div>
+    </header>
 
-  <section class="services">
-    <h2>My Services</h2>
-    <div class="service-grid">
-      <div class="service-card">
-        <h3>Graphic Design</h3>
-        <p>Social Media (Reels, Posts, Stories), Visual Identity (Logo, Mockups), Cards (Invitations,
-          Business), Advertisements, & Custom Design</p>
-      </div>
-      <div class="service-card">
-        <h3>Web Development</h3>
-        <p>Building web pages, improving user interfaces for websites, and modifying and updating existing
-          websites.</p>
-      </div>
-      <div class="service-card">
-        <h3>Photoshop & Video Editing</h3>
-        <p>Professional photo editing (for characters, products...), promotional image design, video editing.</p>
-      </div>
-      <div class="service-card">
-        <h3>Extra Services</h3>
-        <p>Create CV/Resume and Cover Letter, design portfolio, implement projects and presentations (Microsoft Office).</p>
-      </div>
-    </div>
-  </section>
+    <section class="services">
+        <h2>My Services</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <h3>Graphic Design</h3>
+                <p>Social Media (Reels, Posts, Stories), Visual Identity (Logo, Mockups), Cards (Invitations,
+                    Business), Advertisements, & Custom Design</p>
+            </div>
+            <div class="service-card">
+                <h3>Web Development</h3>
+                <p>Building web pages, improving user interfaces for websites, and modifying and updating existing
+                    websites.</p>
+            </div>
+            <div class="service-card">
+                <h3>Photoshop & Video Editing</h3>
+                <p>Professional photo editing (for characters, products...), promotional image design, video editing.
+                </p>
+            </div>
+            <div class="service-card">
+                <h3>Extra Services</h3>
+                <p>Create CV/Resume and Cover Letter, design portfolio, implement projects and presentations (Microsoft
+                    Office).</p>
+            </div>
+        </div>
+    </section>
 
-  <section class="contact">
-    <h2>Get in Touch</h2>
-    <div class="contact-links">
-      <a href="https://wa.me/71732045" target="_blank">WhatsApp</a>
-      <a href="https://www.instagram.com/4.digitala" target="_blank">Instagram</a>
-    </div>
-  </section>
+    <section class="contact">
+        <h2>Get in Touch</h2>
+        <div class="contact-links">
+            <a href="https://wa.me/71732045" target="_blank">WhatsApp</a>
+            <a href="https://www.instagram.com/4.digitala" target="_blank">Instagram</a>
+        </div>
+    </section>
 
-  <footer>
-    <p>© 2025 For Digitala. Site by Tala Chibli. All rights reserved.</p>
-  </footer>
+    <footer>
+        <p>© 2025 For Digitala. Site by Tala Chibli. All rights reserved.</p>
+    </footer>
 </body>
 
 </html>
