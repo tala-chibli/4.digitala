@@ -14,10 +14,13 @@
             --frame-gold: #a78c6b;
             --mild-shadow: rgba(90, 70, 52, 0.3);
 
-            --bg-main: #fdfaf7;
-            --card-bg: #f7f3ef;
+            /* تحديث توزيع الخلفيات */
+            --bg-main: linear-gradient(120deg, #dacbb7 25%, #fdfaf7 60%, #f3ece4 85%);
+            --card-bg: #f9f3e8;
+            --text-dark: #3a2e20;
 
-            --text-dark: #2b2b2b;
+            --btn-bg: var(--frame-gold);
+            --btn-hover-bg: var(--vintage-brown);
         }
 
         * {
@@ -30,187 +33,423 @@
             font-family: 'Poppins', sans-serif;
             background: var(--bg-main);
             color: var(--text-dark);
-            padding: 60px 20px;
+            padding: 60px 20px 100px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         header {
             text-align: center;
             margin-bottom: 80px;
+            background: var(--card-bg);
+            padding: 45px 50px;
+            border-radius: 50px 20px 50px 20px;
+            box-shadow:
+                0 10px 15px rgba(167, 140, 107, 0.25),
+                0 20px 40px rgba(90, 70, 52, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: box-shadow 0.5s ease, transform 0.6s ease;
+            cursor: default;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -60%;
+            left: -60%;
+            width: 160%;
+            height: 160%;
+            background: radial-gradient(circle at center, var(--frame-gold), transparent 70%);
+            opacity: 0.15;
+            transform: rotate(25deg);
+            transition: opacity 0.6s ease;
+            z-index: 0;
+        }
+
+        header:hover {
+            box-shadow:
+                0 15px 25px rgba(167, 140, 107, 0.6),
+                0 40px 70px rgba(90, 70, 52, 0.3);
+            transform: translateY(-10px);
+        }
+
+        header:hover::before {
+            opacity: 0.35;
         }
 
         .logo-title {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 20px;
+            gap: 30px;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
         }
 
         .logo {
-            width: 90px;
-            height: 90px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--frame-gold);
-            box-shadow: 0 0 15px var(--mild-shadow);
-            transition: transform 0.3s ease;
+            border: 6px solid var(--frame-gold);
+            box-shadow:
+                0 0 25px rgba(167, 140, 107, 0.35),
+                0 0 50px rgba(167, 140, 107, 0.15);
+            transition: transform 0.4s ease, box-shadow 0.5s ease;
+            cursor: pointer;
+            filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.12));
         }
 
         .logo:hover {
-            transform: scale(1.15);
-            box-shadow: 0 0 30px var(--mild-shadow);
+            transform: scale(1.3) rotate(8deg);
+            box-shadow:
+                0 0 45px var(--frame-gold),
+                0 0 70px var(--frame-gold),
+                0 0 90px var(--frame-gold);
+            filter: drop-shadow(0 5px 8px rgba(167, 140, 107, 0.8));
         }
 
         h1 {
-            font-weight: 700;
-            font-size: 3.8rem;
+            font-weight: 900;
+            font-size: 4.8rem;
             color: var(--vintage-brown);
-            letter-spacing: 3px;
+            letter-spacing: 5px;
             user-select: none;
+            text-shadow:
+                2px 2px 6px rgba(167, 140, 107, 0.6),
+                0 0 8px var(--frame-gold);
+            font-style: italic;
+            transition: color 0.3s ease;
+        }
+
+        header:hover h1 {
+            color: var(--frame-gold);
+            text-shadow:
+                3px 3px 9px var(--frame-gold),
+                0 0 15px var(--frame-gold);
         }
 
         header p {
-            margin-top: 12px;
-            font-weight: 500;
-            font-size: 1.3rem;
+            margin-top: 18px;
+            font-weight: 600;
+            font-size: 1.6rem;
             color: var(--soft-black);
+            text-shadow: 1px 1px 6px #d6cfc9;
+            font-style: oblique;
+            letter-spacing: 0.6px;
             user-select: none;
-            text-shadow: 1px 1px 3px #d6cfc9;
         }
 
         .services {
-            max-width: 1200px;
+            max-width: 1400px;
             width: 100%;
-            margin-bottom: 100px;
+            margin-bottom: 110px;
+            padding: 0 15px;
         }
 
         .services h2 {
             text-align: center;
-            font-size: 3rem;
-            font-weight: 700;
+            font-size: 3.6rem;
+            font-weight: 900;
             color: var(--vintage-brown);
-            margin-bottom: 60px;
-            letter-spacing: 2px;
+            margin-bottom: 80px;
+            letter-spacing: 4px;
             text-transform: uppercase;
             user-select: none;
+            text-shadow: 2px 2px 6px rgba(90, 70, 52, 0.3);
+            animation: fadeInDown 1s ease forwards;
+            opacity: 0;
+        }
+
+        /* Animate fade in for heading */
+        @keyframes fadeInDown {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
         }
 
         .service-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 50px;
+            animation: fadeInUp 1.2s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
         }
 
         .service-card {
-            background: var(--card-bg);
-            border-radius: 25px;
-            padding: 30px 25px;
-            box-shadow: 0 10px 20px var(--mild-shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: default;
-            border: 3px solid transparent;
+            background: linear-gradient(145deg, #f9f3e8, #dacbb7);
+            border-radius: 40px;
+            padding: 40px 35px;
+            box-shadow:
+                0 16px 35px rgba(90, 70, 52, 0.25),
+                inset 0 0 15px rgba(255, 255, 255, 0.8);
+            transition:
+                transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.4s ease,
+                background 0.4s ease,
+                border-color 0.4s ease;
+            cursor: pointer;
+            border: 3px solid var(--frame-gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, var(--frame-gold), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 0;
+        }
+
+        .service-card:hover::before {
+            opacity: 0.15;
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px var(--mild-shadow);
-            border-color: var(--frame-gold);
+            transform: translateY(-18px) scale(1.03);
+            box-shadow:
+                0 28px 60px rgba(90, 70, 52, 0.35),
+                inset 0 0 20px rgba(255, 255, 255, 0.95);
+            border-color: var(--soft-black);
+            background: linear-gradient(145deg, #cbb28f, #dacbb7);
+            z-index: 10;
         }
 
         .service-card h3 {
-            font-size: 1.7rem;
-            font-weight: 700;
-            margin-bottom: 18px;
-            color: var(--soft-black);
-            user-select: none;
+            font-size: 2.1rem;
+            font-weight: 900;
+            margin-bottom: 28px;
+            color: var(--vintage-brown);
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.6);
+            transition: color 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card:hover h3 {
+            color: var(--frame-gold);
         }
 
         .service-card p {
-            font-size: 1.1rem;
-            color: #444;
-            line-height: 1.5;
+            font-size: 1.25rem;
+            color: #4a3f36;
+            line-height: 1.7;
+            letter-spacing: 0.3px;
+            position: relative;
+            z-index: 1;
             user-select: none;
         }
 
         .contact {
             text-align: center;
-            max-width: 900px;
-            margin-bottom: 60px;
+            max-width: 920px;
+            margin-bottom: 90px;
+            padding: 0 15px;
         }
 
         .contact h2 {
-            font-size: 2.8rem;
-            font-weight: 700;
+            font-size: 3.4rem;
+            font-weight: 900;
             color: var(--vintage-brown);
-            margin-bottom: 35px;
+            margin-bottom: 45px;
             user-select: none;
+            text-shadow: 2px 2px 5px rgba(90, 70, 52, 0.3);
+            animation: fadeInDown 1.2s ease forwards;
+            opacity: 0;
         }
 
-        .contact-links {
+        /* Side Social Buttons */
+
+        .side-contact {
+            position: fixed;
+            top: 50%;
+            right: 22px;
+            transform: translateY(-50%);
             display: flex;
+            flex-direction: column;
+            gap: 22px;
+            z-index: 10000;
+            filter: drop-shadow(0 3px 5px rgba(90, 70, 52, 0.3));
+        }
+
+        .side-contact a {
+            width: 54px;
+            height: 54px;
+            background: var(--frame-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
-
-        .contact-links a {
-            background: var(--vintage-brown);
-            color: white;
+            box-shadow:
+                0 8px 18px rgba(167, 140, 107, 0.6),
+                inset 0 0 7px #fff8d9;
+            transition:
+                background 0.35s ease,
+                box-shadow 0.35s ease,
+                transform 0.25s ease,
+                color 0.35s ease;
+            color: var(--vintage-brown);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1.2rem;
-            padding: 14px 38px;
-            border-radius: 35px;
-            box-shadow: 0 5px 15px var(--mild-shadow);
-            transition: background 0.3s ease, box-shadow 0.3s ease;
+            font-size: 26px;
+            cursor: pointer;
             user-select: none;
-            display: inline-block;
         }
 
-        .contact-links a:hover {
-            background: var(--soft-black);
-            box-shadow: 0 8px 25px rgba(46, 46, 46, 0.4);
+        .side-contact a:hover {
+            background: var(--vintage-brown);
+            color: var(--frame-gold);
+            box-shadow:
+                0 12px 35px rgba(90, 70, 52, 0.9),
+                inset 0 0 10px #ffefb1;
+            transform: scale(1.25) rotate(10deg);
+        }
+
+        /* Scroll to Top Button */
+
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 42px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--vintage-brown);
+            border-radius: 50%;
+            box-shadow:
+                0 10px 30px rgba(90, 70, 52, 0.9),
+                inset 0 0 10px var(--frame-gold);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--frame-gold);
+            font-size: 30px;
+            user-select: none;
+            transition:
+                background 0.3s ease,
+                box-shadow 0.3s ease,
+                transform 0.3s ease,
+                color 0.3s ease;
+            z-index: 100000;
+            opacity: 0;
+            pointer-events: none;
+            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.15));
+        }
+
+        #scrollTopBtn.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #scrollTopBtn:hover {
+            background: var(--frame-gold);
+            color: var(--vintage-brown);
+            box-shadow:
+                0 15px 45px rgba(167, 140, 107, 1),
+                inset 0 0 18px var(--vintage-brown);
+            transform: scale(1.3) rotate(-10deg);
         }
 
         footer {
-            font-weight: 600;
+            font-weight: 700;
             color: var(--frame-gold);
-            letter-spacing: 1.2px;
+            letter-spacing: 1.6px;
             text-align: center;
             user-select: none;
+            padding-bottom: 25px;
+            font-style: italic;
+            text-shadow: 1px 1px 3px rgba(90, 70, 52, 0.25);
+        }
+
+        /* SVG icons style reset */
+        svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+            pointer-events: none;
+        }
+
+        /* Responsive tweaks */
+
+        @media (max-width: 900px) {
+            .service-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
         }
 
         @media (max-width: 600px) {
             h1 {
-                font-size: 2.8rem;
+                font-size: 3.2rem;
             }
 
             .logo {
-                width: 70px;
-                height: 70px;
+                width: 90px;
+                height: 90px;
             }
 
-            .services h2 {
-                font-size: 2.4rem;
-            }
-
+            .services h2,
             .contact h2 {
-                font-size: 2.2rem;
+                font-size: 2.8rem;
             }
 
-            .contact-links a {
-                padding: 12px 28px;
-                font-size: 1rem;
+            .service-card {
+                padding: 30px 25px;
+            }
+
+            .side-contact {
+                right: 14px;
+                gap: 18px;
+            }
+
+            .side-contact a {
+                width: 46px;
+                height: 46px;
+                font-size: 22px;
+            }
+
+            #scrollTopBtn {
+                width: 48px;
+                height: 48px;
+                font-size: 24px;
+                bottom: 25px;
+                right: 18px;
             }
         }
     </style>
 </head>
 
 <body>
+
     <header>
         <div class="logo-title">
             <img src="https://i.imgur.com/FXNRead.png" alt="Digitala Logo" class="logo" />
@@ -224,22 +463,22 @@
     <section class="services">
         <h2>My Services</h2>
         <div class="service-grid">
-            <div class="service-card">
+            <div class="service-card" tabindex="0" aria-label="Graphic Design service">
                 <h3>Graphic Design</h3>
-                <p>Social Media (Reels, Posts, Stories), Visual Identity (Logo, Mockups), Cards (Invitations,
-                    Business), Advertisements, & Custom Design</p>
+                <p>Social Media (Reels, Posts, Stories), Visual Identity (Logo, Mockups), Cards (Invitations, Business),
+                    Advertisements, & Custom Design</p>
             </div>
-            <div class="service-card">
+            <div class="service-card" tabindex="0" aria-label="Web Development service">
                 <h3>Web Development</h3>
                 <p>Building web pages, improving user interfaces for websites, and modifying and updating existing
                     websites.</p>
             </div>
-            <div class="service-card">
+            <div class="service-card" tabindex="0" aria-label="Photoshop & Video Editing service">
                 <h3>Photoshop & Video Editing</h3>
                 <p>Professional photo editing (for characters, products...), promotional image design, video editing.
                 </p>
             </div>
-            <div class="service-card">
+            <div class="service-card" tabindex="0" aria-label="Extra Services">
                 <h3>Extra Services</h3>
                 <p>Create CV/Resume and Cover Letter, design portfolio, implement projects and presentations (Microsoft
                     Office).</p>
@@ -247,17 +486,63 @@
         </div>
     </section>
 
-    <section class="contact">
-        <h2>Get in Touch</h2>
-        <div class="contact-links">
-            <a href="https://wa.me/71732045" target="_blank">WhatsApp</a>
-            <a href="https://www.instagram.com/4.digitala" target="_blank">Instagram</a>
-        </div>
-    </section>
+    <!-- Side social buttons -->
+    <nav class="side-contact" aria-label="Social media links">
+        <a href="https://wa.me/71732045" target="_blank" rel="noopener noreferrer" title="WhatsApp"
+            aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                    d="M20.52 3.48A11.91 11.91 0 0012 0C5.373 0 0 5.373 0 12c0 2.12.553 4.15 1.602 5.96L0 24l6.1-1.592A11.938 11.938 0 0012 24c6.627 0 12-5.373 12-12 0-3.14-1.226-6.094-3.48-8.52zm-8.14 16.99a8.344 8.344 0 01-4.37-1.25l-.314-.204-3.633.949.971-3.54-.2-.315a8.355 8.355 0 011.25-11.95 8.49 8.49 0 0111.95 1.25 8.345 8.345 0 01-8.83 14.81zm4.89-6.064c-.214-.11-1.265-.622-1.46-.692-.195-.07-.337-.11-.48.109-.14.213-.54.693-.66.835-.12.143-.24.16-.445.055-.205-.104-.86-.317-1.64-.996-.606-.54-1.014-1.21-1.13-1.416-.117-.208-.012-.32.084-.423.086-.086.19-.225.286-.337.094-.11.125-.19.187-.317.062-.128.03-.24-.015-.337-.044-.097-.48-1.15-.66-1.57-.174-.41-.35-.355-.48-.362-.123-.007-.27-.01-.415-.01s-.337.05-.515.24c-.177.192-.67.655-.67 1.595s.686 1.854.78 1.983c.093.127 1.347 2.05 3.262 2.87.456.197.81.314 1.087.402.456.146.87.125 1.2.076.367-.055 1.265-.516 1.445-1.015.18-.5.18-.928.125-1.015-.05-.088-.185-.143-.398-.252z" />
+            </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/talachibli/" target="_blank" rel="noopener noreferrer" title="LinkedIn"
+            aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                    d="M4.98 3.5C3.34 3.5 2 4.84 2 6.48c0 1.64 1.34 2.98 2.98 2.98 1.64 0 2.98-1.34 2.98-2.98 0-1.64-1.34-2.98-2.98-2.98zM2.5 21.5h5v-11h-5v11zm6.92-12.34h4.57v1.58h.07c.64-1.21 2.2-2.5 4.53-2.5 4.85 0 5.74 3.19 5.74 7.32v8.42h-5v-7.47c0-1.78-.03-4.06-2.47-4.06-2.47 0-2.85 1.92-2.85 3.9v7.63h-5v-11z" />
+            </svg>
+        </a>
+        <a href="https://www.instagram.com/4.digitala" target="_blank" rel="noopener noreferrer" title="Instagram"
+            aria-label="Instagram" class="social-btn">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" width="20" height="20">
+                <path
+                    d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 2A3.75 3.75 0 004 7.75v8.5A3.75 3.75 0 007.75 20h8.5a3.75 3.75 0 003.75-3.75v-8.5A3.75 3.75 0 0016.25 4h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6zm4.5-2a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5z" />
+            </svg>
+        </a>
+
+    </nav>
+
+    <!-- Scroll to Top button -->
+    <button id="scrollTopBtn" aria-label="Scroll to top" title="Scroll to top" aria-live="polite">
+        ↑
+    </button>
 
     <footer>
-        <p>© 2025 For Digitala. Site by Tala Chibli. All rights reserved.</p>
+        &copy; 2025 For Digitala. Site by Tala Chibli. All rights reserved.
     </footer>
+
+    <script>
+        // Scroll to Top Button logic
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 350) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Optional: Logo hover sound effect or animation (if you want)
+    </script>
+
 </body>
 
 </html>
