@@ -1,376 +1,450 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tala Chibli | Creative Portfolio</title>
-  <meta name="description" content="Portfolio of Tala Chibli: designer, developer, and creative professional.">
-  <meta name="author" content="Tala Chibli">
-  <link rel="icon" href="https://imgur.com/iqVhMNs.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #ff2253;
-      --accent: #ffe156;
-      --bg: #fffdfa;
-      --text: #211522;
-      --section: #fff6f9;
-      --border: #ffd1d1;
-      --radius: 1.15rem;
-    }
-    * { box-sizing: border-box; }
-    html, body {
-      margin: 0; padding: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Poppins', Arial, sans-serif;
-      font-size: 1.05rem;
-      line-height: 1.7;
-    }
-    body {
-      max-width: 480px;
-      margin: 0 auto;
-      box-shadow: 0 0 22px #ff22530a;
-      min-height: 100vh;
-      display: flex; flex-direction: column;
-    }
-    header {
-      background: var(--section);
-      border-bottom: 2px solid var(--border);
-      border-radius: 0 0 var(--radius) var(--radius);
-      padding: 1.2rem 1rem 0.5rem 1rem;
-      display: flex; flex-direction: column; align-items: center;
-      margin-bottom: 0.8rem;
-    }
-    .profile-photo {
-      width: 80px; height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--accent);
-      margin-bottom: 0.7rem;
-    }
-    h1 {
-      font-family: 'Pacifico', cursive;
-      font-size: 1.75rem;
-      margin: 0 0 0.15rem 0;
-      letter-spacing: 0.07em;
-      color: var(--primary);
-    }
-    .subtitle {
-      font-size: 1rem;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-      text-align: center;
-      letter-spacing: 0.05em;
-    }
-    .socials-header {
-      display: flex; gap: 0.5rem; margin: 0.5rem 0 0.2rem 0;
-    }
-    .socials-header a {
-      width: 38px; height: 38px;
-      display: flex; align-items: center; justify-content: center;
-      border-radius: 50%; background: #fff;
-      color: var(--primary);
-      border: 1.5px solid var(--border);
-      font-size: 1.17rem;
-      transition: background 0.2s, color 0.2s;
-    }
-    .socials-header a:hover { background: var(--primary); color: #fff; }
-    nav.main-nav {
-      display: flex; gap: 0.1rem; justify-content: center;
-      margin: 0.7rem 0 0 0; flex-wrap: wrap;
-    }
-    nav.main-nav a {
-      color: var(--primary);
-      background: transparent;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1rem;
-      padding: 0.5rem 0.7rem;
-      border-radius: var(--radius);
-      transition: background 0.2s, color 0.2s;
-    }
-    nav.main-nav a:hover,
-    nav.main-nav a:focus {
-      background: var(--primary);
-      color: #fff;
-    }
-    section {
-      background: var(--section);
-      border-radius: var(--radius);
-      margin: 0 0 1.1rem 0;
-      padding: 1.2rem 1rem;
-      border: 1.5px solid var(--border);
-      box-shadow: 0 2px 10px #ff225308;
-    }
-    section h2 {
-      font-family: 'Pacifico', cursive;
-      color: var(--primary);
-      font-size: 1.17rem;
-      font-weight: 700;
-      margin: 0 0 0.8rem 0;
-      letter-spacing: 0.09em;
-      text-align: center;
-    }
-    .skills-list {
-      display: flex; flex-wrap: wrap; gap: 0.5rem;
-      justify-content: center;
-    }
-    .skill {
-      background: var(--accent);
-      color: var(--primary);
-      border-radius: 0.7rem;
-      padding: 0.36rem 0.8rem;
-      font-weight: 700;
-      font-size: 0.99rem;
-      margin-bottom: 0.09rem;
-      cursor: pointer;
-      border: 1px solid var(--border);
-      transition: background 0.2s, color 0.2s;
-    }
-    .skill:hover, .skill:focus { background: var(--primary); color: #fff; }
-    .services-list { display: flex; flex-direction: column; gap: 0.7rem; }
-    .service-card {
-      background: #fff;
-      border-radius: 0.7rem;
-      padding: 0.7rem 0.9rem;
-      border: 1px solid var(--border);
-      margin-bottom: 0.2rem;
-      transition: box-shadow 0.2s;
-    }
-    .service-card:focus, .service-card:hover {
-      box-shadow: 0 2px 18px #ff22533e;
-      outline: none;
-    }
-    .service-title {
-      font-weight: 700;
-      color: var(--primary);
-      font-size: 1.06rem;
-      margin-bottom: 0.2rem;
-    }
-    .service-desc {
-      font-size: 0.97rem;
-      color: #444;
-    }
-    .testimonial-list { display: flex; flex-direction: column; gap: 0.7rem; }
-    .testimonial {
-      background: #fff;
-      border-radius: 0.7rem;
-      border-left: 3px solid var(--primary);
-      padding: 0.7rem 0.9rem 0.6rem 1.1rem;
-      font-size: 0.99rem;
-      color: #222;
-      font-style: italic;
-    }
-    .testimonial-author {
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-top: 0.3rem;
-      font-style: normal;
-      text-align: right;
-    }
-    .contact-form {
-      display: flex; flex-direction: column; gap: 0.7rem;
-      width: 100%; margin-top: 0.3rem;
-    }
-    .contact-form input, .contact-form textarea {
-      font-family: inherit;
-      font-size: 1rem;
-      border-radius: 0.6rem;
-      border: 1.5px solid var(--border);
-      padding: 0.7rem 0.9rem;
-      background: #fff;
-      color: #222;
-      outline: none;
-      transition: border 0.2s;
-    }
-    .contact-form input:focus, .contact-form textarea:focus {
-      border: 1.5px solid var(--primary);
-    }
-    .contact-form button {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      border-radius: 0.7rem;
-      font-size: 1rem;
-      font-weight: bold;
-      padding: 0.7rem 1.2rem;
-      cursor: pointer;
-      transition: background 0.2s;
-      letter-spacing: 0.07em;
-      margin-top: 0.3rem;
-    }
-    .contact-form button:hover,
-    .contact-form button:focus {
-      background: var(--accent);
-      color: var(--primary);
-    }
-    .contact-details {
-      font-size: 0.99rem;
-      color: #555;
-      margin: 1rem 0 0 0;
-      text-align: center;
-    }
-    .contact-details a {
-      color: var(--primary);
-      font-weight: 700;
-      transition: color 0.2s;
-    }
-    .contact-details a:hover { color: var(--accent); }
-    footer {
-      font-weight: 600;
-      font-size: 0.97rem;
-      color: var(--primary);
-      text-align: center;
-      padding: 1.1em 0 1em 0;
-      margin: 0.9rem 0 0 0;
-      border-top: 1.5px solid var(--border);
-      background: #fff;
-      border-radius: var(--radius) var(--radius) 0 0;
-    }
-    @media (max-width: 600px) {
-      body { max-width: 100vw; }
-      section, header, footer { border-radius: 0; }
-      .profile-photo { width: 64px; height: 64px; }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <img src="https://imgur.com/SoDdcQu.jpg" alt="Profile Photo" class="profile-photo" />
-    <h1>Digitala</h1>
-    <div class="subtitle">BY: Tala Chibli</div>
-    <div class="socials-header">
-      <a class="facebook" href="https://www.facebook.com/share/16ZTanPu9G/" target="_blank" title="Facebook" aria-label="Facebook">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M22.676 0h-21.352c-.731 0-1.324.593-1.324 1.326v21.348c0 .731.593 1.326 1.324 1.326h11.497v-9.294h-3.128v-3.622h3.128v-2.672c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.796.143v3.24h-1.919c-1.504 0-1.797.715-1.797 1.763v2.314h3.587l-.467 3.622h-3.12V24h6.116c.729 0 1.322-.595 1.322-1.326V1.326C24 .593 23.405 0 22.676 0"/></svg>
-      </a>
-      <a class="whatsapp" href="https://wa.me/71732045" target="_blank" title="WhatsApp" aria-label="WhatsApp">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20.52 3.48A11.91 11.91 0 0012 0C5.373 0 0 5.373 0 12c0 2.12.553 4.15 1.602 5.96L0 24l6.1-1.592A11.938 11.938 0 0012 24c6.627 0 12-5.373 12-12 0-3.14-1.226-6.094-3.48-8.52zm-8.14 16.99a8.344 8.344 0 01-4.37-1.25l-.314-.204-3.633.949.971-3.54-.2-.315a8.355 8.355 0 011.25-11.95 8.49 8.49 0 0111.95 1.25 8.345 8.345 0 01-8.83 14.81zm4.89-6.064c-.214-.11-1.265-.622-1.46-.692-.195-.07-.337-.11-.48.109-.14.213-.54.693-.66.835-.12.143-.24.16-.445.055-.205-.104-.86-.317-1.64-.996-.606-.54-1.014-1.21-1.13-1.416-.117-.208-.012-.32.084-.423.086-.086.19-.225.286-.337.094-.11.125-.19.187-.317.062-.128.03-.24-.015-.337-.044-.097-.48-1.15-.66-1.57-.174-.41-.35-.355-.48-.362-.123-.007-.27-.01-.415-.01s-.337.05-.515.24c-.177.192-.67.655-.67 1.595s.686 1.854.78 1.983c.093.127 1.347 2.05 3.262 2.87.456.197.81.314 1.087.402.456.146.87.125 1.2.076.367-.055 1.265-.516 1.445-1.015.18-.5.18-.928.125-1.015-.05-.088-.185-.143-.398-.252z"/></svg>
-      </a>
-      <a class="instagram" href="https://www.instagram.com/digitala.zone?igsh=MWs0a3JkdDNpOW1rZw==" target="_blank" title="Instagram" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 2A3.75 3.75 0 004 7.75v8.5A3.75 3.75 0 007.75 20h8.5a3.75 3.75 0 003.75-3.75v-8.5A3.75 3.75 0 0016.25 4h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6zm4.5-2a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5z"/></svg>
-      </a>
-      <a class="linkedin" href="https://www.linkedin.com/in/tala-chibli-89a8632ab?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" title="LinkedIn" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4.98 3.5C3.34 3.5 2 4.84 2 6.48c0 1.64 1.34 2.98 2.98 2.98 1.64 0 2.98-1.34 2.98-2.98 0-1.64-1.34-2.98-2.98-2.98zM2.5 21.5h5v-11h-5v11zm6.92-12.34h4.57v1.58h.07c.64-1.21 2.2-2.5 4.53-2.5 4.85 0 5.74 3.19 5.74 7.32v8.42h-5v-7.47c0-1.78-.03-4.06-2.47-4.06-2.47 0-2.85 1.92-2.85 3.9v7.63h-5v-11z"/></svg>
-      </a>
-    </div>
-    <nav class="main-nav" aria-label="Main navigation">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#services">Services</a>
-      <a href="#testimonials">Testimonials</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
 
-  <section class="about" id="about">
-    <h2>About Me</h2>
-    <div class="about-content">
-      Hey! I’m Tala Chibli, a Palestinian student passionate about blending creativity with tech. I study English
-      Literature and Management Information Systems, and I love using digital tools, design, and storytelling to
-      spark change and empower others.<br><br>
-      From graphic design to web development and content creation, I’m all about turning ideas into impact.
-      Whether I’m leading a project or teaching through creative tools, I bring heart, vision, and a drive to
-      make&nbsp;things&nbsp;better.
-    </div>
-  </section>
-  <section class="skills" id="skills">
-    <h2>Skills</h2>
-    <div class="skills-list">
-      <div class="skill" tabindex="0">Graphic Design</div>
-      <div class="skill" tabindex="0">Web Development</div>
-      <div class="skill" tabindex="0">Python Language</div>
-      <div class="skill" tabindex="0">Adobe Creative Cloud</div>
-      <div class="skill" tabindex="0">Photography</div>
-      <div class="skill" tabindex="0">Video Editing</div>
-      <div class="skill" tabindex="0">Digital Marketing</div>
-      <div class="skill" tabindex="0">Content Creation</div>
-      <div class="skill" tabindex="0">Business English</div>
-      <div class="skill" tabindex="0">Microsoft Office</div>
-    </div>
-  </section>
-  <section class="services" id="services">
-    <h2>Services</h2>
-    <div class="services-list">
-      <div class="service-card" tabindex="0">
-        <div class="service-title">Graphic Design</div>
-        <div class="service-desc">
-          Social media content (Reels, Posts, Stories), visual identity (logos, branding kits), business
-          cards, invitations, advertisements, custom graphics and more.
-        </div>
-      </div>
-      <div class="service-card" tabindex="0">
-        <div class="service-title">Software Development</div>
-        <div class="service-desc">
-          Web Development(Full-Stack Development), Mobile Apps Development, and Custom Software (Business
-          Software, Projects)
-        </div>
-      </div>
-      <div class="service-card" tabindex="0">
-        <div class="service-title">Photo &amp; Video Editing</div>
-        <div class="service-desc">
-          Professional Photo Retouching, Promotional Imagery, Engaging Video Editing for Digital Channels.
-        </div>
-      </div>
-      <div class="service-card" tabindex="0">
-        <div class="service-title">Extra Services</div>
-        <div class="service-desc">
-          CV/Resume Creation, Portfolio Design, Project &amp; Presentation Design, and more.
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="testimonials" id="testimonials">
-    <h2>Testimonials</h2>
-    <div class="testimonial-list">
-      <div class="testimonial">
-        "Hi my dear, thank you very much for your work on the CV and cover letter. I really liked them, and the
-        work was very organized and on time. I even got an A&nbsp;in&nbsp;the&nbsp;subject."
-        <div class="testimonial-author">— Jana Bakir, Business Management Student at AUB</div>
-      </div>
-      <div class="testimonial">
-        "Tltooall the poster you made for me is amazing, I swear 🥹🥹🥹🥹It is really amazing, everyone started
-        asking me how I did it and that it is amazing. May your hands be safe, my&nbsp;dear&nbsp;😍😍😍😍."
-        <div class="testimonial-author">— Raghad Nasser, Nurse</div>
-      </div>
-    </div>
-  </section>
-  <section class="contact" id="contact">
-    <h2>Contact Me</h2>
-    <form action="https://formspree.io/f/mzzgwkvk" method="POST" class="contact-form" autocomplete="off">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <input type="hidden" name="_subject" value="رسالة جديدة من موقع Digitala" />
-      <input type="hidden" name="_language" value="ar" />
-      <input type="hidden" name="_captcha" value="false" />
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
-  <footer>
-    &copy; 2025 Tala Chibli. Portfolio. All rights reserved.
-  </footer>
-  <script>
-    // Smooth scroll for main nav links
-    document.querySelectorAll('nav.main-nav a[href^="#"]').forEach(link => {
-      link.addEventListener('click', function (e) {
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1024" />
+    <title>Digitala by Tala Chibli</title>
+    <meta name="description" content="Portfolio website of Tala Chibli - Digital designer and developer." />
+    <meta name="author" content="Tala Chibli" />
+    <link rel="icon" href="https://imgur.com/iqVhMNs.png" type="image/png" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Montserrat:wght@700&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        soft: ['Quicksand', 'sans-serif'],
+                        galactic: ['Montserrat', 'Quicksand', 'sans-serif']
+                    },
+                    colors: {
+                        base: '#fff6ec',
+                        accent: '#fb923c',
+                        accentDark: '#d97706',
+                        card: '#ffe3c7',
+                        overlay: '#fff1e0',
+                        soft: '#7c4a1e',
+                        border: '#fbbf24'
+                    },
+                    keyframes: {
+                        typing: {
+                            '0%': { width: '0%' },
+                            '100%': { width: '100%' },
+                        },
+                        blink: {
+                            '0%, 100%': { borderColor: 'transparent' },
+                            '50%': { borderColor: '#fb923c' },
+                        },
+                        floating: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: 0 },
+                            '100%': { opacity: 1 }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: 0 },
+                            '100%': { transform: 'translateY(0)', opacity: 1 }
+                        }
+                    },
+                    animation: {
+                        typing: 'typing 2.5s steps(30, end) forwards',
+                        blink: 'blink 1s infinite',
+                        floating: 'floating 3s ease-in-out infinite',
+                        fadeIn: 'fadeIn 1.2s ease-in-out forwards',
+                        slideUp: 'slideUp 1.2s ease-in-out forwards'
+                    },
+                    dropShadow: {
+                        'orange-glow': '0 4px 32px #fb923c44',
+                    }
+                }
+            }
         }
-      });
-    });
-    // Keyboard accessibility for .skill and .service-card
-    document.querySelectorAll('.skill, .service-card').forEach(el => {
-      el.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          el.classList.toggle('active');
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+            background: #fff6ec;
+            min-height: 100%;
         }
-      });
-    });
-  </script>
+
+        body {
+            min-width: 1024px;
+            max-width: 1024px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+            background: #fb923c22;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #fb923c77;
+            border-radius: 6px;
+        }
+
+        /* Header typing effect container fix */
+        .typing-container {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 4px solid transparent;
+            animation: typing 2.5s steps(30, end) forwards, blink 1s infinite;
+            width: 0ch;
+            display: inline-block;
+        }
+
+        /* Animate sections on scroll */
+        section {
+            opacity: 0;
+            transform: translateY(30px);
+            animation-fill-mode: forwards;
+            animation-duration: 1.2s;
+            animation-timing-function: ease-in-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+            animation-name: slideUp;
+        }
+
+        /* Card hover effect */
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px #fb923c66;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        /* Button smooth scale */
+        button:hover {
+            transform: scale(1.05);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        /* Navbar links hover underline */
+        nav a:hover {
+            position: relative;
+        }
+
+        nav a:hover::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #d97706;
+            border-radius: 2px;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        /* Adjusted font sizes */
+        header h1 {
+            font-size: 5.5rem;
+            /* تكبير العنوان الرئيسي */
+        }
+
+        header p {
+            font-size: 1.6rem;
+            /* تكبير الفقرة تحت العنوان */
+        }
+
+        .typing-container {
+            font-size: 1.3rem;
+            /* تكبير نص الأنيميشن */
+        }
+
+        section p,
+        section li {
+            font-size: 1.2rem;
+            /* تكبير نص المحتوى */
+        }
+
+        section h2 {
+            font-size: 3.5rem;
+            /* تكبير عناوين الأقسام */
+        }
+
+        section h3 {
+            font-size: 1.8rem;
+            /* تكبير عناوين فرعية */
+        }
+    </style>
+</head>
+
+<body class="bg-base font-galactic text-soft min-h-screen">
+    <!-- Glassy Navbar -->
+    <nav class="fixed top-0 left-0 w-full z-30 bg-accent/90 backdrop-blur-lg shadow-xl border-b-2 border-accentDark"
+        style="min-width:1024px;">
+        <div class="max-w-5xl mx-auto flex justify-between items-center px-6 py-3" style="min-width: 1024px;">
+            <span
+                class="font-black text-2xl text-white tracking-wider drop-shadow-orange-glow cursor-default select-none">DIGITALA<span
+                    class="text-accentDark">.</span></span>
+            <div class="flex items-center gap-6">
+                <a href="#about" class="text-white/90 hover:text-accentDark font-semibold transition">About</a>
+                <a href="#skills" class="text-white/90 hover:text-accentDark font-semibold transition">Skills</a>
+                <a href="#services" class="text-white/90 hover:text-accentDark font-semibold transition">Services</a>
+                <a href="#testimonials"
+                    class="text-white/90 hover:text-accentDark font-semibold transition">Testimonials</a>
+                <a href="#contact" class="text-white/90 hover:text-accentDark font-semibold transition">Contact</a>
+                <!-- Social Icons -->
+                <span class="flex gap-3 ml-4">
+                    <a href="https://wa.me/71732045" target="_blank" title="WhatsApp"
+                        class="hover:scale-110 transition">
+                        <svg fill="#fff" class="w-6 h-6" viewBox="0 0 32 32">
+                            <circle cx="16" cy="16" r="16" fill="#fb923c" />
+                            <path
+                                d="M23.1 8.9A8.76 8.76 0 0 0 16 6.25C10.54 6.25 6 10.74 6 16.29c0 1.52.41 3.01 1.18 4.32L6 26l5.54-1.48c1.25.34 2.56.52 3.91.52 5.46 0 9.91-4.49 9.91-10.04 0-2.68-1.02-5.2-2.86-7.43zm-7.1 14.04c-1.19 0-2.37-.18-3.48-.53l-.25-.08-3.29.88.88-3.2-.1-.26A8.04 8.04 0 0 1 8 16.29c0-4.32 3.51-7.82 8-7.82s8 3.5 8 7.82-3.52 7.82-8 7.82zm4.37-5.94c-.24-.11-1.41-.7-1.62-.77-.22-.08-.38-.11-.54.12-.16.23-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.11-1.03-.38-1.97-1.21-.73-.65-1.22-1.44-1.36-1.68-.14-.24-.02-.37.1-.48.11-.11.24-.28.36-.43.12-.15.16-.26.24-.44.08-.18.04-.33-.02-.46-.05-.13-.54-1.3-.74-1.78-.2-.48-.4-.41-.54-.42-.13-.01-.29-.01-.44-.01-.15 0-.4.06-.61.28-.2.22-.8.77-.8 1.88 0 1.1.82 2.16.94 2.31.12.16 1.62 2.47 4.02 3.37.56.19 1 .3 1.34.38.56.12 1.07.1 1.48.06.45-.04 1.41-.57 1.61-1.13.2-.56.2-1.03.14-1.13-.06-.1-.22-.16-.46-.28z"
+                                fill="#fff" />
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/digitala.zone?igsh=MWs0a3JkdDNpOW1rZw==" target="_blank"
+                        title="Instagram" class="hover:scale-110 transition">
+                        <svg fill="#fff" class="w-6 h-6" viewBox="0 0 32 32">
+                            <circle cx="16" cy="16" r="16" fill="#fb923c" />
+                            <path
+                                d="M16 10.7a5.3 5.3 0 1 0 0 10.6 5.3 5.3 0 0 0 0-10.6zm0 8.7a3.4 3.4 0 1 1 0-6.8 3.4 3.4 0 0 1 0 6.8zm6.6-8.8a1.24 1.24 0 1 1-2.47 0 1.24 1.24 0 0 1 2.47 0zm3.5 1.27c-.08-1.7-.47-3.22-1.7-4.46C23.22 5.47 21.7 5.08 20 5c-1.75-.08-7-.08-8.75 0-1.7.08-3.22.47-4.46 1.7C5.47 8.78 5.08 10.3 5 12c-.08 1.75-.08 7 0 8.75.08 1.7.47 3.22 1.7 4.46 1.24 1.24 2.76 1.63 4.46 1.7 1.75.08 7 .08 8.75 0 1.7-.08 3.22-.47 4.46-1.7 1.24-1.24 1.63-2.76 1.7-4.46.08-1.75.08-7 0-8.75zm-2.18 10.7c-.31.77-.91 1.37-1.68 1.68-1.17.46-3.94.36-5.74.36s-4.57.1-5.74-.36a2.54 2.54 0 0 1-1.68-1.68c-.46-1.17-.36-3.94-.36-5.74s-.1-4.57.36-5.74c.31-.77.91-1.37 1.68-1.68 1.17-.46 3.94-.36 5.74-.36s4.57-.1 5.74.36c.77.31 1.37.91 1.68 1.68.46 1.17.36 3.94.36 5.74s.1 4.57-.36 5.74z"
+                                fill="#fff" />
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/tala-chibli-89a8632ab?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                        target="_blank" title="LinkedIn" class="hover:scale-110 transition">
+                        <svg fill="#fff" class="w-6 h-6" viewBox="0 0 32 32">
+                            <circle cx="16" cy="16" r="16" fill="#fb923c" />
+                            <path
+                                d="M24 24h-3.55v-5.35c0-1.27-.03-2.91-1.77-2.91-1.77 0-2.04 1.38-2.04 2.82V24H13V13h3.41v1.5h.05c.48-.9 1.67-1.85 3.44-1.85 3.68 0 4.36 2.42 4.36 5.57V24zM9 11.5a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 12.5H7.21V13h3.57v11z"
+                                fill="#fff" />
+                        </svg>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <header
+        class="min-h-screen flex flex-col justify-center items-center px-4 text-center relative pt-36 overflow-hidden">
+
+        <!-- صورة اللوغو الدائرية -->
+        <img src="https://i.imgur.com/iqVhMNs.png" alt="Logo"
+            class="w-32 h-32 rounded-full border-4 border-accentDark mb-6 drop-shadow-orange-glow" />
+
+        <h1
+            class="text-accent drop-shadow-orange-glow z-10 animate-fadeIn animate-slideUp delay-200 cursor-default select-none font-black">
+            Digitala
+        </h1>
+        <p
+            class="mt-4 text-soft max-w-lg font-medium z-10 animate-fadeIn animate-slideUp delay-400 cursor-default select-none">
+            Digital Services By <span class="text-accentDark font-bold">Tala Chibli</span><br>
+            <span class="text-sm block mt-2">
+                With 3 years of experience in the digital field, I offer a complete package to take your brand to the
+                next level.
+                <br>
+                From strategy to design to execution. I handle it all like it's my own project.
+            </span>
+        </p>
+
+        <a href="#contact"
+            class="mt-12 inline-block px-12 py-4 rounded-xl bg-accentDark text-base-100 font-semibold shadow-lg hover:bg-accent transition-transform hover:scale-110 z-10 drop-shadow-orange-glow">
+            Let's Collaborate
+        </a>
+
+    </header>
+
+    <main class="px-8 max-w-5xl mx-auto mb-24 select-text">
+        <!-- About Section -->
+        <section id="about" class="mt-16 mb-20 opacity-0 translate-y-8">
+            <h2 class="text-accentDark mb-6 border-b-4 border-accent w-fit cursor-default select-none font-bold">
+                About Me
+            </h2>
+            <p class="text-soft leading-relaxed max-w-3xl font-soft">
+                Tala, Palestinian girl living in Lebanon. Currently pursuing a double major in English Literature at the
+                Lebanese University and Management Information Systems at Siblin Training Center. Deeply passionate
+                about art and creativity. I have a vivid imagination, and I love expressing it through writing and
+                design.
+            </p>
+        </section>
+
+        <!-- The rest of the sections remain the same -->
+
+        <!-- Skills Section -->
+        <section id="skills" class="mt-16 mb-20 opacity-0 translate-y-8">
+            <h2
+                class="text-accentDark mb-10 text-3xl border-b-4 border-accent w-fit cursor-default select-none font-bold">
+                Skills
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl">
+
+                <!-- Design & Creativity -->
+                <div
+                    class="bg-card rounded-xl p-6 shadow-lg transition-transform duration-300 hover:drop-shadow-orange-glow card-hover">
+                    <h3 class="text-accentDark mb-4 text-xl font-semibold">Design & Creativity</h3>
+                    <ul class="list-disc list-inside text-soft leading-relaxed font-soft">
+                        <li>Graphic Design</li>
+                        <li>UI/UX Design</li>
+                        <li>Social Media Content Design</li>
+                        <li>Photography & Photo Editing</li>
+                        <li>Videography & Video Editing</li>
+                    </ul>
+                </div>
+
+                <!-- Development & Digital Tools -->
+                <div
+                    class="bg-card rounded-xl p-6 shadow-lg transition-transform duration-300 hover:drop-shadow-orange-glow card-hover">
+                    <h3 class="text-accentDark mb-4 text-xl font-semibold">Development & Digital Tools</h3>
+                    <ul class="list-disc list-inside text-soft leading-relaxed font-soft">
+                        <li>HTML / CSS / JavaScript</li>
+                        <li>Responsive Web Design</li>
+                        <li>Git & GitHub (Basic)</li>
+                        <li>Google Workspace</li>
+                        <li>Microsoft Office</li>
+                    </ul>
+                </div>
+
+                <!-- Communication & Media -->
+                <div
+                    class="bg-card rounded-xl p-6 shadow-lg transition-transform duration-300 hover:drop-shadow-orange-glow card-hover">
+                    <h3 class="text-accentDark mb-4 text-xl font-semibold">Media & Marketing Skills</h3>
+                    <ul class="list-disc list-inside text-soft leading-relaxed font-soft">
+                        <li>Digital Marketing</li>
+                        <li>Content Creation</li>
+                        <li>Social Media Strategy & Management</li>
+                        <li>Communication & Presentation</li>
+                        <li>Journalism & Media</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+
+
+        <!-- Services Section -->
+        <section id="services" class="mt-16 mb-20 opacity-0 translate-y-8">
+            <h2
+                class="text-accentDark mb-10 text-3xl border-b-4 border-accent w-fit cursor-default select-none font-bold">
+                Services
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl">
+                <div
+                    class="bg-card rounded-xl p-6 shadow-lg text-accentDark font-semibold text-lg hover:drop-shadow-orange-glow transition-transform duration-300 card-hover">
+                    Social Media Management
+                </div>
+                <div
+                    class="bg-card rounded-xl p-6 shadow-lg text-accentDark font-semibold text-lg hover:drop-shadow-orange-glow transition-transform duration-300 card-hover">
+                    Digital Marketing and Advertising
+                </div>
+                <div
+                    class="bg-card rounded-xl p-6 shadow-lg text-accentDark font-semibold text-lg hover:drop-shadow-orange-glow transition-transform duration-300 card-hover">
+                    Graphic Design (posts, stories, logos, branding)
+                </div>
+                <div
+                    class="bg-card rounded-xl p-6 shadow-lg text-accentDark font-semibold text-lg hover:drop-shadow-orange-glow transition-transform duration-300 card-hover">
+                    Content Writing + Content Creation
+                </div>
+                <div
+                    class="bg-card rounded-xl p-6 shadow-lg text-accentDark font-semibold text-lg hover:drop-shadow-orange-glow transition-transform duration-300 card-hover">
+                    Reels / Video Filming & Editing
+                </div>
+                <div
+                    class="bg-card rounded-xl p-6 shadow-lg text-accentDark font-semibold text-lg hover:drop-shadow-orange-glow transition-transform duration-300 card-hover">
+                    Photography / Photoshop / Photo generation
+                </div>
+                <div
+                    class="bg-card rounded-xl p-6 shadow-lg text-accentDark font-semibold text-lg hover:drop-shadow-orange-glow transition-transform duration-300 card-hover">
+                    Website Design & Development (Frontend)
+                </div>
+                <div
+                    class="bg-card rounded-xl p-6 shadow-lg text-accentDark font-semibold text-lg hover:drop-shadow-orange-glow transition-transform duration-300 card-hover">
+                    UI/UX Design - smooth, modern interfaces
+                </div>
+                <div
+                    class="bg-card rounded-xl p-6 shadow-lg text-accentDark font-semibold text-lg hover:drop-shadow-orange-glow transition-transform duration-300 card-hover">
+                    Extra: CVs - Portfolios - Presentations - PDFs
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="mt-16 mb-20 opacity-0 translate-y-8">
+            <h2 class="text-accentDark mb-8 border-b-4 border-accent w-fit cursor-default select-none font-bold">What
+                Clients Say</h2>
+            <div class="space-y-10 max-w-4xl mx-auto">
+                <blockquote
+                    class="bg-overlay p-6 rounded-xl shadow-lg italic font-soft text-soft relative before:content-['“'] before:absolute before:-top-6 before:-left-6 before:text-7xl before:text-accentDark/30">
+                    Honestly, the results were beyond our expectations. The outcome was amazing, and we gained more
+                    followers. May God bless your work and make things easier for you; you’re truly talented. But the
+                    job isn’t completely done yet. We'll give you a short break, and then we’ll continue if that’s okay
+                    with you.
+                    <footer class="mt-4 font-semibold text-accentDark">— Mahmoud C.</footer>
+                </blockquote>
+                <blockquote
+                    class="bg-overlay p-6 rounded-xl shadow-lg italic font-soft text-soft relative before:content-['“'] before:absolute before:-top-6 before:-left-6 before:text-7xl before:text-accentDark/30">
+                    Hey love, I genuinely want to thank you from the bottom of my heart for your work on my CV and cover
+                    letter. I absolutely loved them. Everything was so well-organized, polished, and delivered right on
+                    time. I even ended up getting an A in the course, so thank you so much.
+                    <footer class="mt-4 font-semibold text-accentDark">— Jana B.</footer>
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="mb-24 opacity-0 translate-y-8">
+            <h2 class="text-accentDark mb-8 border-b-4 border-accent w-fit cursor-default select-none font-bold">Get In
+                Touch</h2>
+            <form action="https://formspree.io/f/mzzgwkvk" method="POST"
+                class="max-w-xl mx-auto bg-card p-8 rounded-xl shadow-lg grid gap-6">
+                <label class="block font-semibold text-accentDark">Name
+                    <input required type="text" name="name"
+                        class="mt-1 w-full rounded-md border border-accentDark px-3 py-2 font-soft text-soft focus:outline-none focus:ring-2 focus:ring-accent" />
+                </label>
+                <label class="block font-semibold text-accentDark">Email
+                    <input required type="email" name="email"
+                        class="mt-1 w-full rounded-md border border-accentDark px-3 py-2 font-soft text-soft focus:outline-none focus:ring-2 focus:ring-accent" />
+                </label>
+                <label class="block font-semibold text-accentDark">Message
+                    <textarea required name="message" rows="5"
+                        class="mt-1 w-full rounded-md border border-accentDark px-3 py-2 font-soft text-soft resize-y focus:outline-none focus:ring-2 focus:ring-accent"></textarea>
+                </label>
+                <button type="submit"
+                    class="bg-accentDark text-base-100 px-6 py-3 rounded-xl font-semibold text-lg hover:bg-accent transition-transform hover:scale-105 drop-shadow-orange-glow">
+                    Send Message
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="text-center py-10 font-soft text-soft select-none">
+        &copy; 2025 Tala Chibli | Digitala
+    </footer>
+
+    <script>
+        // Animate sections on scroll
+        const sections = document.querySelectorAll('section');
+
+        function revealOnScroll() {
+            const windowHeight = window.innerHeight;
+            const revealPoint = 150;
+
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+
+                if (sectionTop < windowHeight - revealPoint) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+    </script>
 </body>
+
 </html>
