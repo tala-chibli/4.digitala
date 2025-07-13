@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=1024" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Digitala by Tala Chibli</title>
   <meta name="description" content="Portfolio website of Tala Chibli - Digital designer and developer." />
   <meta name="author" content="Tala Chibli" />
@@ -26,261 +25,156 @@
             soft: '#7c4a1e',
             border: '#fbbf24'
           },
-          keyframes: {
-            slideUp: {
-              '0%': { transform: 'translateY(30px)', opacity: 0 },
-              '100%': { transform: 'translateY(0)', opacity: 1 }
-            }
+          dropShadow: {
+            orange: '0 4px 32px #fb923c44',
           },
           animation: {
-            slideUp: 'slideUp 1.2s ease-in-out forwards'
+            fadeInUp: 'fadeInUp 1s ease-out both',
           },
-          dropShadow: {
-            'orange-glow': '0 4px 32px #fb923c44',
-          }
-        }
-      }
-    }
+          keyframes: {
+            fadeInUp: {
+              '0%': { opacity: 0, transform: 'translateY(40px)' },
+              '100%': { opacity: 1, transform: 'translateY(0)' },
+            },
+          },
+        },
+      },
+    };
   </script>
   <style>
-    html { scroll-behavior: smooth; background: #fff6ec; min-height: 100%; }
-    body { min-width: 1024px; max-width: 1140px; margin: 0 auto; }
-    /* Custom scrollbar */
-    ::-webkit-scrollbar { width: 10px; background: #fb923c22;}
-    ::-webkit-scrollbar-thumb { background: #fb923c77; border-radius: 6px;}
-    /* Sections animation */
-    section { opacity: 0; transform: translateY(30px); animation-fill-mode: forwards; animation-duration: 1.2s; animation-timing-function: ease-in-out;}
-    section.visible { opacity: 1; transform: translateY(0); animation-name: slideUp;}
-    /* Card hover effect */
-    .card-hover:hover { transform: translateY(-8px) scale(1.035); box-shadow: 0 8px 32px #fb923c33, 0 1.5px 6px #d9770622; transition: all 0.3s cubic-bezier(.49,.26,.21,1.07);}
-    /* Navbar underline */
-    nav a { position: relative; }
-    nav a::after { content: ''; position: absolute; left: 0; bottom: -7px; width: 0%; height: 3px; background: #fb923c; border-radius: 3px; transition: width .3s;}
-    nav a:hover::after, nav a:focus::after { width: 100%;}
-    /* Navbar glass effect */
-    .navbar-blur {
+    body {
+      background: linear-gradient(to right top, #fff6ec, #ffe3c7);
+      scroll-behavior: smooth;
+      font-family: 'Quicksand', sans-serif;
+    }
+    .lux-container {
+      max-width: 1240px;
+      margin: auto;
+      padding: 2rem;
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.6);
       backdrop-filter: blur(16px) saturate(180%);
       -webkit-backdrop-filter: blur(16px) saturate(180%);
-      background: rgba(255, 246, 236, 0.92);
-      box-shadow: 0 6px 48px #fb923c22;
-      border-bottom: 3.2px solid #fb923c;
+      border-radius: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
     }
-    /* Responsive tweaks */
-    @media (max-width: 1100px) { body { max-width: 100vw; } }
-    @media (max-width: 1023px) {
-      body, .navbar-blur { min-width: 100vw; max-width: 100vw; }
-      .main-nav { flex-wrap: wrap; gap: 0.7rem; }
-      .social-icons { gap: 0.7rem !important; }
+    .hero-text {
+      text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
     }
-    @media (max-width: 900px) {
-      .main-nav { font-size: 1.08rem; }
-      section h2 { font-size: 2.4rem !important; }
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 2rem;
+      border-left: 8px solid #fb923c;
+      padding-left: 1rem;
+      color: #d97706;
     }
-    @media (max-width: 700px) {
-      body, .navbar-blur { min-width: 100vw; max-width: 100vw; }
-      header h1 { font-size: 2.7rem !important; }
-      .main-nav { font-size: 1rem !important; }
-      .social-icons svg { width: 28px !important; height: 28px !important; }
+    .card-hover:hover {
+      transform: translateY(-6px) scale(1.03);
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 12px 40px #fb923c33;
     }
-    /* Social hover effect */
-    .social-link svg { transition: transform 0.18s; }
-    .social-link:hover svg { transform: scale(1.18) rotate(-9deg);}
   </style>
 </head>
-<body class="bg-base font-galactic text-soft min-h-screen">
-
-  <!-- NAVBAR -->
-  <nav class="navbar-blur fixed top-0 left-1/2 -translate-x-1/2 w-[98vw] max-w-[1120px] z-40 py-0 px-0 shadow-xl flex items-center justify-center rounded-b-[2.4rem] border-accentDark"
-    style="height: 86px;">
-    <div class="w-full flex items-center justify-between px-10 max-w-[1080px]">
-      <span class="font-black text-3xl text-accentDark tracking-widest select-none" style="letter-spacing: .17em;">
-        DIGITALA<span class="text-accent">.</span>
-      </span>
-      <div class="flex gap-2 items-center">
-        <div class="flex main-nav gap-6 font-semibold text-lg">
-          <a href="#about" class="text-soft hover:text-accentDark transition">About</a>
-          <a href="#skills" class="text-soft hover:text-accentDark transition">Skills</a>
-          <a href="#services" class="text-soft hover:text-accentDark transition">Services</a>
-          <a href="#testimonials" class="text-soft hover:text-accentDark transition">Testimonials</a>
-          <a href="#contact" class="text-soft hover:text-accentDark transition">Contact</a>
-        </div>
-        <!-- SOCIAL ICONS -->
-        <div class="flex social-icons gap-4 ml-8">
-          <!-- WhatsApp -->
-          <a href="https://wa.me/71732045" target="_blank" title="WhatsApp" class="social-link">
-            <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
-              <circle cx="17" cy="17" r="17" fill="#25D366"/>
-              <path d="M25.5 22.5c-1.1.8-2.2 1.3-3.5 1.5-1.3.2-2.7.1-4-.4-1.2-.4-2.4-1.1-3.4-2-1-.8-1.9-1.9-2.6-3-.8-1.2-1.3-2.4-1.5-3.7 0-1.3.1-2.7.5-4 .3-1.3.8-2.4 1.7-3.3C13.1 7.9 14.2 7.4 15.5 7.2c1.3-.2 2.7-.1 4 .4 1.2.4 2.4 1.1 3.4 2 .9.8 1.8 1.9 2.6 3 .8 1.2 1.3 2.4 1.5 3.7 0 1.3-.1 2.7-.5 4-.3 1.3-.8 2.5-1.7 3.3zm-5.7-8.9c-1.5-1.9-3.6-2.3-4.5-2.3-.8 0-1.3.5-1.5.8-.2.2-.7 1.2-.3 2.2.4.9 1.5 2.9 3.6 4.4 2.1 1.5 4.2 1.3 5.1.9.9-.4 1.4-1 1.6-1.2.2-.2.7-.8.7-1.7s-.9-1.2-1.2-1.3c-.4-.1-2-.9-2.8-1.8z" fill="#fff"/>
-            </svg>
-          </a>
-          <!-- Instagram -->
-          <a href="https://www.instagram.com/digitala.zone?igsh=MWs0a3JkdDNpOW1rZw==" target="_blank" title="Instagram" class="social-link">
-            <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
-              <circle cx="17" cy="17" r="17" fill="#E4405F"/>
-              <rect x="9" y="9" width="16" height="16" rx="6" fill="white"/>
-              <circle cx="17" cy="17" r="4.5" fill="#E4405F"/>
-              <circle cx="23.5" cy="10.5" r="1.5" fill="#E4405F"/>
-            </svg>
-          </a>
-          <!-- LinkedIn -->
-          <a href="https://www.linkedin.com/in/tala-chibli-89a8632ab?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" title="LinkedIn" class="social-link">
-            <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
-              <circle cx="17" cy="17" r="17" fill="#0077B5"/>
-              <rect x="10.5" y="14" width="2.5" height="9" fill="white"/>
-              <circle cx="11.75" cy="11.75" r="1.25" fill="white"/>
-              <rect x="15" y="14" width="2.5" height="5.5" fill="white"/>
-              <rect x="17.5" y="16.5" width="2.5" height="6.5" fill="white"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HEADER -->
-  <header class="min-h-[55vh] flex flex-col justify-center items-center px-4 text-center relative pt-44 overflow-hidden">
-    <img src="https://i.imgur.com/iqVhMNs.png" alt="Logo" class="w-36 h-36 rounded-full border-4 border-accent shadow-lg mb-6 drop-shadow-orange-glow" />
-    <h1 class="text-accent drop-shadow-orange-glow z-10 font-black text-6xl md:text-7xl tracking-tight select-none">Digitala</h1>
-    <p class="mt-5 text-soft max-w-xl font-medium z-10 text-lg select-none">
-      Digital Services By <span class="text-accentDark font-bold">Tala Chibli</span><br>
-      <span class="text-base block mt-2 text-soft/60">
-        With 3 years of experience in the digital field, I offer a complete package to take your brand to the
-        next level.<br>
-        From strategy to design to execution. I handle it all like it's my own project.
-      </span>
+<body class="text-soft">
+  <header class="fixed w-full z-50 glass px-8 py-4 flex items-center justify-between shadow-lg">
+    <h1 class="text-2xl md:text-3xl font-black text-accentDark tracking-widest">DIGITALA<span class="text-accent">.</span></h1>
+    <nav class="hidden md:flex gap-6 font-semibold text-lg">
+      <a href="#about" class="hover:text-accent transition">About</a>
+      <a href="#skills" class="hover:text-accent transition">Skills</a>
+      <a href="#services" class="hover:text-accent transition">Services</a>
+      <a href="#testimonials" class="hover:text-accent transition">Testimonials</a>
+      <a href="#contact" class="hover:text-accent transition">Contact</a>
+    </nav>
+  </header>  <section class="pt-36 pb-24 text-center lux-container animate-fadeInUp">
+    <img src="https://i.imgur.com/iqVhMNs.png" alt="Logo" class="w-36 h-36 rounded-full mx-auto border-4 border-accent drop-shadow-orange" />
+    <h2 class="text-5xl md:text-7xl font-black text-accentDark hero-text mt-6">Digitala</h2>
+    <p class="text-lg max-w-2xl mx-auto mt-6 leading-relaxed">
+      Digital Services By <span class="font-bold text-accentDark">Tala Chibli</span><br>
+      <span class="text-soft/70 text-base">With 3 years of experience in the digital field, I offer a complete package to take your brand to the next level. From strategy to design to execution. I handle it all like it's my own project.</span>
     </p>
-    <a href="#contact"
-      class="mt-12 inline-block px-14 py-4 rounded-2xl bg-accentDark text-base-100 font-semibold shadow-lg hover:bg-accent transition-transform hover:scale-110 z-10 drop-shadow-orange-glow text-lg"
-      style="letter-spacing:.06em;">
-      Let's Collaborate
-    </a>
-  </header>
-
-  <main class="px-8 max-w-5xl mx-auto mb-28 select-text">
-
-    <!-- About -->
-    <section id="about" class="mt-20 mb-20 opacity-0 translate-y-8">
-      <h2 class="text-accentDark mb-9 text-4xl border-b-4 border-accent w-fit select-none font-bold px-2">About Me</h2>
-      <p class="text-soft leading-relaxed max-w-2xl font-soft text-lg">
-        Tala, Palestinian girl living in Lebanon. Currently pursuing a double major in English Literature at the
-        Lebanese University and Management Information Systems at Siblin Training Center. Deeply passionate
-        about art and creativity. I have a vivid imagination, and I love expressing it through writing and
-        design.
+    <a href="#contact" class="mt-10 inline-block px-8 py-3 text-white bg-accentDark rounded-xl shadow-lg hover:bg-accent hover:scale-105 transition">Let's Collaborate</a>
+  </section>  <main class="lux-container space-y-24">
+    <section id="about" class="animate-fadeInUp">
+      <h2 class="section-title">About Me</h2>
+      <p class="text-lg leading-relaxed max-w-3xl">
+        Tala, Palestinian girl living in Lebanon. Currently pursuing a double major in English Literature at the Lebanese University and Management Information Systems at Siblin Training Center. Deeply passionate about art and creativity. I have a vivid imagination, and I love expressing it through writing and design.
       </p>
-    </section>
+    </section><section id="skills" class="animate-fadeInUp">
+  <h2 class="section-title">Skills</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="bg-card p-6 rounded-2xl card-hover">
+      <h3 class="text-xl font-semibold text-accentDark mb-4">Design & Creativity</h3>
+      <ul class="list-disc list-inside space-y-2">
+        <li>Graphic Design</li>
+        <li>UI/UX Design</li>
+        <li>Social Media Content Design</li>
+        <li>Photography & Photo Editing</li>
+        <li>Videography & Video Editing</li>
+      </ul>
+    </div>
+    <div class="bg-card p-6 rounded-2xl card-hover">
+      <h3 class="text-xl font-semibold text-accentDark mb-4">Development & Digital Tools</h3>
+      <ul class="list-disc list-inside space-y-2">
+        <li>HTML / CSS / JavaScript</li>
+        <li>Responsive Web Design</li>
+        <li>Git & GitHub (Basic)</li>
+        <li>Google Workspace</li>
+        <li>Microsoft Office</li>
+      </ul>
+    </div>
+    <div class="bg-card p-6 rounded-2xl card-hover">
+      <h3 class="text-xl font-semibold text-accentDark mb-4">Media & Marketing Skills</h3>
+      <ul class="list-disc list-inside space-y-2">
+        <li>Digital Marketing</li>
+        <li>Content Creation</li>
+        <li>Social Media Strategy & Management</li>
+        <li>Communication & Presentation</li>
+        <li>Journalism & Media</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-    <!-- Skills -->
-    <section id="skills" class="mt-20 mb-20 opacity-0 translate-y-8">
-      <h2 class="text-accentDark mb-9 text-4xl border-b-4 border-accent w-fit select-none font-bold px-2">Skills</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-9 max-w-6xl">
-        <div class="bg-card rounded-2xl p-7 shadow-lg card-hover">
-          <h3 class="text-accentDark mb-4 text-xl font-semibold">Design & Creativity</h3>
-          <ul class="list-disc list-inside text-soft leading-relaxed font-soft text-base">
-            <li>Graphic Design</li>
-            <li>UI/UX Design</li>
-            <li>Social Media Content Design</li>
-            <li>Photography & Photo Editing</li>
-            <li>Videography & Video Editing</li>
-          </ul>
-        </div>
-        <div class="bg-card rounded-2xl p-7 shadow-lg card-hover">
-          <h3 class="text-accentDark mb-4 text-xl font-semibold">Development & Digital Tools</h3>
-          <ul class="list-disc list-inside text-soft leading-relaxed font-soft text-base">
-            <li>HTML / CSS / JavaScript</li>
-            <li>Responsive Web Design</li>
-            <li>Git & GitHub (Basic)</li>
-            <li>Google Workspace</li>
-            <li>Microsoft Office</li>
-          </ul>
-        </div>
-        <div class="bg-card rounded-2xl p-7 shadow-lg card-hover">
-          <h3 class="text-accentDark mb-4 text-xl font-semibold">Media & Marketing Skills</h3>
-          <ul class="list-disc list-inside text-soft leading-relaxed font-soft text-base">
-            <li>Digital Marketing</li>
-            <li>Content Creation</li>
-            <li>Social Media Strategy & Management</li>
-            <li>Communication & Presentation</li>
-            <li>Journalism & Media</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+<section id="services" class="animate-fadeInUp">
+  <h2 class="section-title">Services</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="glass p-6 text-accentDark font-semibold text-lg card-hover">Social Media Management</div>
+    <div class="glass p-6 text-accentDark font-semibold text-lg card-hover">Digital Marketing and Advertising</div>
+    <div class="glass p-6 text-accentDark font-semibold text-lg card-hover">Graphic Design (posts, stories, logos, branding)</div>
+    <div class="glass p-6 text-accentDark font-semibold text-lg card-hover">Content Writing + Content Creation</div>
+    <div class="glass p-6 text-accentDark font-semibold text-lg card-hover">Reels / Video Filming & Editing</div>
+    <div class="glass p-6 text-accentDark font-semibold text-lg card-hover">Photography / Photoshop / Photo generation</div>
+    <div class="glass p-6 text-accentDark font-semibold text-lg card-hover">Website Design & Development (Frontend)</div>
+    <div class="glass p-6 text-accentDark font-semibold text-lg card-hover">UI/UX Design - smooth, modern interfaces</div>
+    <div class="glass p-6 text-accentDark font-semibold text-lg card-hover">Extra: CVs - Portfolios - Presentations - PDFs</div>
+  </div>
+</section>
 
-    <!-- Services -->
-    <section id="services" class="mt-20 mb-20 opacity-0 translate-y-8">
-      <h2 class="text-accentDark mb-9 text-4xl border-b-4 border-accent w-fit select-none font-bold px-2">Services</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-9 max-w-6xl">
-        <div class="bg-card rounded-2xl p-6 shadow-lg text-accentDark font-semibold text-lg card-hover">Social Media Management</div>
-        <div class="bg-card rounded-2xl p-6 shadow-lg text-accentDark font-semibold text-lg card-hover">Digital Marketing and Advertising</div>
-        <div class="bg-card rounded-2xl p-6 shadow-lg text-accentDark font-semibold text-lg card-hover">Graphic Design (posts, stories, logos, branding)</div>
-        <div class="bg-card rounded-2xl p-6 shadow-lg text-accentDark font-semibold text-lg card-hover">Content Writing + Content Creation</div>
-        <div class="bg-card rounded-2xl p-6 shadow-lg text-accentDark font-semibold text-lg card-hover">Reels / Video Filming & Editing</div>
-        <div class="bg-card rounded-2xl p-6 shadow-lg text-accentDark font-semibold text-lg card-hover">Photography / Photoshop / Photo generation</div>
-        <div class="bg-card rounded-2xl p-6 shadow-lg text-accentDark font-semibold text-lg card-hover">Website Design & Development (Frontend)</div>
-        <div class="bg-card rounded-2xl p-6 shadow-lg text-accentDark font-semibold text-lg card-hover">UI/UX Design - smooth, modern interfaces</div>
-        <div class="bg-card rounded-2xl p-6 shadow-lg text-accentDark font-semibold text-lg card-hover">Extra: CVs - Portfolios - Presentations - PDFs</div>
-      </div>
-    </section>
+<section id="testimonials" class="animate-fadeInUp">
+  <h2 class="section-title">Clients Say</h2>
+  <blockquote class="glass p-6 italic text-base text-soft max-w-3xl mx-auto">
+    “Honestly, the results were beyond our expectations. The outcome was amazing, and we gained more followers. May God bless your work and make things easier for you; you’re truly talented. But the job isn’t completely done yet. We'll give you a short break, and then we’ll continue if that’s okay with you.”
+    <footer class="mt-4 font-semibold text-accentDark">— Mahmoud C.</footer>
+  </blockquote>
+  <blockquote class="glass p-6 italic text-base text-soft max-w-3xl mx-auto mt-6">
+    “Hey love, I genuinely want to thank you from the bottom of my heart for your work on my CV and cover letter. I absolutely loved them. Everything was so well-organized, polished, and delivered right on time. I even ended up getting an A in the course, so thank you so much.”
+    <footer class="mt-4 font-semibold text-accentDark">— Jana B.</footer>
+  </blockquote>
+</section>
 
-    <!-- Testimonials -->
-    <section id="testimonials" class="mt-20 mb-20 opacity-0 translate-y-8">
-      <h2 class="text-accentDark mb-9 text-4xl border-b-4 border-accent w-fit select-none font-bold px-2">Clients Say</h2>
-      <div class="space-y-10 max-w-4xl mx-auto">
-        <blockquote class="bg-overlay p-7 rounded-2xl shadow-lg italic font-soft text-soft relative before:content-['“'] before:absolute before:-top-6 before:-left-6 before:text-7xl before:text-accentDark/25">
-          Honestly, the results were beyond our expectations. The outcome was amazing, and we gained more followers. May God bless your work and make things easier for you; you’re truly talented. But the job isn’t completely done yet. We'll give you a short break, and then we’ll continue if that’s okay with you.
-          <footer class="mt-4 font-semibold text-accentDark">— Mahmoud C.</footer>
-        </blockquote>
-        <blockquote class="bg-overlay p-7 rounded-2xl shadow-lg italic font-soft text-soft relative before:content-['“'] before:absolute before:-top-6 before:-left-6 before:text-7xl before:text-accentDark/25">
-          Hey love, I genuinely want to thank you from the bottom of my heart for your work on my CV and cover letter. I absolutely loved them. Everything was so well-organized, polished, and delivered right on time. I even ended up getting an A in the course, so thank you so much.
-          <footer class="mt-4 font-semibold text-accentDark">— Jana B.</footer>
-        </blockquote>
-      </div>
-    </section>
+<section id="contact" class="animate-fadeInUp">
+  <h2 class="section-title">Get in Touch</h2>
+  <form action="https://formspree.io/f/mzzgwkvk" method="POST" class="glass p-8 rounded-2xl grid gap-6 max-w-2xl mx-auto">
+    <input type="text" name="name" required placeholder="Your Name" class="p-3 rounded-md border border-accentDark focus:outline-none" />
+    <input type="email" name="email" required placeholder="Your Email" class="p-3 rounded-md border border-accentDark focus:outline-none" />
+    <textarea name="message" rows="5" required placeholder="Your Message" class="p-3 rounded-md border border-accentDark focus:outline-none"></textarea>
+    <button type="submit" class="bg-accentDark text-white py-3 rounded-xl font-semibold hover:bg-accent transition hover:scale-105">Send Message</button>
+  </form>
+</section>
 
-    <!-- Contact -->
-    <section id="contact" class="mb-28 opacity-0 translate-y-8">
-      <h2 class="text-accentDark mb-9 text-4xl border-b-4 border-accent w-fit select-none font-bold px-2">Get in Touch</h2>
-      <form action="https://formspree.io/f/mzzgwkvk" method="POST"
-        class="max-w-xl mx-auto bg-card p-8 rounded-2xl shadow-lg grid gap-7">
-        <label class="block font-semibold text-accentDark">Name
-          <input required type="text" name="name"
-            class="mt-1 w-full rounded-md border border-accentDark px-3 py-2 font-soft text-soft focus:outline-none focus:ring-2 focus:ring-accent" />
-        </label>
-        <label class="block font-semibold text-accentDark">Email
-          <input required type="email" name="email"
-            class="mt-1 w-full rounded-md border border-accentDark px-3 py-2 font-soft text-soft focus:outline-none focus:ring-2 focus:ring-accent" />
-        </label>
-        <label class="block font-semibold text-accentDark">Message
-          <textarea required name="message" rows="5"
-            class="mt-1 w-full rounded-md border border-accentDark px-3 py-2 font-soft text-soft resize-y focus:outline-none focus:ring-2 focus:ring-accent"></textarea>
-        </label>
-        <button type="submit"
-          class="bg-accentDark text-base-100 px-7 py-3 rounded-xl font-semibold text-lg hover:bg-accent transition-transform hover:scale-105 drop-shadow-orange-glow">
-          Send Message
-        </button>
-      </form>
-    </section>
-  </main>
-
-  <footer class="text-center py-10 font-soft text-soft select-none">
-    &copy; 2025 Tala Chibli | Digitala
-  </footer>
-
-  <script>
-    // Animate sections on scroll
-    const sections = document.querySelectorAll('section');
-    function revealOnScroll() {
-      const windowHeight = window.innerHeight;
-      const revealPoint = 150;
-      sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-        if (sectionTop < windowHeight - revealPoint) {
-          section.classList.add('visible');
-        }
-      });
-    }
-    window.addEventListener('scroll', revealOnScroll);
-    window.addEventListener('load', revealOnScroll);
-  </script>
+  </main>  <footer class="text-center py-10 text-soft/70 mt-24">&copy; 2025 Tala Chibli | Digitala</footer>
 </body>
 </html>
