@@ -1,185 +1,150 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=1024" />
-    <title>Digitala by Tala Chibli</title>
-    <meta name="description" content="Portfolio website of Tala Chibli - Digital designer and developer." />
-    <meta name="author" content="Tala Chibli" />
-    <link rel="icon" href="https://imgur.com/iqVhMNs.png" type="image/png" />
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Montserrat:wght@700&display=swap"
-        rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        soft: ['Quicksand', 'sans-serif'],
-                        galactic: ['Montserrat', 'Quicksand', 'sans-serif']
-                    },
-                    colors: {
-                        base: '#fff6ec',
-                        accent: '#fb923c',
-                        accentDark: '#d97706',
-                        card: '#ffe3c7',
-                        overlay: '#fff1e0',
-                        soft: '#7c4a1e',
-                        border: '#fbbf24'
-                    },
-                    keyframes: {
-                        typing: {
-                            '0%': { width: '0%' },
-                            '100%': { width: '100%' },
-                        },
-                        blink: {
-                            '0%, 100%': { borderColor: 'transparent' },
-                            '50%': { borderColor: '#fb923c' },
-                        },
-                        floating: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-12px)' }
-                        },
-                        fadeIn: {
-                            '0%': { opacity: 0 },
-                            '100%': { opacity: 1 }
-                        },
-                        slideUp: {
-                            '0%': { transform: 'translateY(30px)', opacity: 0 },
-                            '100%': { transform: 'translateY(0)', opacity: 1 }
-                        }
-                    },
-                    animation: {
-                        typing: 'typing 2.5s steps(30, end) forwards',
-                        blink: 'blink 1s infinite',
-                        floating: 'floating 3s ease-in-out infinite',
-                        fadeIn: 'fadeIn 1.2s ease-in-out forwards',
-                        slideUp: 'slideUp 1.2s ease-in-out forwards'
-                    },
-                    dropShadow: {
-                        'orange-glow': '0 4px 32px #fb923c44',
-                    }
-                }
-            }
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1024" />
+  <title>Digitala by Tala Chibli</title>
+  <meta name="description" content="Portfolio website of Tala Chibli - Digital designer and developer." />
+  <meta name="author" content="Tala Chibli" />
+  <link rel="icon" href="https://imgur.com/iqVhMNs.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Montserrat:wght@700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            soft: ['Quicksand', 'sans-serif'],
+            galactic: ['Montserrat', 'Quicksand', 'sans-serif']
+          },
+          colors: {
+            base: '#fff6ec',
+            accent: '#fb923c',
+            accentDark: '#d97706',
+            card: '#ffe3c7',
+            overlay: '#fff1e0',
+            soft: '#7c4a1e',
+            border: '#fbbf24'
+          },
+          keyframes: {
+            typing: { '0%': { width: '0%' }, '100%': { width: '100%' } },
+            blink: { '0%, 100%': { borderColor: 'transparent' }, '50%': { borderColor: '#fb923c' } },
+            floating: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-12px)' } },
+            fadeIn: { '0%': { opacity: 0 }, '100%': { opacity: 1 } },
+            slideUp: { '0%': { transform: 'translateY(30px)', opacity: 0 }, '100%': { transform: 'translateY(0)', opacity: 1 } }
+          },
+          animation: {
+            typing: 'typing 2.5s steps(30, end) forwards',
+            blink: 'blink 1s infinite',
+            floating: 'floating 3s ease-in-out infinite',
+            fadeIn: 'fadeIn 1.2s ease-in-out forwards',
+            slideUp: 'slideUp 1.2s ease-in-out forwards'
+          },
+          dropShadow: {
+            'orange-glow': '0 4px 32px #fb923c44',
+          }
         }
-    </script>
-    <style>
-        html {
-            scroll-behavior: smooth;
-            background: #fff6ec;
-            min-height: 100%;
-        }
+      }
+    }
+  </script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+      background: #fff6ec;
+      min-height: 100%;
+    }body {
+  min-width: 1024px;
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-        body {
-            min-width: 1024px;
-            max-width: 1024px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+::-webkit-scrollbar {
+  width: 10px;
+  background: #fb923c22;
+}
 
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-            background: #fb923c22;
-        }
+::-webkit-scrollbar-thumb {
+  background: #fb923c77;
+  border-radius: 6px;
+}
 
-        ::-webkit-scrollbar-thumb {
-            background: #fb923c77;
-            border-radius: 6px;
-        }
+.typing-container {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 4px solid transparent;
+  animation: typing 2.5s steps(30, end) forwards, blink 1s infinite;
+  width: 0ch;
+  display: inline-block;
+}
 
-        /* Header typing effect container fix */
-        .typing-container {
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 4px solid transparent;
-            animation: typing 2.5s steps(30, end) forwards, blink 1s infinite;
-            width: 0ch;
-            display: inline-block;
-        }
+section {
+  opacity: 0;
+  transform: translateY(30px);
+  animation-fill-mode: forwards;
+  animation-duration: 1.2s;
+  animation-timing-function: ease-in-out;
+}
 
-        /* Animate sections on scroll */
-        section {
-            opacity: 0;
-            transform: translateY(30px);
-            animation-fill-mode: forwards;
-            animation-duration: 1.2s;
-            animation-timing-function: ease-in-out;
-        }
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation-name: slideUp;
+}
 
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-            animation-name: slideUp;
-        }
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px #fb923c66;
+  transition: all 0.3s ease;
+  cursor: default;
+}
 
-        /* Card hover effect */
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 24px #fb923c66;
-            transition: all 0.3s ease;
-            cursor: default;
-        }
+button:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
+}
 
-        /* Button smooth scale */
-        button:hover {
-            transform: scale(1.05);
-            transition: transform 0.2s ease-in-out;
-        }
+nav a:hover {
+  position: relative;
+}
 
-        /* Navbar links hover underline */
-        nav a:hover {
-            position: relative;
-        }
+nav a:hover::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #d97706;
+  border-radius: 2px;
+  animation: fadeIn 0.4s ease forwards;
+}
 
-        nav a:hover::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: #d97706;
-            border-radius: 2px;
-            animation: fadeIn 0.4s ease forwards;
-        }
+header h1 {
+  font-size: 5.5rem;
+}
 
-        /* Adjusted font sizes */
-        header h1 {
-            font-size: 5.5rem;
-            /* تكبير العنوان الرئيسي */
-        }
+header p {
+  font-size: 1.6rem;
+}
 
-        header p {
-            font-size: 1.6rem;
-            /* تكبير الفقرة تحت العنوان */
-        }
+.typing-container {
+  font-size: 1.3rem;
+}
 
-        .typing-container {
-            font-size: 1.3rem;
-            /* تكبير نص الأنيميشن */
-        }
+section p,
+section li {
+  font-size: 1.2rem;
+}
 
-        section p,
-        section li {
-            font-size: 1.2rem;
-            /* تكبير نص المحتوى */
-        }
+section h2 {
+  font-size: 3.5rem;
+}
 
-        section h2 {
-            font-size: 3.5rem;
-            /* تكبير عناوين الأقسام */
-        }
+section h3 {
+  font-size: 1.8rem;
+}
 
-        section h3 {
-            font-size: 1.8rem;
-            /* تكبير عناوين فرعية */
-        }
-    </style>
-</head>
-
-<body class="bg-base font-galactic text-soft min-h-screen">
+  </style>
+</head><body class="bg-base font-galactic text-soft min-h-screen">
     <!-- Glassy Navbar -->
     <nav class="fixed top-0 left-0 w-full z-30 bg-accent/90 backdrop-blur-lg shadow-xl border-b-2 border-accentDark"
         style="min-width:1024px;">
