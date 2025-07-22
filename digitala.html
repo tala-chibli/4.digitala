@@ -18,22 +18,15 @@
             galactic: ['Montserrat', 'Quicksand', 'sans-serif'],
           },
           colors: {
-            base: '#222',
-            accent: '#111',
-            accentLight: '#888',
-            card: '#1c1c1c',
-            overlay: '#444',
-            border: '#333',
-            sectionAbout: '#222',
-            sectionSkills: '#1c1c1c',
-            sectionServices: '#222',
-            sectionTestimonials: '#181818',
-            sectionContact: '#232323',
-            skillBox: '#232323',
-            serviceBox: '#222',
-            testimonialBox: '#181818',
-            contactBox: '#232323',
-            contactBtn: '#111'
+            lavender: '#D7B9F0',
+            white: '#FFFFFF',
+            lightYellow: '#FFF065',
+            deepPurple: '#3F2B7E',
+            orchidPink: '#F4A9C8',
+            lightPurple: '#C7A1E5',
+            mediumBlue: '#5C64D4',
+            pinkLavender: '#F8C5E5',
+            babyPink: '#FDD9EA'
           },
           keyframes: {
             fadeInUp: {
@@ -56,7 +49,7 @@
   <style>
     html {
       scroll-behavior: smooth;
-      background: linear-gradient(180deg, #222 0%, #181818 100%);
+      background: linear-gradient(180deg, #D7B9F0 0%, #C7A1E5 100%);
       min-height: 100vh;
     }
     body {
@@ -64,32 +57,32 @@
       max-width: 1024px;
       margin: auto;
       background: none;
-      color: #eee;
+      color: #3F2B7E;
     }
     ::-webkit-scrollbar {
       width: 10px;
-      background: #333;
+      background: #F8C5E5;
     }
     ::-webkit-scrollbar-thumb {
-      background: #444;
+      background: #F4A9C8;
       border-radius: 6px;
     }
     .cute-divider {
       height: 2px;
       width: 100px;
-      background: linear-gradient(90deg, #eee, #444);
+      background: linear-gradient(90deg, #3F2B7E, #5C64D4);
       border-radius: 4px;
       margin: 1rem auto;
     }
     section {
       border-radius: 12px;
       margin-bottom: 2.5rem;
-      box-shadow: 0 4px 24px #0008;
+      box-shadow: 0 4px 24px #D7B9F088;
       opacity: 0;
       transform: translateY(30px);
       animation-fill-mode: forwards;
-      border: 1.5px solid #333;
-      background: #181818;
+      border: 1.5px solid #C7A1E5;
+      background: #FFFFFF;
     }
     section.visible {
       opacity: 1;
@@ -99,20 +92,20 @@
     .section-inner {
       padding: 2rem 2rem 1.7rem 2rem;
       border-radius: 10px;
-      background: #222;
-      box-shadow: 0 2px 10px #000a;
+      background: #FFFFFF;
+      box-shadow: 0 2px 10px #F8C5E5;
     }
     nav {
       height: 70px;
-      background: #181818;
-      border-bottom: 1.5px solid #333;
-      box-shadow: 0 2px 12px #000a;
+      background: #FFFFFF;
+      border-bottom: 1.5px solid #C7A1E5;
+      box-shadow: 0 2px 12px #F8C5E5;
       position: relative;
     }
     nav span {
       font-size: 2.1rem;
       font-weight: bold;
-      color: #fff;
+      color: #3F2B7E;
       letter-spacing: 0.06em;
     }
     nav a {
@@ -122,21 +115,21 @@
       font-family: 'Montserrat', 'Quicksand', sans-serif;
       font-size: 1.05rem;
       font-weight: 600;
-      color: #eee;
+      color: #5C64D4;
     }
     nav a:hover {
-      background: #222;
-      color: #fff !important;
+      background: #FDD9EA;
+      color: #3F2B7E !important;
     }
     header h1 {
       font-size: 2.3rem;
-      color: #fff;
+      color: #3F2B7E;
       font-family: 'Montserrat', 'Quicksand', sans-serif;
       letter-spacing: 0.07em;
       margin-bottom: 0.7rem;
       position: relative;
       font-weight: 800;
-      text-shadow: 0 2px 12px #000c;
+      text-shadow: 0 2px 12px #C7A1E5;
     }
     header h1::after {
       content: '';
@@ -144,54 +137,54 @@
       right: -1.4rem;
       top: 0.2rem;
       font-size: 1.7rem;
-      color: #888;
+      color: #5C64D4;
       opacity: 0.5;
       animation: floating 2.7s ease-in-out infinite;
     }
     header p {
       font-size: 1.07rem;
-      color: #bbb;
-      background: #181818ee;
+      color: #5C64D4;
+      background: #FFFFFF;
       border-radius: 12px;
       padding: 0.7rem 1.2rem;
       margin-top: 0.3rem;
-      box-shadow: 0 2px 8px #0008;
+      box-shadow: 0 2px 8px #F8C5E5;
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
     }
     .text-black {
-      color: #eee !important;
+      color: #3F2B7E !important;
     }
-    .bg-about { background: #222 !important; }
-    .bg-skills { background: #181818 !important; }
-    .bg-services { background: #222 !important; }
-    .bg-testimonials { background: #181818 !important; }
-    .bg-contact { background: #232323 !important; }
-    .box-about { background: #222; color: #eee !important; }
-    .box-skills { background: #232323; color: #eee !important; }
-    .box-services { background: #222; color: #eee !important; }
-    .box-testimonials { background: #181818; color: #eee !important; }
-    .rounded-xl { border-radius: 10px !important; color: #eee !important; }
+    .bg-about { background: #FFFFFF !important; }
+    .bg-skills { background: #FFFFFF !important; }
+    .bg-services { background: #FFFFFF !important; }
+    .bg-testimonials { background: #FFFFFF !important; }
+    .bg-contact { background: #FFFFFF !important; }
+    .box-about { background: #FFFFFF; color: #3F2B7E !important; }
+    .box-skills { background: #FFFFFF; color: #3F2B7E !important; }
+    .box-services { background: #FFFFFF; color: #3F2B7E !important; }
+    .box-testimonials { background: #FFFFFF; color: #3F2B7E !important; }
+    .rounded-xl { border-radius: 10px !important; color: #3F2B7E !important; }
     input, textarea {
-      background: #181818;
+      background: #FDD9EA;
       border-radius: 9px;
-      border: 1.5px solid #333;
-      color: #eee !important;
+      border: 1.5px solid #F4A9C8;
+      color: #3F2B7E !important;
       font-family: 'Quicksand', sans-serif;
       font-size: 1.05rem;
-      box-shadow: 0 1px 8px #0008;
+      box-shadow: 0 1px 8px #F8C5E5;
     }
     input:focus, textarea:focus {
-      border-color: #fff;
+      border-color: #5C64D4;
       outline: none;
-      box-shadow: 0 1px 12px #eee5;
+      box-shadow: 0 1px 12px #5C64D455;
     }
     button, .cute-btn {
       border-radius: 10px;
-      background: linear-gradient(90deg, #111 70%, #444 100%);
-      color: #fff;
-      box-shadow: 0 2px 12px #000a;
+      background: linear-gradient(90deg, #5C64D4 70%, #C7A1E5 100%);
+      color: #FFFFFF;
+      box-shadow: 0 2px 12px #5C64D488;
       transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
       font-family: 'Quicksand', sans-serif;
       font-weight: 700;
@@ -199,9 +192,9 @@
       border: none;
     }
     button:hover, .cute-btn:hover {
-      background: linear-gradient(90deg, #444 60%, #111 100%);
-      color: #eee;
-      box-shadow: 0 4px 20px #000b;
+      background: linear-gradient(90deg, #3F2B7E 60%, #5C64D4 100%);
+      color: #FFFFFF;
+      box-shadow: 0 4px 20px #3F2B7E88;
       transform: scale(1.06);
     }
     .social-fixed-buttons {
@@ -217,10 +210,10 @@
       display: flex;
       align-items: center;
       gap: 7px;
-      background: linear-gradient(90deg, #111 80%, #444 100%);
-      color: #fff;
+      background: linear-gradient(90deg, #5C64D4 80%, #3F2B7E 100%);
+      color: #FFFFFF;
       border-radius: 10px;
-      box-shadow: 0 2px 10px #0008;
+      box-shadow: 0 2px 10px #5C64D488;
       padding: 7px 16px;
       font-family: 'Quicksand', sans-serif;
       font-weight: 700;
@@ -230,18 +223,18 @@
       border: none;
     }
     .social-fixed-btn:hover {
-      background: linear-gradient(90deg, #444 60%, #111 100%);
-      color: #fff;
+      background: linear-gradient(90deg, #3F2B7E 60%, #5C64D4 100%);
+      color: #FFFFFF;
       transform: scale(1.07);
-      box-shadow: 0 4px 16px #000b;
+      box-shadow: 0 4px 16px #3F2B7E88;
       text-decoration: none;
     }
     .social-fixed-btn img {
       width: 20px;
       height: 20px;
       border-radius: 7px;
-      background: #fff;
-      box-shadow: 0 1px 5px #0007;
+      background: #FFFFFF;
+      box-shadow: 0 1px 5px #F8C5E5;
       margin-right: 2px;
       transition: transform 0.2s;
     }
@@ -264,30 +257,32 @@
     }
   </style>
 </head>
-<body class="bg-base font-galactic min-h-screen">
-  <nav class="fixed top-0 left-0 w-full z-30 border-b-2 border-accentDark" style="min-width:1024px;">
+<body class="font-galactic min-h-screen">
+  <nav class="fixed top-0 left-0 w-full z-30 border-b-2 border-lightPurple" style="min-width:1024px;">
     <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-6">
       <span class="font-black text-2xl tracking-wider cursor-default select-none">
-        DIGITALA<span style="color:#888">.</span>
+        DIGITALA<span style="color:#5C64D4">.</span>
       </span>
       <div class="flex items-center gap-8">
-        <a href="#about" class="hover:text-accent font-semibold transition">About</a>
-        <a href="#skills" class="hover:text-accent font-semibold transition">Skills</a>
-        <a href="#services" class="hover:text-accent font-semibold transition">Services</a>
-        <a href="#testimonials" class="hover:text-accent font-semibold transition">Testimonials</a>
-        <a href="#contact" class="hover:text-accent font-semibold transition">Contact</a>
+        <a href="#about" class="hover:text-deepPurple font-semibold transition">About</a>
+        <a href="#skills" class="hover:text-deepPurple font-semibold transition">Skills</a>
+        <a href="#services" class="hover:text-deepPurple font-semibold transition">Services</a>
+        <a href="#testimonials" class="hover:text-deepPurple font-semibold transition">Testimonials</a>
+        <a href="#contact" class="hover:text-deepPurple font-semibold transition">Contact</a>
       </div>
     </div>
   </nav>
   <header class="flex flex-col justify-center items-center px-4 text-center relative pt-36 overflow-hidden"
     style="padding-top:110px !important; min-height:280px !important; margin-bottom:0px !important;">
-    <img src="https://i.imgur.com/iqVhMNs.png" alt="Logo"
-      class="w-16 h-16 rounded-full border-4 border-accentDark mb-3 card-hover" />
+    <div style="background: #FFF065; padding: 8px; border-radius: 50%; display: inline-block;">
+      <img src="https://i.imgur.com/iqVhMNs.png" alt="Logo"
+        class="w-16 h-16 rounded-full border-4 border-white mb-3 card-hover" />
+    </div>
     <h1 class="z-10 animate-fadeInUp cursor-default select-none font-black">
       Digitala
     </h1>
     <p class="mt-2 font-medium z-10 animate-fadeInUp delay-200 cursor-default select-none">
-      Digital Services By <span class="font-bold" style="color:#eee;">Tala Chibli</span><br>
+      Digital Services By <span class="font-bold" style="color:#3F2B7E;">Tala Chibli</span><br>
       <span class="text-sm block mt-2">
         With 3 years of experience in the digital field, I offer a complete package to take your brand to the next level. From strategy to design to execution. I handle it all like it's my own project.
       </span>
@@ -296,25 +291,25 @@
   <main class="px-8 max-w-5xl mx-auto mb-24 select-text">
     <section id="about" class="mt-16 mb-20 bg-about">
       <div class="section-inner box-about">
-        <h2 class="mb-6 border-b-4 border-accent w-fit cursor-default select-none font-bold text-black">
+        <h2 class="mb-6 border-b-4 border-lightPurple w-fit cursor-default select-none font-bold">
           About Me
         </h2>
         <div class="cute-divider"></div>
-        <p class="leading-relaxed max-w-3xl font-soft text-black">
+        <p class="leading-relaxed max-w-3xl font-soft">
           Tala, Palestinian girl living in Lebanon. Currently pursuing a double major in English Literature at the Lebanese University and Management Information Systems at Siblin Training Center. Deeply passionate about art and creativity. I have a vivid imagination, and I love expressing it through writing and design.
         </p>
       </div>
     </section>
     <section id="skills" class="mt-16 mb-20 bg-skills">
       <div class="section-inner">
-        <h2 class="mb-6 border-b-4 border-accent w-fit cursor-default select-none font-bold text-black">
+        <h2 class="mb-6 border-b-4 border-lightPurple w-fit cursor-default select-none font-bold">
           Skills
         </h2>
         <div class="cute-divider"></div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl">
-          <div class="rounded-xl p-6 shadow-lg card-hover box-skills">
-            <h3 class="mb-4 font-semibold text-black">Design & Creativity</h3>
-            <ul class="list-disc list-inside leading-relaxed font-soft text-black">
+          <div class="rounded-xl p-6 shadow-lg card-hover box-skills" style="border: 1px solid #F4A9C8;">
+            <h3 class="mb-4 font-semibold">Design & Creativity</h3>
+            <ul class="list-disc list-inside leading-relaxed font-soft">
               <li>Graphic Design</li>
               <li>UI/UX Design</li>
               <li>Social Media Content Design</li>
@@ -322,9 +317,9 @@
               <li>Videography & Video Editing</li>
             </ul>
           </div>
-          <div class="rounded-xl p-6 shadow-lg card-hover box-skills">
-            <h3 class="mb-4 font-semibold text-black">Development & Digital Tools</h3>
-            <ul class="list-disc list-inside leading-relaxed font-soft text-black">
+          <div class="rounded-xl p-6 shadow-lg card-hover box-skills" style="border: 1px solid #F4A9C8;">
+            <h3 class="mb-4 font-semibold">Development & Digital Tools</h3>
+            <ul class="list-disc list-inside leading-relaxed font-soft">
               <li>HTML / CSS / JavaScript</li>
               <li>Responsive Web Design</li>
               <li>Git & GitHub (Basic)</li>
@@ -332,9 +327,9 @@
               <li>Microsoft Office</li>
             </ul>
           </div>
-          <div class="rounded-xl p-6 shadow-lg card-hover box-skills">
-            <h3 class="mb-4 font-semibold text-black">Media & Marketing Skills</h3>
-            <ul class="list-disc list-inside leading-relaxed font-soft text-black">
+          <div class="rounded-xl p-6 shadow-lg card-hover box-skills" style="border: 1px solid #F4A9C8;">
+            <h3 class="mb-4 font-semibold">Media & Marketing Skills</h3>
+            <ul class="list-disc list-inside leading-relaxed font-soft">
               <li>Digital Marketing</li>
               <li>Content Creation</li>
               <li>Social Media Strategy & Management</li>
@@ -347,36 +342,36 @@
     </section>
     <section id="services" class="mt-16 mb-20 bg-services">
       <div class="section-inner">
-        <h2 class="mb-6 border-b-4 border-accent w-fit cursor-default select-none font-bold text-black">
+        <h2 class="mb-6 border-b-4 border-lightPurple w-fit cursor-default select-none font-bold">
           Services
         </h2>
         <div class="cute-divider"></div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl">
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services">
+          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services" style="border: 1px solid #F4A9C8; background: #FDD9EA;">
             Social Media Management
           </div>
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services">
+          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services" style="border: 1px solid #F4A9C8; background: #FDD9EA;">
             Digital Marketing and Advertising
           </div>
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services">
+          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services" style="border: 1px solid #F4A9C8; background: #FDD9EA;">
             Graphic Design (posts, stories, logos, branding)
           </div>
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services">
+          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services" style="border: 1px solid #F4A9C8; background: #FDD9EA;">
             Content Writing + Content Creation
           </div>
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services">
+          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services" style="border: 1px solid #F4A9C8; background: #FDD9EA;">
             Reels / Video Filming & Editing
           </div>
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services">
+          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services" style="border: 1px solid #F4A9C8; background: #FDD9EA;">
             Photography / Photoshop / Photo generation
           </div>
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services">
+          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services" style="border: 1px solid #F4A9C8; background: #FDD9EA;">
             Website Design & Development (Frontend)
           </div>
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services">
+          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services" style="border: 1px solid #F4A9C8; background: #FDD9EA;">
             UI/UX Design - smooth, modern interfaces
           </div>
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services">
+          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services" style="border: 1px solid #F4A9C8; background: #FDD9EA;">
             Extra: CVs - Portfolios - Presentations - PDFs
           </div>
         </div>
@@ -384,46 +379,46 @@
     </section>
     <section id="testimonials" class="mt-16 mb-20 bg-testimonials">
       <div class="section-inner">
-        <h2 class="mb-6 border-b-4 border-accent w-fit cursor-default select-none font-bold text-black">
+        <h2 class="mb-6 border-b-4 border-lightPurple w-fit cursor-default select-none font-bold">
           Testimonials
         </h2>
         <div class="cute-divider"></div>
         <div class="space-y-10 max-w-4xl mx-auto">
-          <blockquote class="p-6 rounded-xl shadow-lg italic font-soft relative box-testimonials">
-            Honestly, the results were beyond our expectations. The outcome was amazing, and we gained more followers. May God bless your work and make things easier for you; you’re truly talented. But the job isn’t completely done yet. We'll give you a short break, and then we’ll continue if that’s okay with you.
-            <footer class="mt-4 font-semibold" style="color:#aaa;">— Mahmoud C.</footer>
+          <blockquote class="p-6 rounded-xl shadow-lg italic font-soft relative box-testimonials" style="border: 1px solid #F4A9C8; background: #FDD9EA;">
+            Honestly, the results were beyond our expectations. The outcome was amazing, and we gained more followers. May God bless your work and make things easier for you; you're truly talented. But the job isn't completely done yet. We'll give you a short break, and then we'll continue if that's okay with you.
+            <footer class="mt-4 font-semibold" style="color:#5C64D4;">— Mahmoud C.</footer>
           </blockquote>
-          <blockquote class="p-6 rounded-xl shadow-lg italic font-soft relative box-testimonials">
+          <blockquote class="p-6 rounded-xl shadow-lg italic font-soft relative box-testimonials" style="border: 1px solid #F4A9C8; background: #FDD9EA;">
             Hey love, I genuinely want to thank you from the bottom of my heart for your work on my CV and cover letter. I absolutely loved them. Everything was so well-organized, polished, and delivered right on time. I even ended up getting an A in the course, so thank you so much.
-            <footer class="mt-4 font-semibold" style="color:#aaa;">— Jana B.</footer>
+            <footer class="mt-4 font-semibold" style="color:#5C64D4;">— Jana B.</footer>
           </blockquote>
         </div>
       </div>
     </section>
     <section id="contact" class="mb-24 bg-contact"
-      style="background: linear-gradient(120deg,#232323 0%, #181818 100%); border: 1.5px solid #333;">
+      style="background: linear-gradient(120deg,#FFFFFF 0%, #FDD9EA 100%); border: 1.5px solid #F4A9C8;">
       <div class="section-inner">
-        <h2 class="mb-6 border-b-4 border-accent w-fit cursor-default select-none font-bold text-black">
+        <h2 class="mb-6 border-b-4 border-lightPurple w-fit cursor-default select-none font-bold">
           Contact
         </h2>
         <div class="cute-divider"></div>
         <form action="https://formspree.io/f/mzzgwkvk" method="POST"
           class="max-w-xl mx-auto p-8 rounded-xl shadow-lg grid gap-6"
-          style="background: linear-gradient(130deg,#222 0%, #1c1c1c 100%); box-shadow: 0 2px 14px #000b; color:#eee;">
-          <label class="block font-semibold text-black">Name
+          style="background: linear-gradient(130deg,#FFFFFF 0%, #FDD9EA 100%); box-shadow: 0 2px 14px #F8C5E5; color:#3F2B7E;">
+          <label class="block font-semibold">Name
             <input required type="text" name="name"
-              class="mt-1 w-full rounded-md border border-accentDark px-3 py-2 font-soft focus:outline-none focus:ring-2 focus:ring-accent text-black" />
+              class="mt-1 w-full rounded-md border border-lightPurple px-3 py-2 font-soft focus:outline-none focus:ring-2 focus:ring-mediumBlue" />
           </label>
-          <label class="block font-semibold text-black">Email
+          <label class="block font-semibold">Email
             <input required type="email" name="email"
-              class="mt-1 w-full rounded-md border border-accentDark px-3 py-2 font-soft focus:outline-none focus:ring-2 focus:ring-accent text-black" />
+              class="mt-1 w-full rounded-md border border-lightPurple px-3 py-2 font-soft focus:outline-none focus:ring-2 focus:ring-mediumBlue" />
           </label>
-          <label class="block font-semibold text-black">Message
+          <label class="block font-semibold">Message
             <textarea required name="message" rows="5"
-              class="mt-1 w-full rounded-md border border-accentDark px-3 py-2 font-soft resize-y focus:outline-none focus:ring-2 focus:ring-accent text-black"></textarea>
+              class="mt-1 w-full rounded-md border border-lightPurple px-3 py-2 font-soft resize-y focus:outline-none focus:ring-2 focus:ring-mediumBlue"></textarea>
           </label>
           <button type="submit" class="px-6 py-3 rounded-xl font-semibold text-lg"
-            style="background: linear-gradient(90deg, #111 60%, #444 100%); color: #fff; box-shadow: 0 2px 14px #000a; border:none">
+            style="background: linear-gradient(90deg, #5C64D4 60%, #3F2B7E 100%); color: #FFFFFF; box-shadow: 0 2px 14px #5C64D488; border:none">
             Send Message
           </button>
         </form>
@@ -441,7 +436,7 @@
       <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" />
     </a>
   </div>
-  <footer class="text-center py-10 font-soft select-none" style="background: #222; color:#888;">
+  <footer class="text-center py-10 font-soft select-none" style="background: #FFFFFF; color:#5C64D4;">
     &copy; 2025 Tala Chibli | Digitala
   </footer>
   <script>
