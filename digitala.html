@@ -18,17 +18,22 @@
             galactic: ['Montserrat', 'Quicksand', 'sans-serif'],
           },
           colors: {
-            ivory: '#F7F5EF',
-            gold: '#C29144',
-            goldSoft: '#E7BB7A',
-            dark: '#2F2923',
-            card: '#FCFAF6',
-            borderGold: '#C29144',
-            btnGold: '#DAC39C',
-            overlay: '#FDF6EA',
+            // Updated Colors
+            ivory: '#D7B9F0', // Lavender ناعم
+            gold: '#3F2B7E', // بنفسجي غامق (Deep Purple)
+            goldSoft: '#F4A9C8', // زهري بنفسجي (Orchid Pink)
+            dark: '#3F2B7E', // بنفسجي غامق (Deep Purple) - للنصوص الأساسية
+            card: '#FFFFFF', // أبيض - لخلفية البطاقة الرئيسية
+            borderGold: '#F4A9C8', // زهري بنفسجي (Orchid Pink) - يستخدم في التايملاين والعناصر البارزة
+            btnGold: '#C7A1E5', // بنفسجي فاتح (Light Purple) - لعناوين الأقسام والديزاين العام
+            overlay: '#FDD9EA', // وردي ناعم (Baby Pink) - لخلفية معلومات التواصل
+            // New color for tags
+            pinkLavender: '#F8C5E5', // وردي فاتح (Pink Lavender) - لون التاغات
+            mediumBlue: '#5C64D4', // أزرق بنفسجي (Medium Blue) - لون زر "Digital Creator"
+            lightYellow: '#FFF065', // أصفر فاتح (Light Yellow) - خلف الدائرة التي فيها صورتك
           },
           dropShadow: {
-            gold: '0 2px 16px #e7bb7a55',
+            gold: '0 2px 16px #F4A9C855', // باستخدام goldSoft الجديد
           }
         }
       }
@@ -37,7 +42,7 @@
   <style>
     html {
       scroll-behavior: smooth;
-      background: linear-gradient(120deg, #F7F5EF 0%, #FCFAF6 100%);
+      background: linear-gradient(120deg, #D7B9F0 0%, #FFFFFF 100%); /* Lavender ناعم و أبيض */
       min-height: 100vh;
     }
     body {
@@ -45,7 +50,7 @@
       max-width: 1100px;
       margin: 0 auto;
       background: transparent;
-      color: #2f2923;
+      color: #3F2B7E; /* بنفسجي غامق */
     }
     section { opacity: 0; transform: translateY(30px); animation-fill-mode: forwards; animation-duration: 1.2s;}
     section.visible { opacity: 1; transform: translateY(0); animation-name: slideUp;}
@@ -53,56 +58,56 @@
       from { opacity: 0; transform: translateY(30px);}
       to { opacity: 1; transform: translateY(0);}
     }
-    .card-hover:hover { transform: translateY(-7px) scale(1.03); box-shadow: 0 8px 32px #C2914440,0 0 0 2px #E7BB7A33; transition: all 0.28s cubic-bezier(.49,.26,.21,1.07);}
+    .card-hover:hover { transform: translateY(-7px) scale(1.03); box-shadow: 0 8px 32px #F4A9C840,0 0 0 2px #C7A1E533; transition: all 0.28s cubic-bezier(.49,.26,.21,1.07);} /* Orchid Pink و Light Purple */
     nav a { position: relative; }
-    nav a::after { content: ''; position: absolute; left: 0; bottom: -7px; width: 0%; height: 3px; background: #C29144; border-radius: 3px; transition: width .3s;}
+    nav a::after { content: ''; position: absolute; left: 0; bottom: -7px; width: 0%; height: 3px; background: #3F2B7E; border-radius: 3px; transition: width .3s;} /* بنفسجي غامق */
     nav a:hover::after, nav a:focus::after { width: 100%;}
     .navbar-blur {
       backdrop-filter: blur(11px) saturate(170%);
       -webkit-backdrop-filter: blur(11px) saturate(170%);
       background: rgba(255,255,255,0.94);
-      box-shadow: 0 8px 32px #C2914430;
-      border-bottom: 3.5px solid #c29144;
+      box-shadow: 0 8px 32px #F4A9C830; /* Orchid Pink */
+      border-bottom: 3.5px solid #F4A9C8; /* Orchid Pink */
       border-radius: 0 0 3.1rem 3.1rem;
     }
     .avatar-border {
       padding: 6px;
-      background: linear-gradient(120deg, #E7BB7A 0%, #C29144 100%);
+      background: linear-gradient(120deg, #F4A9C8 0%, #FFF065 100%); /* Orchid Pink و أصفر فاتح */
       border-radius: 50%;
       display: inline-block;
-      box-shadow: 0 2px 20px #dac39c55;
+      box-shadow: 0 2px 20px #C7A1E555; /* Light Purple */
     }
     input, textarea {
-      background: #FCFAF6;
+      background: #FFFFFF; /* أبيض */
       border-radius: 9px;
-      border: 1.7px solid #E7BB7A;
-      color: #2F2923 !important;
+      border: 1.7px solid #F4A9C8; /* Orchid Pink */
+      color: #3F2B7E !important; /* بنفسجي غامق */
       font-family: 'Quicksand', sans-serif;
       font-size: 1.1rem;
-      box-shadow: 0 1px 8px #dac39c22;
+      box-shadow: 0 1px 8px #C7A1E522; /* Light Purple */
       transition: border .2s, box-shadow .2s;
     }
     input:focus, textarea:focus {
-      border-color: #C29144;
+      border-color: #3F2B7E; /* بنفسجي غامق */
       outline: none;
-      box-shadow: 0 1px 16px #dac39c44;
+      box-shadow: 0 1px 16px #C7A1E544; /* Light Purple */
     }
     button, .cute-btn {
       border-radius: 11px;
-      background: linear-gradient(90deg,#C29144 80%, #E7BB7A 100%);
+      background: linear-gradient(90deg,#3F2B7E 80%, #F4A9C8 100%); /* بنفسجي غامق و زهري بنفسجي */
       color: #fff;
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       font-size: 1.13rem;
       border: none;
-      box-shadow: 0 3px 14px #dac39c44;
+      box-shadow: 0 3px 14px #C7A1E544; /* Light Purple */
       transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
       letter-spacing: .06em;
     }
     button:hover, .cute-btn:hover {
-      background: linear-gradient(90deg,#E7BB7A 70%, #C29144 100%);
-      color: #2f2923;
-      box-shadow: 0 4px 20px #dac39c55;
+      background: linear-gradient(90deg,#F4A9C8 70%, #3F2B7E 100%); /* زهري بنفسجي و بنفسجي غامق */
+      color: #3F2B7E; /* بنفسجي غامق */
+      box-shadow: 0 4px 20px #C7A1E555; /* Light Purple */
       transform: scale(1.055);
     }
     .social-fixed-buttons {
@@ -119,22 +124,22 @@
       align-items: center;
       gap: 7px;
       background: #fff;
-      color: #C29144;
+      color: #3F2B7E; /* بنفسجي غامق */
       border-radius: 14px;
-      box-shadow: 0 2px 10px #dac39c44;
+      box-shadow: 0 2px 10px #C7A1E544; /* Light Purple */
       padding: 10px 18px;
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       font-size: 1.12rem;
       text-decoration: none;
-      border: 1.7px solid #E7BB7A;
+      border: 1.7px solid #F4A9C8; /* Orchid Pink */
       transition: background 0.19s, color 0.19s, box-shadow 0.19s, transform 0.19s;
     }
     .social-fixed-btn:hover {
-      background: #F7F5EF;
-      color: #C29144;
+      background: #D7B9F0; /* Lavender ناعم */
+      color: #3F2B7E; /* بنفسجي غامق */
       transform: scale(1.07);
-      box-shadow: 0 4px 18px #dac39c88;
+      box-shadow: 0 4px 18px #C7A1E588; /* Light Purple */
       text-decoration: none;
     }
     .social-fixed-btn img {
@@ -142,10 +147,10 @@
       height: 26px;
       border-radius: 7px;
       background: #fff;
-      box-shadow: 0 1px 5px #dac39c55;
+      box-shadow: 0 1px 5px #C7A1E555; /* Light Purple */
       margin-right: 2px;
       transition: transform 0.2s;
-      border: 1.7px solid #dac39c88;
+      border: 1.7px solid #C7A1E588; /* Light Purple */
     }
     .social-fixed-btn:hover img {
       transform: scale(1.09) rotate(-6deg);
@@ -162,8 +167,7 @@
     style="height:100px;">
     <div class="w-full flex items-center justify-between px-14 max-w-[1100px]">
       <span class="font-black text-3xl text-gold tracking-widest select-none drop-shadow-gold" style="letter-spacing:.12em;">
-        DIGITALA<span style="color:#E7BB7A">.</span>
-      </span>
+        DIGITALA<span style="color:#F4A9C8">.</span> </span>
       <div class="flex gap-4 items-center">
         <div class="flex main-nav gap-8 font-semibold text-lg">
           <a href="#about" class="text-dark hover:text-gold transition">About</a>
@@ -180,31 +184,23 @@
     <span class="avatar-border mb-8 mt-8">
       <img src="https://i.imgur.com/iqVhMNs.png" alt="Logo" class="w-32 h-32 rounded-full shadow-lg" />
     </span>
-    <h1 class="z-10 font-black text-5xl md:text-6xl tracking-tight drop-shadow-gold" style="color:#C29144;font-family:Montserrat,sans-serif;letter-spacing:.08em;">
-      Digitala
+    <h1 class="z-10 font-black text-5xl md:text-6xl tracking-tight drop-shadow-gold" style="color:#3F2B7E;font-family:Montserrat,sans-serif;letter-spacing:.08em;"> Digitala
     </h1>
-    <p class="mt-4 font-medium z-10 text-xl text-dark select-none" style="background:#fcfaf6e6; border-radius:13px; padding:1.1rem 2rem;">
-      Digital Services By <span class="font-bold" style="color:#C29144;">Tala Chibli</span><br>
-      <span class="text-base block mt-2" style="color:#6b5e4b;">
+    <p class="mt-4 font-medium z-10 text-xl text-dark select-none" style="background:#FFFFFFe6; border-radius:13px; padding:1.1rem 2rem;"> Digital Services By <span class="font-bold" style="color:#3F2B7E;">Tala Chibli</span><br> <span class="text-base block mt-2" style="color:#6b5e4b;">
         With 3 years of experience in the digital field, I offer a complete package to take your brand to the next level. From strategy to design to execution. I handle it all like it's my own project.
       </span>
     </p>
   </header>
   <main class="px-8 max-w-5xl mx-auto mb-24 select-text">
-    <section id="about" class="mt-16 mb-20" style="background:#fffdfa;border:1.7px solid #E7BB7A;">
-      <div class="p-10 rounded-2xl" style="background:#F7F5EF;">
-        <h2 class="mb-6 border-b-4 border-gold w-fit cursor-default select-none font-bold text-dark text-3xl" style="font-family:Montserrat,sans-serif;">About Me</h2>
+    <section id="about" class="mt-16 mb-20" style="background:#FFFFFF;border:1.7px solid #F4A9C8;"> <div class="p-10 rounded-2xl" style="background:#D7B9F0;"> <h2 class="mb-6 border-b-4 border-gold w-fit cursor-default select-none font-bold text-dark text-3xl" style="font-family:Montserrat,sans-serif;">About Me</h2>
         <p class="leading-relaxed max-w-3xl font-soft text-dark text-lg">
           Tala, Palestinian girl living in Lebanon. Currently pursuing a double major in English Literature at the Lebanese University and Management Information Systems at Siblin Training Center. Deeply passionate about art and creativity. I have a vivid imagination, and I love expressing it through writing and design.
         </p>
       </div>
     </section>
-    <section id="skills" class="mt-16 mb-20" style="background:#fffdfa;border:1.7px solid #E7BB7A;">
-      <div class="p-10 rounded-2xl" style="background:#F7F5EF;">
-        <h2 class="mb-6 border-b-4 border-gold w-fit cursor-default select-none font-bold text-dark text-3xl" style="font-family:Montserrat,sans-serif;">Skills</h2>
+    <section id="skills" class="mt-16 mb-20" style="background:#FFFFFF;border:1.7px solid #F4A9C8;"> <div class="p-10 rounded-2xl" style="background:#D7B9F0;"> <h2 class="mb-6 border-b-4 border-gold w-fit cursor-default select-none font-bold text-dark text-3xl" style="font-family:Montserrat,sans-serif;">Skills</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl">
-          <div class="rounded-xl p-6 shadow-lg card-hover" style="background:#FCFAF6;border:1.2px solid #E7BB7A;">
-            <h3 class="mb-4 font-semibold text-gold text-lg">Design & Creativity</h3>
+          <div class="rounded-xl p-6 shadow-lg card-hover" style="background:#FFFFFF;border:1.2px solid #F8C5E5;"> <h3 class="mb-4 font-semibold text-gold text-lg">Design & Creativity</h3>
             <ul class="list-disc list-inside leading-relaxed font-soft text-dark text-base">
               <li>Graphic Design</li>
               <li>UI/UX Design</li>
@@ -213,8 +209,7 @@
               <li>Videography & Video Editing</li>
             </ul>
           </div>
-          <div class="rounded-xl p-6 shadow-lg card-hover" style="background:#FCFAF6;border:1.2px solid #E7BB7A;">
-            <h3 class="mb-4 font-semibold text-gold text-lg">Development & Digital Tools</h3>
+          <div class="rounded-xl p-6 shadow-lg card-hover" style="background:#FFFFFF;border:1.2px solid #F8C5E5;"> <h3 class="mb-4 font-semibold text-gold text-lg">Development & Digital Tools</h3>
             <ul class="list-disc list-inside leading-relaxed font-soft text-dark text-base">
               <li>HTML / CSS / JavaScript</li>
               <li>Responsive Web Design</li>
@@ -223,8 +218,7 @@
               <li>Microsoft Office</li>
             </ul>
           </div>
-          <div class="rounded-xl p-6 shadow-lg card-hover" style="background:#FCFAF6;border:1.2px solid #E7BB7A;">
-            <h3 class="mb-4 font-semibold text-gold text-lg">Media & Marketing Skills</h3>
+          <div class="rounded-xl p-6 shadow-lg card-hover" style="background:#FFFFFF;border:1.2px solid #F8C5E5;"> <h3 class="mb-4 font-semibold text-gold text-lg">Media & Marketing Skills</h3>
             <ul class="list-disc list-inside leading-relaxed font-soft text-dark text-base">
               <li>Digital Marketing</li>
               <li>Content Creation</li>
@@ -236,45 +230,25 @@
         </div>
       </div>
     </section>
-    <section id="services" class="mt-16 mb-20" style="background:#fffdfa;border:1.7px solid #E7BB7A;">
-      <div class="p-10 rounded-2xl" style="background:#F7F5EF;">
-        <h2 class="mb-6 border-b-4 border-gold w-fit cursor-default select-none font-bold text-dark text-3xl" style="font-family:Montserrat,sans-serif;">Services</h2>
+    <section id="services" class="mt-16 mb-20" style="background:#FFFFFF;border:1.7px solid #F4A9C8;"> <div class="p-10 rounded-2xl" style="background:#D7B9F0;"> <h2 class="mb-6 border-b-4 border-gold w-fit cursor-default select-none font-bold text-dark text-3xl" style="font-family:Montserrat,sans-serif;">Services</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl">
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="background:#FCFAF6;border:1.2px solid #E7BB7A;color:#C29144;">Social Media Management</div>
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="background:#FCFAF6;border:1.2px solid #E7BB7A;color:#C29144;">Digital Marketing and Advertising</div>
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="background:#FCFAF6;border:1.2px solid #E7BB7A;color:#C29144;">Graphic Design (posts, stories, logos, branding)</div>
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="background:#FCFAF6;border:1.2px solid #E7BB7A;color:#C29144;">Content Writing + Content Creation</div>
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="background:#FCFAF6;border:1.2px solid #E7BB7A;color:#C29144;">Reels / Video Filming & Editing</div>
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="background:#FCFAF6;border:1.2px solid #E7BB7A;color:#C29144;">Photography / Photoshop / Photo generation</div>
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="background:#FCFAF6;border:1.2px solid #E7BB7A;color:#C29144;">Website Design & Development (Frontend)</div>
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="background:#FCFAF6;border:1.2px solid #E7BB7A;color:#C29144;">UI/UX Design - smooth, modern interfaces</div>
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="background:#FCFAF6;border:1.2px solid #E7BB7A;color:#C29144;">Extra: CVs - Portfolios - Presentations - PDFs</div>
-        </div>
+          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="background:#FFFFFF;border:1.2px solid #F8C5E5;color:#3F2B7E;">Social Media Management</div> <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="background:#FFFFFF;border:1.2px solid #F8C5E5;color:#3F2B7E;">Digital Marketing and Advertising</div> <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="background:#FFFFFF;border:1.2px solid #F8C5E5;color:#3F2B7E;">Graphic Design (posts, stories, logos, branding)</div> <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="background:#FFFFFF;border:1.2px solid #F8C5E5;color:#3F2B7E;">Content Writing + Content Creation</div> <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="background:#FFFFFF;border:1.2px solid #F8C5E5;color:#3F2B7E;">Reels / Video Filming & Editing</div> <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="background:#FFFFFF;border:1.2px solid #F8C5E5;color:#3F2B7E;">Photography / Photoshop / Photo generation</div> <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="background:#FFFFFF;border:1.2px solid #F8C5E5;color:#3F2B7E;">Website Design & Development (Frontend)</div> <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="background:#FFFFFF;border:1.2px solid #F8C5E5;color:#3F2B7E;">UI/UX Design - smooth, modern interfaces</div> <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="background:#FFFFFF;border:1.2px solid #F8C5E5;color:#3F2B7E;">Extra: CVs - Portfolios - Presentations - PDFs</div> </div>
       </div>
     </section>
-    <section id="testimonials" class="mt-16 mb-20" style="background:#fffdfa;border:1.7px solid #E7BB7A;">
-      <div class="p-10 rounded-2xl" style="background:#F7F5EF;">
-        <h2 class="mb-6 border-b-4 border-gold w-fit cursor-default select-none font-bold text-dark text-3xl" style="font-family:Montserrat,sans-serif;">Testimonials</h2>
+    <section id="testimonials" class="mt-16 mb-20" style="background:#FFFFFF;border:1.7px solid #F4A9C8;"> <div class="p-10 rounded-2xl" style="background:#D7B9F0;"> <h2 class="mb-6 border-b-4 border-gold w-fit cursor-default select-none font-bold text-dark text-3xl" style="font-family:Montserrat,sans-serif;">Testimonials</h2>
         <div class="space-y-10 max-w-4xl mx-auto">
-          <blockquote class="p-6 rounded-xl shadow-lg italic font-soft relative" style="background:#FCFAF6;border:1.2px solid #E7BB7A;color:#6b5e4b;">
-            Honestly, the results were beyond our expectations. The outcome was amazing, and we gained more followers. May God bless your work and make things easier for you; you’re truly talented. But the job isn’t completely done yet. We'll give you a short break, and then we’ll continue if that’s okay with you.
-            <footer class="mt-4 font-semibold" style="color:#C29144;">— Mahmoud C.</footer>
-          </blockquote>
-          <blockquote class="p-6 rounded-xl shadow-lg italic font-soft relative" style="background:#FCFAF6;border:1.2px solid #E7BB7A;color:#6b5e4b;">
-            Hey love, I genuinely want to thank you from the bottom of my heart for your work on my CV and cover letter. I absolutely loved them. Everything was so well-organized, polished, and delivered right on time. I even ended up getting an A in the course, so thank you so much.
-            <footer class="mt-4 font-semibold" style="color:#C29144;">— Jana B.</footer>
-          </blockquote>
+          <blockquote class="p-6 rounded-xl shadow-lg italic font-soft relative" style="background:#FFFFFF;border:1.2px solid #F4A9C8;color:#3F2B7E;"> Honestly, the results were beyond our expectations. The outcome was amazing, and we gained more followers. May God bless your work and make things easier for you; you’re truly talented. But the job isn’t completely done yet. We'll give you a short break, and then we’ll continue if that’s okay with you.
+            <footer class="mt-4 font-semibold" style="color:#3F2B7E;">— Mahmoud C.</footer> </blockquote>
+          <blockquote class="p-6 rounded-xl shadow-lg italic font-soft relative" style="background:#FFFFFF;border:1.2px solid #F4A9C8;color:#3F2B7E;"> Hey love, I genuinely want to thank you from the bottom of my heart for your work on my CV and cover letter. I absolutely loved them. Everything was so well-organized, polished, and delivered right on time. I even ended up getting an A in the course, so thank you so much.
+            <footer class="mt-4 font-semibold" style="color:#3F2B7E;">— Jana B.</footer> </blockquote>
         </div>
       </div>
     </section>
     <section id="contact" class="mb-24"
-      style="background:#fffdfa;border:1.7px solid #E7BB7A;">
-      <div class="p-10 rounded-2xl" style="background:#F7F5EF;">
-        <h2 class="mb-6 border-b-4 border-gold w-fit cursor-default select-none font-bold text-dark text-3xl" style="font-family:Montserrat,sans-serif;">Contact</h2>
+      style="background:#FFFFFF;border:1.7px solid #F4A9C8;"> <div class="p-10 rounded-2xl" style="background:#D7B9F0;"> <h2 class="mb-6 border-b-4 border-gold w-fit cursor-default select-none font-bold text-dark text-3xl" style="font-family:Montserrat,sans-serif;">Contact</h2>
         <form action="https://formspree.io/f/mzzgwkvk" method="POST"
           class="max-w-xl mx-auto p-8 rounded-xl shadow-lg grid gap-6"
-          style="background:#FCFAF6;border:1.2px solid #E7BB7A;">
-          <label class="block font-semibold text-gold">Name
+          style="background:#FFFFFF;border:1.2px solid #F4A9C8;"> <label class="block font-semibold text-gold">Name
             <input required type="text" name="name"
               class="mt-1 w-full rounded-md border px-3 py-2 font-soft focus:outline-none focus:ring-2 focus:ring-gold text-dark" />
           </label>
@@ -294,18 +268,11 @@
     </section>
   </main>
   <div class="social-fixed-buttons">
-    <a class="social-fixed-btn" href="https://wa.me/71732045" target="_blank" title="WhatsApp">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
-    </a>
-    <a class="social-fixed-btn" href="https://www.instagram.com/digitala.zone" target="_blank" title="Instagram">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" />
-    </a>
-    <a class="social-fixed-btn" href="https://www.linkedin.com/in/tala-chibli-89a8632ab" target="_blank" title="LinkedIn">
-      <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" />
-    </a>
+    <a class="social-fixed-btn" href="https://wa.me/71732045" target="_blank" title="WhatsApp" style="background:#FDD9EA; border:1.7px solid #F4A9C8; color:#3F2B7E;"> <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" style="background:#FDD9EA; border:1.7px solid #F4A9C8;" /> </a>
+    <a class="social-fixed-btn" href="https://www.instagram.com/digitala.zone" target="_blank" title="Instagram" style="background:#FDD9EA; border:1.7px solid #F4A9C8; color:#3F2B7E;"> <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" style="background:#FDD9EA; border:1.7px solid #F4A9C8;" /> </a>
+    <a class="social-fixed-btn" href="https://www.linkedin.com/in/tala-chibli-89a8632ab" target="_blank" title="LinkedIn" style="background:#FDD9EA; border:1.7px solid #F4A9C8; color:#3F2B7E;"> <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" style="background:#FDD9EA; border:1.7px solid #F4A9C8;" /> </a>
   </div>
-  <footer class="text-center py-10 font-soft select-none" style="background: #FCFAF6; color:#C29144; font-weight:700;">
-    &copy; 2025 Tala Chibli | Digitala
+  <footer class="text-center py-10 font-soft select-none" style="background: #FFFFFF; color:#3F2B7E; font-weight:700;"> &copy; 2025 Tala Chibli | Digitala
   </footer>
   <script>
     // Animate sections on scroll
