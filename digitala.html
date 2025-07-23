@@ -1,464 +1,999 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=1024" />
-  <title>Digitala by Tala Chibli</title>
-  <meta name="description" content="Portfolio website of Tala Chibli - Digital designer and developer." />
-  <meta name="author" content="Tala Chibli" />
-  <link rel="icon" href="https://imgur.com/iqVhMNs.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Montserrat:wght@700&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            soft: ['Quicksand', 'sans-serif'],
-            galactic: ['Montserrat', 'Quicksand', 'sans-serif'],
-          },
-          colors: {
-            base: '#222',
-            accent: '#111',
-            accentLight: '#888',
-            card: '#1c1c1c',
-            overlay: '#444',
-            border: '#333',
-            sectionAbout: '#222',
-            sectionSkills: '#1c1c1c',
-            sectionServices: '#222',
-            sectionTestimonials: '#181818',
-            sectionContact: '#232323',
-            skillBox: '#232323',
-            serviceBox: '#222',
-            testimonialBox: '#181818',
-            contactBox: '#232323',
-            contactBtn: '#111'
-          },
-          keyframes: {
-            fadeInUp: {
-              '0%': { opacity: 0, transform: 'translateY(40px)' },
-              '100%': { opacity: 1, transform: 'translateY(0)' }
-            },
-            floating: {
-              '0%, 100%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-12px)' }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1024" />
+    <title>Digitala by Tala Chibli</title>
+    <meta name="description" content="Portfolio website of Tala Chibli - Digital designer and developer." />
+    <meta name="author" content="Tala Chibli" />
+    <link rel="icon" href="https://imgur.com/iqVhMNs.png" type="image/png" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Montserrat:wght@700&family=Orbitron:wght@700&family=Fira+Mono:wght@500&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        soft: ['Quicksand', 'sans-serif'],
+                        galactic: ['Montserrat', 'Quicksand', 'Orbitron', 'sans-serif'],
+                        code: ['Fira Mono', 'monospace'],
+                    },
+                    colors: {
+                        black: '#101014',
+                        white: '#fff',
+                        grayDark: '#181820',
+                        grayLight: '#2C2C36',
+                        accent1: '#ff1da2', // Hot Pink
+                        accent2: '#b669ee', // Purple
+                        accent3: '#14c9ff', // Blue
+                        accent4: '#fff82f', // Yellow
+                        accent5: '#fff', // White
+                        text: '#fff',
+                        glass: '#ffffff0d',
+                    },
+                }
             }
-          },
-          animation: {
-            fadeInUp: 'fadeInUp 1.1s ease-out forwards',
-            floating: 'floating 2.7s ease-in-out infinite'
-          }
         }
-      }
-    }
-  </script>
-  <style>
-    html {
-      scroll-behavior: smooth;
-      background: linear-gradient(180deg, #222 0%, #181818 100%);
-      min-height: 100vh;
-    }
-    body {
-      min-width: 1024px;
-      max-width: 1024px;
-      margin: auto;
-      background: none;
-      color: #eee;
-    }
-    ::-webkit-scrollbar {
-      width: 10px;
-      background: #333;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #444;
-      border-radius: 6px;
-    }
-    .cute-divider {
-      height: 2px;
-      width: 100px;
-      background: linear-gradient(90deg, #eee, #444);
-      border-radius: 4px;
-      margin: 1rem auto;
-    }
-    section {
-      border-radius: 12px;
-      margin-bottom: 2.5rem;
-      box-shadow: 0 4px 24px #0008;
-      opacity: 0;
-      transform: translateY(30px);
-      animation-fill-mode: forwards;
-      border: 1.5px solid #333;
-      background: #181818;
-    }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-      animation-name: fadeInUp;
-    }
-    .section-inner {
-      padding: 2rem 2rem 1.7rem 2rem;
-      border-radius: 10px;
-      background: #222;
-      box-shadow: 0 2px 10px #000a;
-    }
-    nav {
-      height: 70px;
-      background: #181818;
-      border-bottom: 1.5px solid #333;
-      box-shadow: 0 2px 12px #000a;
-      position: relative;
-    }
-    nav span {
-      font-size: 2.1rem;
-      font-weight: bold;
-      color: #fff;
-      letter-spacing: 0.06em;
-    }
-    nav a {
-      border-radius: 9px;
-      padding: 0.3rem 1rem;
-      transition: background 0.2s, color 0.2s;
-      font-family: 'Montserrat', 'Quicksand', sans-serif;
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: #eee;
-    }
-    nav a:hover {
-      background: #222;
-      color: #fff !important;
-    }
-    header h1 {
-      font-size: 2.3rem;
-      color: #fff;
-      font-family: 'Montserrat', 'Quicksand', sans-serif;
-      letter-spacing: 0.07em;
-      margin-bottom: 0.7rem;
-      position: relative;
-      font-weight: 800;
-      text-shadow: 0 2px 12px #000c;
-    }
-    header h1::after {
-      content: '';
-      position: absolute;
-      right: -1.4rem;
-      top: 0.2rem;
-      font-size: 1.7rem;
-      color: #888;
-      opacity: 0.5;
-      animation: floating 2.7s ease-in-out infinite;
-    }
-    header p {
-      font-size: 1.07rem;
-      color: #bbb;
-      background: #181818ee;
-      border-radius: 12px;
-      padding: 0.7rem 1.2rem;
-      margin-top: 0.3rem;
-      box-shadow: 0 2px 8px #0008;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .text-black {
-      color: #eee !important;
-    }
-    .bg-about { background: #222 !important; }
-    .bg-skills { background: #181818 !important; }
-    .bg-services { background: #222 !important; }
-    .bg-testimonials { background: #181818 !important; }
-    .bg-contact { background: #232323 !important; }
-    .box-about { background: #222; color: #eee !important; }
-    .box-skills { background: #232323; color: #eee !important; }
-    .box-services { background: #222; color: #eee !important; }
-    .box-testimonials { background: #181818; color: #eee !important; }
-    .rounded-xl { border-radius: 10px !important; color: #eee !important; }
-    input, textarea {
-      background: #181818;
-      border-radius: 9px;
-      border: 1.5px solid #333;
-      color: #eee !important;
-      font-family: 'Quicksand', sans-serif;
-      font-size: 1.05rem;
-      box-shadow: 0 1px 8px #0008;
-    }
-    input:focus, textarea:focus {
-      border-color: #fff;
-      outline: none;
-      box-shadow: 0 1px 12px #eee5;
-    }
-    button, .cute-btn {
-      border-radius: 10px;
-      background: linear-gradient(90deg, #111 70%, #444 100%);
-      color: #fff;
-      box-shadow: 0 2px 12px #000a;
-      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-      font-family: 'Quicksand', sans-serif;
-      font-weight: 700;
-      font-size: 1.07rem;
-      border: none;
-    }
-    button:hover, .cute-btn:hover {
-      background: linear-gradient(90deg, #444 60%, #111 100%);
-      color: #eee;
-      box-shadow: 0 4px 20px #000b;
-      transform: scale(1.06);
-    }
-    .social-fixed-buttons {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 11px;
-      z-index: 50;
-    }
-    .social-fixed-btn {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      background: linear-gradient(90deg, #111 80%, #444 100%);
-      color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px #0008;
-      padding: 7px 16px;
-      font-family: 'Quicksand', sans-serif;
-      font-weight: 700;
-      font-size: 0.96rem;
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
-      border: none;
-    }
-    .social-fixed-btn:hover {
-      background: linear-gradient(90deg, #444 60%, #111 100%);
-      color: #fff;
-      transform: scale(1.07);
-      box-shadow: 0 4px 16px #000b;
-      text-decoration: none;
-    }
-    .social-fixed-btn img {
-      width: 20px;
-      height: 20px;
-      border-radius: 7px;
-      background: #fff;
-      box-shadow: 0 1px 5px #0007;
-      margin-right: 2px;
-      transition: transform 0.2s;
-    }
-    .social-fixed-btn:hover img {
-      transform: scale(1.09) rotate(-6deg);
-    }
-    @media (max-width: 600px) {
-      .social-fixed-buttons {
-        right: 8px;
-        bottom: 8px;
-      }
-      .social-fixed-btn {
-        padding: 4px 8px;
-        font-size: 0.88rem;
-      }
-      .social-fixed-btn img {
-        width: 15px;
-        height: 15px;
-      }
-    }
-  </style>
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+            background: #101014;
+            min-height: 100vh;
+        }
+
+        body {
+            min-width: 1024px;
+            max-width: 1140px;
+            margin: auto;
+            background: transparent;
+            color: #fff;
+            font-family: 'Quicksand', 'Montserrat', 'Orbitron', sans-serif;
+        }
+
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -20;
+        }
+
+        body::before {
+            background: linear-gradient(130deg, #181820 0%, #2C2C36 60%, #101014 100%);
+            opacity: 1;
+            background-size: cover;
+            animation: creamy-bg-move 24s linear infinite alternate;
+        }
+
+        body::after {
+            pointer-events: none;
+            background: url('https://svgshare.com/i/15Wm.svg') repeat;
+            opacity: 0.07;
+            background-size: 320px;
+            filter: grayscale(1);
+            animation: float-anim 30s linear infinite alternate;
+        }
+
+        @keyframes creamy-bg-move {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 0 100px;
+            }
+        }
+
+        @keyframes float-anim {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 60px 100px;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 11px;
+            background: #2C2C36;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #ff1da2 40%, #b669ee 60%, #14c9ff 90%);
+            border-radius: 7px;
+        }
+
+        .cute-divider {
+            height: 7px;
+            width: 160px;
+            background: linear-gradient(90deg, #ff1da2, #b669ee, #14c9ff, #fff82f, #fff);
+            border-radius: 6px;
+            margin: 1.3rem auto 2.7rem auto;
+            border: none;
+            box-shadow: 0 2px 16px #ff1da288, 0 0 0 2px #b669ee66;
+            animation: divider-waves 6s linear infinite alternate;
+            position: relative;
+            overflow: visible;
+        }
+
+        .cute-divider::after {
+            content: "";
+            position: absolute;
+            right: -13px;
+            top: -2px;
+            width: 18px;
+            height: 18px;
+            background: radial-gradient(circle, #fff82f99 60%, transparent 100%);
+            border-radius: 50%;
+            animation: star-glint 1.5s infinite alternate;
+        }
+
+        @keyframes divider-waves {
+            0% {
+                filter: hue-rotate(0deg);
+            }
+
+            100% {
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        @keyframes star-glint {
+            0% {
+                opacity: 0.7;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        section {
+            border-radius: 32px;
+            margin-bottom: 3.5rem;
+            box-shadow: 0 8px 36px 0 #10101444, 0 0 24px #ff1da211;
+            opacity: 0;
+            transform: translateY(40px) scale(0.97);
+            animation-fill-mode: forwards;
+            border: none;
+            color: #fff;
+            backdrop-filter: blur(16px) saturate(1.07);
+            -webkit-backdrop-filter: blur(16px) saturate(1.07);
+            overflow: hidden;
+            transition: box-shadow 0.32s, background 0.32s;
+            background: linear-gradient(120deg, #181820 0%, #ff1da211 80%, #b669ee12 100%) !important;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            animation-name: fadeInUp;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .section-inner {
+            padding: 3.3rem 3.3rem 2.8rem 3.3rem;
+            border-radius: 30px;
+            color: inherit;
+            background: none;
+            position: relative;
+        }
+
+        .section-inner::before {
+            content: '';
+            position: absolute;
+            left: -22px;
+            top: -22px;
+            width: 44px;
+            height: 44px;
+            background: radial-gradient(circle at 70% 40%, #b669ee22 0%, transparent 100%);
+            z-index: 0;
+            filter: blur(2px);
+        }
+
+        nav {
+            height: 90px;
+            background: linear-gradient(90deg, #101014 0%, #ff1da2 30%, #b669ee 55%, #14c9ff 75%, #fff82f 100%);
+            box-shadow: 0 2px 24px #ff1da277, 0 0 12px #b669ee44;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            border-radius: 0 0 24px 24px;
+        }
+
+        nav span {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #ff1da2;
+            letter-spacing: 0.13em;
+            font-family: Orbitron, Montserrat, Quicksand, sans-serif;
+            text-shadow: 0 2px 20px #b669ee88, 0 0 6px #14c9ff88;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav .sparkle {
+            font-size: 1.8rem;
+            color: #fff82f;
+            filter: drop-shadow(0 0 4px #fff82f88);
+            animation: sparkle-twinkle 1.8s infinite alternate;
+        }
+
+        @keyframes sparkle-twinkle {
+            0% {
+                opacity: 0.7;
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        nav a {
+            border-radius: 14px;
+            padding: 0.42rem 1.3rem;
+            transition: background 0.18s, color 0.18s, box-shadow 0.2s;
+            font-family: 'Montserrat', 'Quicksand', 'Orbitron', sans-serif;
+            font-size: 1.23rem;
+            font-weight: 800;
+            color: #fff;
+            box-shadow: 0 0 0 transparent;
+            letter-spacing: 0.01em;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background: linear-gradient(90deg, #181820 30%, #ff1da2 100%);
+            color: #fff !important;
+            box-shadow: 0 2px 20px #ff1da277;
+            text-shadow: 0 0 6px #fff82f55;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            text-align: center;
+            position: relative;
+            padding-top: 135px !important;
+            min-height: 340px !important;
+            margin-bottom: 0px !important;
+            overflow: hidden;
+        }
+
+        .header-bg-glow {
+            position: absolute;
+            z-index: -1;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 420px;
+            height: 420px;
+            pointer-events: none;
+            background: radial-gradient(circle, #ff1da244 0%, #b669ee66 60%, transparent 100%);
+            filter: blur(60px);
+            opacity: 0.8;
+            animation: header-glow 7s ease-in-out infinite alternate;
+        }
+
+        @keyframes header-glow {
+            0% {
+                filter: blur(44px) brightness(1.04);
+            }
+
+            100% {
+                filter: blur(70px) brightness(1.13);
+            }
+        }
+
+        .header-img-bigger {
+            width: 132px;
+            height: 132px;
+            border-radius: 9999px;
+            border: 7px solid #fff;
+            margin-bottom: 1.6rem;
+            object-fit: cover;
+            box-shadow: 0 12px 48px #ff1da277, 0 4px 20px #b669ee77, 0 0 0 4px #14c9ff55 inset;
+            background: #fff;
+            transition: box-shadow 0.22s, transform 0.22s;
+            animation: pulse-img 4s infinite alternate, float-avatar 7s ease-in-out infinite;
+        }
+
+        @keyframes pulse-img {
+            0% {
+                box-shadow: 0 12px 48px #ff1da277, 0 4px 20px #b669ee77, 0 0 0 4px #14c9ff55 inset;
+            }
+
+            100% {
+                box-shadow: 0 22px 70px #b669ee99, 0 4px 38px #14c9ffaa, 0 0 0 12px #fff82f77 inset;
+            }
+        }
+
+        @keyframes float-avatar {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-12px);
+            }
+        }
+
+        .header-img-bigger:hover {
+            box-shadow: 0 20px 62px #ff1da2cc, 0 14px 40px #b669eeaa, 0 0 0 18px #fff82fbb inset;
+            transform: scale(1.09) rotate(-3deg);
+        }
+
+        .digitala-title {
+            font-size: 4.0rem;
+            color: #fff;
+            font-family: 'Orbitron', 'Montserrat', 'Quicksand', sans-serif;
+            letter-spacing: 0.13em;
+            font-weight: 900;
+            margin-bottom: 0.18em;
+            margin-top: 0;
+            text-shadow: 0 6px 28px #ff1da2bb;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .digitala-title .gold-glow {
+            color: #fff82f;
+            font-size: 1.5em;
+            text-shadow: 0 0 8px #fff82fcc;
+            animation: sparkle-twinkle 2.2s infinite alternate;
+        }
+
+        .header-desc {
+            font-size: 1.37rem;
+            color: #fff;
+            font-family: 'Quicksand', 'Orbitron', sans-serif;
+            font-weight: 500;
+            margin-top: 0.9rem;
+            margin-bottom: 1.35rem;
+            background: none !important;
+            box-shadow: none !important;
+            padding: 0;
+            max-width: 760px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+            text-shadow: 0 2px 12px #b669ee77;
+            position: relative;
+        }
+
+        .header-desc .highlight {
+            color: #ff1da2;
+            font-weight: 700;
+            text-shadow: 0 0 6px #b669ee55, 0 0 4px #14c9ff55;
+        }
+
+        .neon-glow {
+            text-shadow: 0 0 4px #fff, 0 0 18px #ff1da2, 0 0 8px #14c9ffcc;
+            color: #fff82f;
+        }
+
+        .section-title {
+            display: block;
+            font-size: 2.9rem;
+            font-family: 'Orbitron', 'Montserrat', 'Quicksand', sans-serif;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #fff !important;
+            letter-spacing: 0.04em;
+            line-height: 1.1;
+            background: linear-gradient(90deg, #ff1da2 20%, #b669ee 40%, #14c9ff 70%, #fff82f 95%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 24px #b669ee88, 0 2px 10px #14c9ff44;
+        }
+
+        .box-contact {
+            background: #181820fa;
+            color: #fff !important;
+            border-radius: 24px;
+            box-shadow: 0 0 44px #14c9ff22;
+            padding: 2.6rem 2.2rem 2.2rem 2.2rem;
+            border: 2.5px solid #ff1da222;
+            margin-top: 1rem;
+        }
+
+        .box-contact input,
+        .box-contact textarea {
+            background: #101014;
+            border-radius: 11px;
+            border: 2.2px solid #b669ee;
+            color: #fff !important;
+            font-family: 'Quicksand', 'Fira Mono', sans-serif;
+            font-size: 1.12rem;
+            margin-top: 0.3rem;
+            transition: border 0.19s, box-shadow 0.19s, color 0.19s;
+        }
+
+        .box-contact input:focus,
+        .box-contact textarea:focus {
+            border-color: #ff1da2;
+            outline: none;
+            box-shadow: 0 0 0 2.5px #b669ee66;
+            color: #fff !important;
+        }
+
+        .box-contact label {
+            color: #fff82f !important;
+            font-weight: 700;
+        }
+
+        .box-contact button,
+        .box-contact .cute-btn {
+            border-radius: 18px;
+            background: linear-gradient(90deg, #ff1da2 60%, #14c9ff 100%);
+            color: #fff !important;
+            font-weight: 900;
+            font-size: 1.18rem;
+            border: none;
+            box-shadow: 0 2px 18px #b669ee44, 0 0 8px #14c9ff44;
+            transition: background 0.23s, color 0.23s, transform 0.22s, box-shadow 0.23s;
+        }
+
+        .box-contact button:hover,
+        .box-contact .cute-btn:hover {
+            background: linear-gradient(90deg, #fff82f 10%, #ff1da2 100%);
+            color: #181820;
+            box-shadow: 0 10px 32px #b669ee77, 0 2px 16px #ff1da299;
+            transform: scale(1.12) rotate(-2deg);
+        }
+
+        .card-hover {
+            background: linear-gradient(100deg, #101014cc 60%, #ff1da211 100%);
+            border: 2.6px solid #b669ee55;
+            transition: box-shadow 0.22s, transform 0.15s, border 0.19s;
+            box-shadow: 0 2px 18px #ff1da222, 0 0 0 0 #14c9ff00;
+            cursor: pointer;
+            position: relative;
+            overflow: visible;
+        }
+
+        .card-hover:hover {
+            box-shadow: 0 12px 44px #ff1da2bb, 0 4px 18px #b669ee77;
+            transform: scale(1.06) translateY(-7px) rotate(-2.2deg);
+            border: 2.6px solid #ff1da2bb;
+        }
+
+        .card-hover ul li::before {
+            content: "✦ ";
+            color: #fff82f;
+            font-size: 1.2em;
+            margin-right: 2px;
+        }
+
+        .grid {
+            gap: 2.4rem !important;
+        }
+
+        .skill-icon {
+            width: 42px;
+            height: 42px;
+            margin-bottom: 0.7em;
+            filter: drop-shadow(0 1px 18px #ff1da288) drop-shadow(0 0 4px #b669ee88);
+            display: inline-block;
+            animation: icon-pop 2.6s infinite alternate;
+        }
+
+        @keyframes icon-pop {
+            0% {
+                transform: scale(0.96) rotate(-3deg);
+            }
+
+            100% {
+                transform: scale(1.12) rotate(2deg);
+            }
+        }
+
+        blockquote {
+            border-left: 6px solid #ff1da2;
+            background: linear-gradient(90deg, #181820 85%, #b669ee13 100%);
+            font-size: 1.15em;
+        }
+
+        blockquote footer {
+            color: #fff82f;
+            font-family: Orbitron, Quicksand, sans-serif;
+            font-size: 1.13rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+        }
+
+        .social-fixed-buttons {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 90;
+        }
+
+        .social-fixed-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(90deg, #ff1da2 60%, #14c9ff 100%);
+            color: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 20px #b669eeaa, 0 0 8px #14c9ff99;
+            padding: 13px 26px;
+            font-family: 'Orbitron', 'Quicksand', sans-serif;
+            font-weight: 900;
+            font-size: 1.13rem;
+            text-decoration: none;
+            border: none;
+            letter-spacing: 0.04em;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+
+        .social-fixed-btn:hover {
+            background: linear-gradient(90deg, #fff82f 50%, #ff1da2 100%);
+            color: #101014;
+            transform: scale(1.15) rotate(-3deg);
+            box-shadow: 0 8px 44px #ff1da2cc;
+            text-decoration: none;
+        }
+
+        .social-fixed-btn img {
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 1px 8px #b669ee44, 0 0 0 3px #ff1da233;
+            margin-right: 2px;
+            transition: transform 0.18s;
+        }
+
+        .social-fixed-btn:hover img {
+            transform: scale(1.25) rotate(-10deg);
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -999px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            color: #fff;
+            background: #ff1da2;
+            border-radius: 8px;
+            padding: 8px 18px;
+            font-size: 1rem;
+            z-index: 999;
+            transition: left 0.2s;
+        }
+
+        .skip-link:focus {
+            left: 14px;
+            top: 14px;
+            width: auto;
+            height: auto;
+            outline: 2.5px solid #fff82f;
+        }
+
+        #easter-confetti {
+            pointer-events: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9999;
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .section-inner {
+                padding: 1.1rem 0.7rem 1.1rem 0.7rem;
+            }
+
+            .box-contact {
+                padding: 1.1rem 0.7rem 1.1rem 0.7rem;
+            }
+
+            .header-img-bigger {
+                width: 84px;
+                height: 84px;
+            }
+
+            .digitala-title {
+                font-size: 2.1rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .social-fixed-buttons {
+                right: 8px;
+                bottom: 8px;
+            }
+
+            .social-fixed-btn {
+                padding: 6px 12px;
+                font-size: 0.93rem;
+            }
+
+            .social-fixed-btn img {
+                width: 17px;
+                height: 17px;
+            }
+        }
+
+        footer {
+            background: #101014;
+            color: #fff82f !important;
+            font-family: 'Orbitron', 'Quicksand', sans-serif;
+            font-size: 1.13rem;
+            font-weight: 900;
+            letter-spacing: 0.04em;
+            box-shadow: 0 0 32px #ff1da233;
+        }
+    </style>
 </head>
-<body class="bg-base font-galactic min-h-screen">
-  <nav class="fixed top-0 left-0 w-full z-30 border-b-2 border-accentDark" style="min-width:1024px;">
-    <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-6">
-      <span class="font-black text-2xl tracking-wider cursor-default select-none">
-        DIGITALA<span style="color:#888">.</span>
-      </span>
-      <div class="flex items-center gap-8">
-        <a href="#about" class="hover:text-accent font-semibold transition">About</a>
-        <a href="#skills" class="hover:text-accent font-semibold transition">Skills</a>
-        <a href="#services" class="hover:text-accent font-semibold transition">Services</a>
-        <a href="#testimonials" class="hover:text-accent font-semibold transition">Testimonials</a>
-        <a href="#contact" class="hover:text-accent font-semibold transition">Contact</a>
-      </div>
+
+<body class="bg-black font-galactic min-h-screen">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <canvas id="easter-confetti"></canvas>
+    <nav class="fixed top-0 left-0 w-full z-30 border-b-2 border-accentDark" style="min-width:1024px;">
+        <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-6">
+            <span class="font-black text-2xl tracking-wider cursor-default select-none">
+                DIGITALA<span class="sparkle" tabindex="0" aria-label="Sparkle!">✦</span>
+            </span>
+            <div class="flex items-center gap-10">
+                <a href="#about" class="hover:text-accent font-semibold transition">About</a>
+                <a href="#skills" class="hover:text-accent font-semibold transition">Skills</a>
+                <a href="#services" class="hover:text-accent font-semibold transition">Services</a>
+                <a href="#testimonials" class="hover:text-accent font-semibold transition">Testimonials</a>
+                <a href="#contact" class="hover:text-accent font-semibold transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <header>
+        <div class="header-bg-glow"></div>
+        <img src="https://imgur.com/oE2yMOw.png" alt="Logo" class="header-img-bigger" />
+        <h1 class="digitala-title">Digitala <span class="gold-glow">✧</span></h1>
+        <div class="header-desc">
+            <span class="highlight">//</span> <span class="font-code" style="color:#b669ee;">Design, Code &
+                Imagination</span> <span class="highlight">//</span>
+            <br>
+            Digital Services By <span class="font-bold neon-glow">Tala Chibli</span>
+            <br>
+            <span style="color:#fff82f;">★</span> <span class="font-bold" style="color:#ff1da2;">3 years</span> of
+            experience in the digital field <span style="color:#fff82f;">★</span>
+            <br>
+            I offer a <span class="highlight">complete package</span> to take your brand to the next level.
+            <br>
+            From <span class="font-bold" style="color:#14c9ff;">strategy</span> to <span class="font-bold"
+                style="color:#b669ee;">design</span> to <span class="font-bold" style="color:#fff82f;">execution</span>.
+            I handle it all as if it's my own project.
+        </div>
+    </header>
+    <main id="main-content" class="px-8 max-w-5xl mx-auto mb-24 select-text">
+        <section id="about" class="mt-16 mb-20">
+            <div class="section-inner box-about">
+                <span class="section-title">About Me</span>
+                <div class="cute-divider"></div>
+                <p class="leading-relaxed max-w-3xl font-soft" style="font-size:1.16em;">
+                    <span style="font-size:1.2em; color:#ff1da2;">✦</span> <b>Tala</b>, Palestinian girl based in <span
+                        style="color:#fff82f;">Lebanon</span>.<br>
+                    <span style="color:#14c9ff;">Double major:</span> English Literature @ Lebanese University &
+                    Management Information Systems @ Siblin Training Center.<br>
+                    <span style="color:#b669ee;">Art & creativity</span> are my world. I have a vivid imagination and
+                    love expressing it through <span style="color:#ff1da2;">writing</span> and <span
+                        style="color:#fff82f;">design</span>.<br>
+                    <span style="font-style:italic; color:#b669ee;">Dream big. Design bold. Deliver <span
+                            style="color:#ff1da2; font-weight:bold;">magic</span>.</span>
+                </p>
+            </div>
+        </section>
+        <section id="skills" class="mt-16 mb-20">
+            <div class="section-inner box-skills">
+                <span class="section-title">Skills</span>
+                <div class="cute-divider"></div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl">
+                    <div class="rounded-xl p-6 shadow-lg card-hover">
+                        <img src="https://imgur.com/HQucyu0.png" class="skill-icon" alt="Code Icon" />
+                        <h3 class="mb-4 font-semibold" style="color:#ff1da2;">Development & Digital Tools
+                        </h3>
+                        <ul class="leading-relaxed font-soft" style="list-style:none; padding-left:0;">
+                            <li> HTML / CSS / JavaScript</li>
+                            <li> Responsive Web Design</li>
+                            <li> Git & GitHub (Basic)</li>
+                            <li> Google Workspace</li>
+                            <li> Microsoft Office</li>
+                        </ul>
+                    </div>
+                    <div class="rounded-xl p-6 shadow-lg card-hover">
+                        <img src="https://imgur.com/uQ3DoEA.png" class="skill-icon" alt="Design Icon" />
+                        <h3 class="mb-4 font-semibold" style="color:#b669ee;">Design & Creativity</h3>
+                        <ul class="leading-relaxed font-soft" style="list-style:none; padding-left:0;">
+                            <li> Graphic Design</li>
+                            <li> UI/UX Design</li>
+                            <li> Social Media Content Design</li>
+                            <li> Photography & Photo Editing</li>
+                            <li> Videography & Video Editing</li>
+                        </ul>
+                    </div>
+
+                    <div class="rounded-xl p-6 shadow-lg card-hover">
+                        <img src="https://imgur.com/5Ysp44U.png" class="skill-icon" alt="Marketing Icon" />
+                        <h3 class="mb-4 font-semibold" style="color:#14c9ff;">Media & Marketing Skills</h3>
+                        <ul class="leading-relaxed font-soft" style="list-style:none; padding-left:0;">
+                            <li> Digital Marketing</li>
+                            <li> Content Creation</li>
+                            <li> Social Media Strategy & Management</li>
+                            <li> Communication & Presentation</li>
+                            <li> Journalism & Media</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="services" class="mt-16 mb-20">
+            <div class="section-inner box-services">
+                <span class="section-title">Services</span>
+                <div class="cute-divider"></div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl">
+                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#ff1da2;">
+                        <img src="https://imgur.com/hpoVjkV.png" class="skill-icon" alt="Web" /> Website Design &
+                        Development (Frontend)
+                    </div>
+                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#ff1da2;">
+                        <img src="https://imgur.com/mfmCZO9.png" class="skill-icon" alt="UI/UX" /> UI/UX Design - Modern
+                        Interfaces
+                    </div>
+                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#ff1da2;">
+                        <img src="https://imgur.com/gTC7Egb.png" class="skill-icon" alt="Extra" /> Extra: CVs -
+                        Portfolios - Presentations - PDFs
+                    </div>
+
+                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#b669ee;">
+                        <img src="https://imgur.com/syvuS1g.png" class="skill-icon" alt="Content" /> Graphic Design
+                        (posts, logos, branding)
+                    </div>
+                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#b669ee;">
+                        <img src="https://imgur.com/01VkjrW.png" class="skill-icon" alt="Video" /> Reels / Video Filming
+                        & Editing
+                    </div>
+                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#b669ee;">
+                        <img src="https://imgur.com/6020gKL.png" class="skill-icon" alt="Photo" /> Photography /
+                        Photoshop / Photo Generation
+                    </div>
+
+                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#14c9ff;">
+                        <img src="https://imgur.com/cqIs6gQ.png" class="skill-icon" alt="Social Media" /> Social Media
+                        Management
+                    </div>
+                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#14c9ff;">
+                        <img src="https://imgur.com/EaS7oTs.png" class="skill-icon" alt="Marketing" /> Digital Marketing
+                        & Advertising
+                    </div>
+                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#14c9ff;">
+                        <img src="https://imgur.com/Y0tmCOy.png" class="skill-icon" alt="Design" /> Content Writing +
+                        Creation
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="testimonials" class="mt-16 mb-20">
+            <div class="section-inner box-testimonials">
+                <span class="section-title">Testimonials</span>
+                <div class="cute-divider"></div>
+                <div class="space-y-10 max-w-4xl mx-auto">
+                    <blockquote class="p-6 rounded-xl shadow-lg italic font-soft relative card-hover">
+                        <span style="color:#ff1da2; font-size:1.6em;">❝</span>
+                        Honestly, the results were beyond our expectations. The outcome was amazing, and we gained more
+                        followers. May God bless your work and make things easier for you; you’re truly talented. But
+                        the job isn’t completely done yet. We'll give you a short break, and then we’ll continue if
+                        that’s okay with you.
+                        <span style="color:#ff1da2; font-size:1.6em;">❞</span>
+                        <footer class="mt-4 font-semibold">— Mahmoud C.</footer>
+                    </blockquote>
+                    <blockquote class="p-6 rounded-xl shadow-lg italic font-soft relative card-hover">
+                        <span style="color:#ff1da2; font-size:1.6em;">❝</span>
+                        Hey love, I genuinely want to thank you from the bottom of my heart for your work on my CV and
+                        cover letter. I absolutely loved them. Everything was so well-organized, polished, and delivered
+                        right on time. I even ended up getting an A in the course, so thank you so much.
+                        <span style="color:#ff1da2; font-size:1.6em;">❞</span>
+                        <footer class="mt-4 font-semibold">— Jana B.</footer>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="mb-24">
+            <div class="section-inner box-contact" style="background: transparent; color: #fff;">
+                <span class="section-title" style="color:#fff;">Contact</span>
+                <div class="cute-divider"></div>
+                <form action="https://formspree.io/f/mzzgwkvk" method="POST"
+                    class="max-w-xl mx-auto p-8 rounded-xl shadow-lg grid gap-6" style="background: none; color:#fff;">
+                    <label class="block font-semibold" style="color:#fff82f;">Name
+                        <input required type="text" name="name"
+                            class="mt-1 w-full rounded-md border border-accentDark px-3 py-2 font-soft focus:outline-none focus:ring-2 focus:ring-accent"
+                            style="background: #101014; color: #fff; border: 2.2px solid #b669ee;" />
+                    </label>
+                    <label class="block font-semibold" style="color:#fff82f;">Email
+                        <input required type="email" name="email"
+                            class="mt-1 w-full rounded-md border border-accentDark px-3 py-2 font-soft focus:outline-none focus:ring-2 focus:ring-accent"
+                            style="background: #101014; color: #fff; border: 2.2px solid #b669ee;" />
+                    </label>
+                    <label class="block font-semibold" style="color:#fff82f;">Message
+                        <textarea required name="message" rows="5"
+                            class="mt-1 w-full rounded-md border border-accentDark px-3 py-2 font-soft resize-y focus:outline-none focus:ring-2 focus:ring-accent"
+                            style="background: #101014; color: #fff; border: 2.2px solid #b669ee;"></textarea>
+                    </label>
+                    <button type="submit" class="px-6 py-3 rounded-xl font-semibold text-lg"
+                        style="background: linear-gradient(90deg, #ff1da2 80%, #14c9ff 100%); color: #fff; box-shadow: 0 2px 14px #b669ee22; border:none">
+                        Send Message ✦
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <div class="social-fixed-buttons" aria-label="Social Media Links">
+        <a class="social-fixed-btn" href="https://wa.me/71732045" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
+            WhatsApp
+        </a>
+        <a class="social-fixed-btn" href="https://www.instagram.com/digitala.zone" target="_blank" rel="noopener"
+            aria-label="Instagram">
+            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" />
+            Instagram
+        </a>
+        <a class="social-fixed-btn" href="https://www.linkedin.com/in/tala-chibli-89a8632ab" target="_blank"
+            rel="noopener" aria-label="LinkedIn">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" />
+            LinkedIn
+        </a>
     </div>
-  </nav>
-  <header class="flex flex-col justify-center items-center px-4 text-center relative pt-36 overflow-hidden"
-    style="padding-top:110px !important; min-height:280px !important; margin-bottom:0px !important;">
-    <img src="https://i.imgur.com/iqVhMNs.png" alt="Logo"
-      class="w-16 h-16 rounded-full border-4 border-accentDark mb-3 card-hover" />
-    <h1 class="z-10 animate-fadeInUp cursor-default select-none font-black">
-      Digitala
-    </h1>
-    <p class="mt-2 font-medium z-10 animate-fadeInUp delay-200 cursor-default select-none">
-      Digital Services By <span class="font-bold" style="color:#eee;">Tala Chibli</span><br>
-      <span class="text-sm block mt-2">
-        With 3 years of experience in the digital field, I offer a complete package to take your brand to the next level. From strategy to design to execution. I handle it all like it's my own project.
-      </span>
-    </p>
-  </header>
-  <main class="px-8 max-w-5xl mx-auto mb-24 select-text">
-    <section id="about" class="mt-16 mb-20 bg-about">
-      <div class="section-inner box-about">
-        <h2 class="mb-6 border-b-4 border-accent w-fit cursor-default select-none font-bold text-black">
-          About Me
-        </h2>
-        <div class="cute-divider"></div>
-        <p class="leading-relaxed max-w-3xl font-soft text-black">
-          Tala, Palestinian girl living in Lebanon. Currently pursuing a double major in English Literature at the Lebanese University and Management Information Systems at Siblin Training Center. Deeply passionate about art and creativity. I have a vivid imagination, and I love expressing it through writing and design.
-        </p>
-      </div>
-    </section>
-    <section id="skills" class="mt-16 mb-20 bg-skills">
-      <div class="section-inner">
-        <h2 class="mb-6 border-b-4 border-accent w-fit cursor-default select-none font-bold text-black">
-          Skills
-        </h2>
-        <div class="cute-divider"></div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl">
-          <div class="rounded-xl p-6 shadow-lg card-hover box-skills">
-            <h3 class="mb-4 font-semibold text-black">Design & Creativity</h3>
-            <ul class="list-disc list-inside leading-relaxed font-soft text-black">
-              <li>Graphic Design</li>
-              <li>UI/UX Design</li>
-              <li>Social Media Content Design</li>
-              <li>Photography & Photo Editing</li>
-              <li>Videography & Video Editing</li>
-            </ul>
-          </div>
-          <div class="rounded-xl p-6 shadow-lg card-hover box-skills">
-            <h3 class="mb-4 font-semibold text-black">Development & Digital Tools</h3>
-            <ul class="list-disc list-inside leading-relaxed font-soft text-black">
-              <li>HTML / CSS / JavaScript</li>
-              <li>Responsive Web Design</li>
-              <li>Git & GitHub (Basic)</li>
-              <li>Google Workspace</li>
-              <li>Microsoft Office</li>
-            </ul>
-          </div>
-          <div class="rounded-xl p-6 shadow-lg card-hover box-skills">
-            <h3 class="mb-4 font-semibold text-black">Media & Marketing Skills</h3>
-            <ul class="list-disc list-inside leading-relaxed font-soft text-black">
-              <li>Digital Marketing</li>
-              <li>Content Creation</li>
-              <li>Social Media Strategy & Management</li>
-              <li>Communication & Presentation</li>
-              <li>Journalism & Media</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="services" class="mt-16 mb-20 bg-services">
-      <div class="section-inner">
-        <h2 class="mb-6 border-b-4 border-accent w-fit cursor-default select-none font-bold text-black">
-          Services
-        </h2>
-        <div class="cute-divider"></div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl">
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services">
-            Social Media Management
-          </div>
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services">
-            Digital Marketing and Advertising
-          </div>
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services">
-            Graphic Design (posts, stories, logos, branding)
-          </div>
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services">
-            Content Writing + Content Creation
-          </div>
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services">
-            Reels / Video Filming & Editing
-          </div>
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services">
-            Photography / Photoshop / Photo generation
-          </div>
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services">
-            Website Design & Development (Frontend)
-          </div>
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services">
-            UI/UX Design - smooth, modern interfaces
-          </div>
-          <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover box-services">
-            Extra: CVs - Portfolios - Presentations - PDFs
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="testimonials" class="mt-16 mb-20 bg-testimonials">
-      <div class="section-inner">
-        <h2 class="mb-6 border-b-4 border-accent w-fit cursor-default select-none font-bold text-black">
-          Testimonials
-        </h2>
-        <div class="cute-divider"></div>
-        <div class="space-y-10 max-w-4xl mx-auto">
-          <blockquote class="p-6 rounded-xl shadow-lg italic font-soft relative box-testimonials">
-            Honestly, the results were beyond our expectations. The outcome was amazing, and we gained more followers. May God bless your work and make things easier for you; you’re truly talented. But the job isn’t completely done yet. We'll give you a short break, and then we’ll continue if that’s okay with you.
-            <footer class="mt-4 font-semibold" style="color:#aaa;">— Mahmoud C.</footer>
-          </blockquote>
-          <blockquote class="p-6 rounded-xl shadow-lg italic font-soft relative box-testimonials">
-            Hey love, I genuinely want to thank you from the bottom of my heart for your work on my CV and cover letter. I absolutely loved them. Everything was so well-organized, polished, and delivered right on time. I even ended up getting an A in the course, so thank you so much.
-            <footer class="mt-4 font-semibold" style="color:#aaa;">— Jana B.</footer>
-          </blockquote>
-        </div>
-      </div>
-    </section>
-    <section id="contact" class="mb-24 bg-contact"
-      style="background: linear-gradient(120deg,#232323 0%, #181818 100%); border: 1.5px solid #333;">
-      <div class="section-inner">
-        <h2 class="mb-6 border-b-4 border-accent w-fit cursor-default select-none font-bold text-black">
-          Contact
-        </h2>
-        <div class="cute-divider"></div>
-        <form action="https://formspree.io/f/mzzgwkvk" method="POST"
-          class="max-w-xl mx-auto p-8 rounded-xl shadow-lg grid gap-6"
-          style="background: linear-gradient(130deg,#222 0%, #1c1c1c 100%); box-shadow: 0 2px 14px #000b; color:#eee;">
-          <label class="block font-semibold text-black">Name
-            <input required type="text" name="name"
-              class="mt-1 w-full rounded-md border border-accentDark px-3 py-2 font-soft focus:outline-none focus:ring-2 focus:ring-accent text-black" />
-          </label>
-          <label class="block font-semibold text-black">Email
-            <input required type="email" name="email"
-              class="mt-1 w-full rounded-md border border-accentDark px-3 py-2 font-soft focus:outline-none focus:ring-2 focus:ring-accent text-black" />
-          </label>
-          <label class="block font-semibold text-black">Message
-            <textarea required name="message" rows="5"
-              class="mt-1 w-full rounded-md border border-accentDark px-3 py-2 font-soft resize-y focus:outline-none focus:ring-2 focus:ring-accent text-black"></textarea>
-          </label>
-          <button type="submit" class="px-6 py-3 rounded-xl font-semibold text-lg"
-            style="background: linear-gradient(90deg, #111 60%, #444 100%); color: #fff; box-shadow: 0 2px 14px #000a; border:none">
-            Send Message
-          </button>
-        </form>
-      </div>
-    </section>
-  </main>
-  <div class="social-fixed-buttons">
-    <a class="social-fixed-btn" href="https://wa.me/71732045" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
-    </a>
-    <a class="social-fixed-btn" href="https://www.instagram.com/digitala.zone" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" />
-    </a>
-    <a class="social-fixed-btn" href="https://www.linkedin.com/in/tala-chibli-89a8632ab" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" />
-    </a>
-  </div>
-  <footer class="text-center py-10 font-soft select-none" style="background: #222; color:#888;">
-    &copy; 2025 Tala Chibli | Digitala
-  </footer>
-  <script>
-    // Animate sections on scroll
-    const sections = document.querySelectorAll('section');
-    function revealOnScroll() {
-      const windowHeight = window.innerHeight;
-      const revealPoint = 120;
-      sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-        if (sectionTop < windowHeight - revealPoint) {
-          section.classList.add('visible');
+    <footer class="text-center py-10 font-soft select-none">
+        &copy; 2025 Tala Chibli | Digitala ✦ Powered by Imagination &amp; <span style="color:#ff1da2;">Magic</span>
+    </footer>
+    <script>
+        // Animate sections on scroll
+        const sections = document.querySelectorAll('section');
+        function revealOnScroll() {
+            const windowHeight = window.innerHeight;
+            const revealPoint = 120;
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop < windowHeight - revealPoint) {
+                    section.classList.add('visible');
+                }
+            });
         }
-      });
-    }
-    window.addEventListener('scroll', revealOnScroll);
-    window.addEventListener('load', revealOnScroll);
-  </script>
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Highlight nav link on scroll
+        window.addEventListener('scroll', () => {
+            let scrollPos = window.scrollY + 130;
+            document.querySelectorAll('nav a').forEach(link => {
+                let section = document.querySelector(link.getAttribute('href'));
+                if (section && section.offsetTop <= scrollPos && section.offsetTop + section.offsetHeight > scrollPos) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+
+        // Extra: Sparkle animation on nav title on hover/focus & confetti easter egg
+        const sparkle = document.querySelector("nav span .sparkle");
+        sparkle.addEventListener("mouseenter", function () {
+            this.style.transform = "scale(1.3) rotate(-16deg)";
+        });
+        sparkle.addEventListener("mouseleave", function () {
+            this.style.transform = "scale(1) rotate(0deg)";
+        });
+        sparkle.addEventListener("focus", function () {
+            this.style.transform = "scale(1.3) rotate(-16deg)";
+        });
+        sparkle.addEventListener("blur", function () {
+            this.style.transform = "scale(1) rotate(0deg)";
+        });
+        // Easter egg — confetti on sparkle click/focus
+        const confettiCanvas = document.getElementById("easter-confetti");
+        let confettiActive = false;
+        function launchConfetti() {
+            confettiCanvas.style.display = "block";
+            const ctx = confettiCanvas.getContext("2d");
+            confettiCanvas.width = window.innerWidth;
+            confettiCanvas.height = window.innerHeight;
+            let confetti = [];
+            for (let i = 0; i < 220; i++) {
+                confetti.push({
+                    x: Math.random() * confettiCanvas.width,
+                    y: Math.random() * -confettiCanvas.height,
+                    r: 7 + Math.random() * 10,
+                    d: Math.random() * 90,
+                    color: `hsl(${Math.random() * 360}, 85%, 70%)`,
+                    tilt: Math.random() * 10 - 10,
+                    tiltAngle: 0,
+                    tiltAngleInc: (Math.random() * 0.09) + 0.05
+                });
+            }
+            let frame = 0;
+            function drawConfetti() {
+                ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+                confetti.forEach(c => {
+                    ctx.beginPath();
+                    ctx.ellipse(c.x, c.y, c.r, c.r * 0.45 + Math.cos(frame / 10), 0, 0, 2 * Math.PI);
+                    ctx.fillStyle = c.color;
+                    ctx.globalAlpha = 0.8;
+                    ctx.fill();
+                    ctx.globalAlpha = 1;
+                });
+            }
+            function updateConfetti() {
+                frame++;
+                confetti.forEach(c => {
+                    c.y += Math.cos(c.d) + 2 + c.r / 5;
+                    c.x += Math.sin(frame / 23 + c.d) * 2;
+                    c.tilt += Math.sin(c.tiltAngle);
+                    c.tiltAngle += c.tiltAngleInc;
+                    if (c.y > confettiCanvas.height + 50) {
+                        c.y = -20; c.x = Math.random() * confettiCanvas.width;
+                    }
+                });
+            }
+            function loop() {
+                drawConfetti();
+                updateConfetti();
+                if (confettiActive) requestAnimationFrame(loop);
+                else confettiCanvas.style.display = "none";
+            }
+            confettiActive = true;
+            loop();
+            setTimeout(() => { confettiActive = false; }, 1800);
+        }
+        sparkle.addEventListener("click", launchConfetti);
+        sparkle.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") launchConfetti();
+        });
+
+        // Accessibility: Focus on skip link
+        document.querySelector('.skip-link').addEventListener('keydown', function (e) {
+            if (e.key === "Enter" || e.key === " ") {
+                document.getElementById('main-content').focus();
+            }
+        });
+    </script>
 </body>
+
 </html>
