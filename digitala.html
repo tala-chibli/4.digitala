@@ -22,15 +22,16 @@
                         code: ['Fira Mono', 'monospace'],
                     },
                     colors: {
-                        black: '#101014',
-                        white: '#fff',
-                        grayDark: '#181820',
-                        grayLight: '#2C2C36',
-                        accent1: '#ff1da2', // Hot Pink
-                        accent2: '#b669ee', // Purple
-                        accent3: '#14c9ff', // Blue
-                        accent4: '#fff82f', // Yellow
-                        accent5: '#fff', // White
+                        // Pastel color palette from provided image
+                        pastel1: '#F4E7FB',
+                        pastel2: '#F20DDC',
+                        pastel3: '#F6BCBA',
+                        pastel4: '#E3AADD',
+                        pastel5: '#C8A8E9',
+                        pastel6: '#C3C7F4',
+                        black: '#15151a',
+                        grayDark: '#23232b',
+                        grayLight: '#31313b',
                         text: '#fff',
                         glass: '#ffffff0d',
                     },
@@ -41,7 +42,7 @@
     <style>
         html {
             scroll-behavior: smooth;
-            background: #101014;
+            background: linear-gradient(135deg, #23232b 0%, #31313b 100%);
             min-height: 100vh;
         }
 
@@ -66,19 +67,19 @@
         }
 
         body::before {
-            background: linear-gradient(130deg, #181820 0%, #2C2C36 60%, #101014 100%);
+            background: linear-gradient(140deg, #23232b 0%, #C8A8E9 60%, #E3AADD 100%);
             opacity: 1;
             background-size: cover;
-            animation: creamy-bg-move 24s linear infinite alternate;
+            animation: creamy-bg-move 18s linear infinite alternate;
         }
 
         body::after {
             pointer-events: none;
             background: url('https://svgshare.com/i/15Wm.svg') repeat;
-            opacity: 0.07;
+            opacity: 0.11;
             background-size: 320px;
             filter: grayscale(1);
-            animation: float-anim 30s linear infinite alternate;
+            animation: float-anim 22s linear infinite alternate;
         }
 
         @keyframes creamy-bg-move {
@@ -103,23 +104,23 @@
 
         ::-webkit-scrollbar {
             width: 11px;
-            background: #2C2C36;
+            background: #31313b;
         }
 
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #ff1da2 40%, #b669ee 60%, #14c9ff 90%);
+            background: linear-gradient(135deg, #F20DDC 30%, #E3AADD 60%, #C3C7F4 90%);
             border-radius: 7px;
         }
 
         .cute-divider {
             height: 7px;
             width: 160px;
-            background: linear-gradient(90deg, #ff1da2, #b669ee, #14c9ff, #fff82f, #fff);
+            background: linear-gradient(90deg, #F20DDC, #E3AADD, #C8A8E9, #C3C7F4, #F4E7FB);
             border-radius: 6px;
             margin: 1.3rem auto 2.7rem auto;
             border: none;
-            box-shadow: 0 2px 16px #ff1da288, 0 0 0 2px #b669ee66;
-            animation: divider-waves 6s linear infinite alternate;
+            box-shadow: 0 2px 16px #F20DDC88, 0 0 0 2px #E3AADD66;
+            animation: divider-waves 5s linear infinite alternate;
             position: relative;
             overflow: visible;
         }
@@ -131,9 +132,9 @@
             top: -2px;
             width: 18px;
             height: 18px;
-            background: radial-gradient(circle, #fff82f99 60%, transparent 100%);
+            background: radial-gradient(circle, #F6BCBA99 60%, transparent 100%);
             border-radius: 50%;
-            animation: star-glint 1.5s infinite alternate;
+            animation: star-glint 1.2s infinite alternate;
         }
 
         @keyframes divider-waves {
@@ -161,17 +162,17 @@
         section {
             border-radius: 32px;
             margin-bottom: 3.5rem;
-            box-shadow: 0 8px 36px 0 #10101444, 0 0 24px #ff1da211;
+            box-shadow: 0 8px 36px 0 #23232b44, 0 0 24px #F20DDC11;
             opacity: 0;
             transform: translateY(40px) scale(0.97);
             animation-fill-mode: forwards;
             border: none;
             color: #fff;
-            backdrop-filter: blur(16px) saturate(1.07);
-            -webkit-backdrop-filter: blur(16px) saturate(1.07);
+            backdrop-filter: blur(13px) saturate(1.13);
+            -webkit-backdrop-filter: blur(13px) saturate(1.13);
             overflow: hidden;
             transition: box-shadow 0.32s, background 0.32s;
-            background: linear-gradient(120deg, #181820 0%, #ff1da211 80%, #b669ee12 100%) !important;
+            background: linear-gradient(120deg, #23232b 0%, #E3AADD22 80%, #C8A8E912 100%) !important;
         }
 
         section.visible {
@@ -207,15 +208,15 @@
             top: -22px;
             width: 44px;
             height: 44px;
-            background: radial-gradient(circle at 70% 40%, #b669ee22 0%, transparent 100%);
+            background: radial-gradient(circle at 70% 40%, #C8A8E933 0%, transparent 100%);
             z-index: 0;
             filter: blur(2px);
         }
 
         nav {
             height: 90px;
-            background: linear-gradient(90deg, #101014 0%, #ff1da2 30%, #b669ee 55%, #14c9ff 75%, #fff82f 100%);
-            box-shadow: 0 2px 24px #ff1da277, 0 0 12px #b669ee44;
+            background: linear-gradient(90deg, #23232b 0%, #F20DDC 30%, #E3AADD 55%, #C8A8E9 75%, #F4E7FB 100%);
+            box-shadow: 0 2px 24px #F20DDC77, 0 0 12px #E3AADD44;
             position: sticky;
             top: 0;
             z-index: 50;
@@ -225,10 +226,10 @@
         nav span {
             font-size: 2.8rem;
             font-weight: bold;
-            color: #ff1da2;
+            color: #F20DDC;
             letter-spacing: 0.13em;
             font-family: Orbitron, Montserrat, Quicksand, sans-serif;
-            text-shadow: 0 2px 20px #b669ee88, 0 0 6px #14c9ff88;
+            text-shadow: 0 2px 20px #E3AADD88, 0 0 6px #C8A8E988;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -236,9 +237,9 @@
 
         nav .sparkle {
             font-size: 1.8rem;
-            color: #fff82f;
-            filter: drop-shadow(0 0 4px #fff82f88);
-            animation: sparkle-twinkle 1.8s infinite alternate;
+            color: #F6BCBA;
+            filter: drop-shadow(0 0 4px #F6BCBA88);
+            animation: sparkle-twinkle 1.2s infinite alternate;
         }
 
         @keyframes sparkle-twinkle {
@@ -255,7 +256,7 @@
         nav a {
             border-radius: 14px;
             padding: 0.42rem 1.3rem;
-            transition: background 0.18s, color 0.18s, box-shadow 0.2s;
+            transition: background 0.14s, color 0.14s, box-shadow 0.16s;
             font-family: 'Montserrat', 'Quicksand', 'Orbitron', sans-serif;
             font-size: 1.23rem;
             font-weight: 800;
@@ -266,10 +267,10 @@
 
         nav a:hover,
         nav a.active {
-            background: linear-gradient(90deg, #181820 30%, #ff1da2 100%);
+            background: linear-gradient(90deg, #31313b 30%, #F20DDC 100%);
             color: #fff !important;
-            box-shadow: 0 2px 20px #ff1da277;
-            text-shadow: 0 0 6px #fff82f55;
+            box-shadow: 0 2px 20px #F20DDC66;
+            text-shadow: 0 0 6px #F6BCBA44;
         }
 
         header {
@@ -296,19 +297,19 @@
             width: 420px;
             height: 420px;
             pointer-events: none;
-            background: radial-gradient(circle, #ff1da244 0%, #b669ee66 60%, transparent 100%);
+            background: radial-gradient(circle, #F20DDC44 0%, #E3AADD66 60%, transparent 100%);
             filter: blur(60px);
-            opacity: 0.8;
-            animation: header-glow 7s ease-in-out infinite alternate;
+            opacity: 0.85;
+            animation: header-glow 5s ease-in-out infinite alternate;
         }
 
         @keyframes header-glow {
             0% {
-                filter: blur(44px) brightness(1.04);
+                filter: blur(44px) brightness(1.08);
             }
 
             100% {
-                filter: blur(70px) brightness(1.13);
+                filter: blur(80px) brightness(1.17);
             }
         }
 
@@ -319,19 +320,19 @@
             border: 7px solid #fff;
             margin-bottom: 1.6rem;
             object-fit: cover;
-            box-shadow: 0 12px 48px #ff1da277, 0 4px 20px #b669ee77, 0 0 0 4px #14c9ff55 inset;
+            box-shadow: 0 18px 58px #F20DDC88, 0 4px 28px #E3AADD77, 0 0 0 4px #F6BCBA55 inset;
             background: #fff;
-            transition: box-shadow 0.22s, transform 0.22s;
-            animation: pulse-img 4s infinite alternate, float-avatar 7s ease-in-out infinite;
+            transition: box-shadow 0.15s, transform 0.15s;
+            animation: pulse-img 2.5s cubic-bezier(.4, .1, .7, 1) infinite alternate, float-avatar 5s ease-in-out infinite;
         }
 
         @keyframes pulse-img {
             0% {
-                box-shadow: 0 12px 48px #ff1da277, 0 4px 20px #b669ee77, 0 0 0 4px #14c9ff55 inset;
+                box-shadow: 0 18px 58px #F20DDC88, 0 4px 28px #E3AADD77, 0 0 0 4px #F6BCBA55 inset;
             }
 
             100% {
-                box-shadow: 0 22px 70px #b669ee99, 0 4px 38px #14c9ffaa, 0 0 0 12px #fff82f77 inset;
+                box-shadow: 0 30px 90px #E3AADD99, 0 7px 50px #C3C7F4aa, 0 0 0 18px #F6BCBA77 inset;
             }
         }
 
@@ -346,8 +347,8 @@
         }
 
         .header-img-bigger:hover {
-            box-shadow: 0 20px 62px #ff1da2cc, 0 14px 40px #b669eeaa, 0 0 0 18px #fff82fbb inset;
-            transform: scale(1.09) rotate(-3deg);
+            box-shadow: 0 28px 100px #F20DDCcc, 0 14px 56px #E3AADDcc, 0 0 0 22px #F6BCBAbb inset;
+            transform: scale(1.13) rotate(-3deg);
         }
 
         .digitala-title {
@@ -358,17 +359,17 @@
             font-weight: 900;
             margin-bottom: 0.18em;
             margin-top: 0;
-            text-shadow: 0 6px 28px #ff1da2bb;
+            text-shadow: 0 6px 28px #F20DDCbb;
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
         .digitala-title .gold-glow {
-            color: #fff82f;
+            color: #F6BCBA;
             font-size: 1.5em;
-            text-shadow: 0 0 8px #fff82fcc;
-            animation: sparkle-twinkle 2.2s infinite alternate;
+            text-shadow: 0 0 8px #F6BCBAcc;
+            animation: sparkle-twinkle 1.7s infinite alternate;
         }
 
         .header-desc {
@@ -385,19 +386,19 @@
             margin-left: auto;
             margin-right: auto;
             line-height: 1.7;
-            text-shadow: 0 2px 12px #b669ee77;
+            text-shadow: 0 2px 12px #E3AADD77;
             position: relative;
         }
 
         .header-desc .highlight {
-            color: #ff1da2;
+            color: #F20DDC;
             font-weight: 700;
-            text-shadow: 0 0 6px #b669ee55, 0 0 4px #14c9ff55;
+            text-shadow: 0 0 6px #E3AADD44, 0 0 4px #C8A8E944;
         }
 
         .neon-glow {
-            text-shadow: 0 0 4px #fff, 0 0 18px #ff1da2, 0 0 8px #14c9ffcc;
-            color: #fff82f;
+            text-shadow: 0 0 4px #fff, 0 0 18px #F20DDC, 0 0 8px #F6BCBA;
+            color: #F6BCBA;
         }
 
         .section-title {
@@ -410,87 +411,87 @@
             color: #fff !important;
             letter-spacing: 0.04em;
             line-height: 1.1;
-            background: linear-gradient(90deg, #ff1da2 20%, #b669ee 40%, #14c9ff 70%, #fff82f 95%);
+            background: linear-gradient(90deg, #F20DDC 20%, #E3AADD 40%, #C8A8E9 70%, #F6BCBA 95%);
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 2px 24px #b669ee88, 0 2px 10px #14c9ff44;
+            text-shadow: 0 2px 24px #E3AADD88, 0 2px 10px #F6BCBA44;
         }
 
         .box-contact {
-            background: #181820fa;
+            background: #23232bfa;
             color: #fff !important;
             border-radius: 24px;
-            box-shadow: 0 0 44px #14c9ff22;
+            box-shadow: 0 0 44px #C3C7F422;
             padding: 2.6rem 2.2rem 2.2rem 2.2rem;
-            border: 2.5px solid #ff1da222;
+            border: 2.5px solid #F20DDC22;
             margin-top: 1rem;
         }
 
         .box-contact input,
         .box-contact textarea {
-            background: #101014;
+            background: #15151a;
             border-radius: 11px;
-            border: 2.2px solid #b669ee;
+            border: 2.2px solid #E3AADD;
             color: #fff !important;
             font-family: 'Quicksand', 'Fira Mono', sans-serif;
             font-size: 1.12rem;
             margin-top: 0.3rem;
-            transition: border 0.19s, box-shadow 0.19s, color 0.19s;
+            transition: border 0.13s, box-shadow 0.13s, color 0.13s;
         }
 
         .box-contact input:focus,
         .box-contact textarea:focus {
-            border-color: #ff1da2;
+            border-color: #F20DDC;
             outline: none;
-            box-shadow: 0 0 0 2.5px #b669ee66;
+            box-shadow: 0 0 0 2.5px #E3AADD66;
             color: #fff !important;
         }
 
         .box-contact label {
-            color: #fff82f !important;
+            color: #F6BCBA !important;
             font-weight: 700;
         }
 
         .box-contact button,
         .box-contact .cute-btn {
             border-radius: 18px;
-            background: linear-gradient(90deg, #ff1da2 60%, #14c9ff 100%);
+            background: linear-gradient(90deg, #F20DDC 60%, #C3C7F4 100%);
             color: #fff !important;
             font-weight: 900;
             font-size: 1.18rem;
             border: none;
-            box-shadow: 0 2px 18px #b669ee44, 0 0 8px #14c9ff44;
-            transition: background 0.23s, color 0.23s, transform 0.22s, box-shadow 0.23s;
+            box-shadow: 0 2px 18px #E3AADD44, 0 0 8px #C8A8E944;
+            transition: background 0.16s, color 0.16s, transform 0.14s, box-shadow 0.17s;
         }
 
         .box-contact button:hover,
         .box-contact .cute-btn:hover {
-            background: linear-gradient(90deg, #fff82f 10%, #ff1da2 100%);
-            color: #181820;
-            box-shadow: 0 10px 32px #b669ee77, 0 2px 16px #ff1da299;
+            background: linear-gradient(90deg, #F6BCBA 10%, #F20DDC 100%);
+            color: #23232b;
+            box-shadow: 0 10px 32px #E3AADD77, 0 2px 16px #F20DDC99;
             transform: scale(1.12) rotate(-2deg);
         }
 
         .card-hover {
-            background: linear-gradient(100deg, #101014cc 60%, #ff1da211 100%);
-            border: 2.6px solid #b669ee55;
-            transition: box-shadow 0.22s, transform 0.15s, border 0.19s;
-            box-shadow: 0 2px 18px #ff1da222, 0 0 0 0 #14c9ff00;
+            background: linear-gradient(100deg, #15151aee 60%, #F20DDC11 100%);
+            border: 2.6px solid #E3AADD55;
+            transition: box-shadow 0.13s, transform 0.12s, border 0.13s;
+            box-shadow: 0 2px 18px #F20DDC22, 0 0 0 0 #C8A8E900;
             cursor: pointer;
             position: relative;
             overflow: visible;
         }
 
         .card-hover:hover {
-            box-shadow: 0 12px 44px #ff1da2bb, 0 4px 18px #b669ee77;
-            transform: scale(1.06) translateY(-7px) rotate(-2.2deg);
-            border: 2.6px solid #ff1da2bb;
+            box-shadow: 0 12px 44px #F20DDCbb, 0 4px 18px #E3AADD77;
+            transform: scale(1.07) translateY(-7px) rotate(-2.2deg);
+            border: 2.6px solid #F20DDCbb;
         }
 
         .card-hover ul li::before {
             content: "✦ ";
-            color: #fff82f;
+            color: #F6BCBA;
             font-size: 1.2em;
             margin-right: 2px;
         }
@@ -499,33 +500,35 @@
             gap: 2.4rem !important;
         }
 
+        /* Skills icons larger (bigger icons for the three skill cards) */
         .skill-icon {
-            width: 42px;
-            height: 42px;
+            width: 72px;
+            height: 72px;
             margin-bottom: 0.7em;
-            filter: drop-shadow(0 1px 18px #ff1da288) drop-shadow(0 0 4px #b669ee88);
+            filter: drop-shadow(0 1px 18px #F20DDC88) drop-shadow(0 0 4px #E3AADD88);
             display: inline-block;
-            animation: icon-pop 2.6s infinite alternate;
+            animation: icon-pop 2.1s infinite alternate cubic-bezier(.6, .3, .7, 1);
+            transition: transform 0.17s;
         }
 
         @keyframes icon-pop {
             0% {
-                transform: scale(0.96) rotate(-3deg);
+                transform: scale(0.94) rotate(-3deg);
             }
 
             100% {
-                transform: scale(1.12) rotate(2deg);
+                transform: scale(1.18) rotate(2deg);
             }
         }
 
         blockquote {
-            border-left: 6px solid #ff1da2;
-            background: linear-gradient(90deg, #181820 85%, #b669ee13 100%);
+            border-left: 6px solid #F20DDC;
+            background: linear-gradient(90deg, #23232b 85%, #E3AADD13 100%);
             font-size: 1.15em;
         }
 
         blockquote footer {
-            color: #fff82f;
+            color: #F6BCBA;
             font-family: Orbitron, Quicksand, sans-serif;
             font-size: 1.13rem;
             font-weight: 700;
@@ -546,10 +549,10 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            background: linear-gradient(90deg, #ff1da2 60%, #14c9ff 100%);
+            background: linear-gradient(90deg, #F20DDC 60%, #C3C7F4 100%);
             color: #fff;
             border-radius: 16px;
-            box-shadow: 0 2px 20px #b669eeaa, 0 0 8px #14c9ff99;
+            box-shadow: 0 2px 20px #E3AADDaa, 0 0 8px #C8A8E999;
             padding: 13px 26px;
             font-family: 'Orbitron', 'Quicksand', sans-serif;
             font-weight: 900;
@@ -557,14 +560,14 @@
             text-decoration: none;
             border: none;
             letter-spacing: 0.04em;
-            transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+            transition: background 0.13s, color 0.13s, box-shadow 0.13s, transform 0.13s;
         }
 
         .social-fixed-btn:hover {
-            background: linear-gradient(90deg, #fff82f 50%, #ff1da2 100%);
-            color: #101014;
+            background: linear-gradient(90deg, #F6BCBA 50%, #F20DDC 100%);
+            color: #23232b;
             transform: scale(1.15) rotate(-3deg);
-            box-shadow: 0 8px 44px #ff1da2cc;
+            box-shadow: 0 8px 44px #F20DDCcc;
             text-decoration: none;
         }
 
@@ -573,9 +576,9 @@
             height: 32px;
             border-radius: 10px;
             background: #fff;
-            box-shadow: 0 1px 8px #b669ee44, 0 0 0 3px #ff1da233;
+            box-shadow: 0 1px 8px #E3AADD44, 0 0 0 3px #F20DDC33;
             margin-right: 2px;
-            transition: transform 0.18s;
+            transition: transform 0.13s;
         }
 
         .social-fixed-btn:hover img {
@@ -590,12 +593,12 @@
             height: 1px;
             overflow: hidden;
             color: #fff;
-            background: #ff1da2;
+            background: #F20DDC;
             border-radius: 8px;
             padding: 8px 18px;
             font-size: 1rem;
             z-index: 999;
-            transition: left 0.2s;
+            transition: left 0.13s;
         }
 
         .skip-link:focus {
@@ -603,7 +606,7 @@
             top: 14px;
             width: auto;
             height: auto;
-            outline: 2.5px solid #fff82f;
+            outline: 2.5px solid #F6BCBA;
         }
 
         #easter-confetti {
@@ -656,13 +659,13 @@
         }
 
         footer {
-            background: #101014;
-            color: #fff82f !important;
+            background: #15151a;
+            color: #F6BCBA !important;
             font-family: 'Orbitron', 'Quicksand', sans-serif;
             font-size: 1.13rem;
             font-weight: 900;
             letter-spacing: 0.04em;
-            box-shadow: 0 0 32px #ff1da233;
+            box-shadow: 0 0 32px #F20DDC33;
         }
     </style>
 </head>
@@ -689,18 +692,18 @@
         <img src="https://imgur.com/oE2yMOw.png" alt="Logo" class="header-img-bigger" />
         <h1 class="digitala-title">Digitala <span class="gold-glow">✧</span></h1>
         <div class="header-desc">
-            <span class="highlight">//</span> <span class="font-code" style="color:#b669ee;">Design, Code &
+            <span class="highlight">//</span> <span class="font-code" style="color:#E3AADD;">Design, Code &
                 Imagination</span> <span class="highlight">//</span>
             <br>
             Digital Services By <span class="font-bold neon-glow">Tala Chibli</span>
             <br>
-            <span style="color:#fff82f;">★</span> <span class="font-bold" style="color:#ff1da2;">3 years</span> of
-            experience in the digital field <span style="color:#fff82f;">★</span>
+            <span style="color:#F6BCBA;">★</span> <span class="font-bold" style="color:#F20DDC;">3 years</span> of
+            experience in the digital field <span style="color:#F6BCBA;">★</span>
             <br>
             I offer a <span class="highlight">complete package</span> to take your brand to the next level.
             <br>
-            From <span class="font-bold" style="color:#14c9ff;">strategy</span> to <span class="font-bold"
-                style="color:#b669ee;">design</span> to <span class="font-bold" style="color:#fff82f;">execution</span>.
+            From <span class="font-bold" style="color:#C8A8E9;">strategy</span> to <span class="font-bold"
+                style="color:#E3AADD;">design</span> to <span class="font-bold" style="color:#F6BCBA;">execution</span>.
             I handle it all as if it's my own project.
         </div>
     </header>
@@ -710,15 +713,15 @@
                 <span class="section-title">About Me</span>
                 <div class="cute-divider"></div>
                 <p class="leading-relaxed max-w-3xl font-soft" style="font-size:1.16em;">
-                    <span style="font-size:1.2em; color:#ff1da2;">✦</span> <b>Tala</b>, Palestinian girl based in <span
-                        style="color:#fff82f;">Lebanon</span>.<br>
-                    <span style="color:#14c9ff;">Double major:</span> English Literature @ Lebanese University &
+                    <span style="font-size:1.2em; color:#F20DDC;">✦</span> <b>Tala</b>, Palestinian girl based in <span
+                        style="color:#F6BCBA;">Lebanon</span>.<br>
+                    <span style="color:#C8A8E9;">Double major:</span> English Literature @ Lebanese University &
                     Management Information Systems @ Siblin Training Center.<br>
-                    <span style="color:#b669ee;">Art & creativity</span> are my world. I have a vivid imagination and
-                    love expressing it through <span style="color:#ff1da2;">writing</span> and <span
-                        style="color:#fff82f;">design</span>.<br>
-                    <span style="font-style:italic; color:#b669ee;">Dream big. Design bold. Deliver <span
-                            style="color:#ff1da2; font-weight:bold;">magic</span>.</span>
+                    <span style="color:#E3AADD;">Art & creativity</span> are my world. I have a vivid imagination and
+                    love expressing it through <span style="color:#F20DDC;">writing</span> and <span
+                        style="color:#F6BCBA;">design</span>.<br>
+                    <span style="font-style:italic; color:#E3AADD;">Dream big. Design bold. Deliver <span
+                            style="color:#F20DDC; font-weight:bold;">magic</span>.</span>
                 </p>
             </div>
         </section>
@@ -729,7 +732,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl">
                     <div class="rounded-xl p-6 shadow-lg card-hover">
                         <img src="https://imgur.com/HQucyu0.png" class="skill-icon" alt="Code Icon" />
-                        <h3 class="mb-4 font-semibold" style="color:#ff1da2;">Development & Digital Tools
+                        <h3 class="mb-4 font-semibold" style="color:#F20DDC;">Development & Digital Tools
                         </h3>
                         <ul class="leading-relaxed font-soft" style="list-style:none; padding-left:0;">
                             <li> HTML / CSS / JavaScript</li>
@@ -741,7 +744,7 @@
                     </div>
                     <div class="rounded-xl p-6 shadow-lg card-hover">
                         <img src="https://imgur.com/uQ3DoEA.png" class="skill-icon" alt="Design Icon" />
-                        <h3 class="mb-4 font-semibold" style="color:#b669ee;">Design & Creativity</h3>
+                        <h3 class="mb-4 font-semibold" style="color:#E3AADD;">Design & Creativity</h3>
                         <ul class="leading-relaxed font-soft" style="list-style:none; padding-left:0;">
                             <li> Graphic Design</li>
                             <li> UI/UX Design</li>
@@ -753,7 +756,7 @@
 
                     <div class="rounded-xl p-6 shadow-lg card-hover">
                         <img src="https://imgur.com/5Ysp44U.png" class="skill-icon" alt="Marketing Icon" />
-                        <h3 class="mb-4 font-semibold" style="color:#14c9ff;">Media & Marketing Skills</h3>
+                        <h3 class="mb-4 font-semibold" style="color:#C8A8E9;">Media & Marketing Skills</h3>
                         <ul class="leading-relaxed font-soft" style="list-style:none; padding-left:0;">
                             <li> Digital Marketing</li>
                             <li> Content Creation</li>
@@ -770,41 +773,41 @@
                 <span class="section-title">Services</span>
                 <div class="cute-divider"></div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl">
-                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#ff1da2;">
+                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#F20DDC;">
                         <img src="https://imgur.com/hpoVjkV.png" class="skill-icon" alt="Web" /> Website Design &
                         Development (Frontend)
                     </div>
-                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#ff1da2;">
+                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#F20DDC;">
                         <img src="https://imgur.com/mfmCZO9.png" class="skill-icon" alt="UI/UX" /> UI/UX Design - Modern
                         Interfaces
                     </div>
-                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#ff1da2;">
+                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#F20DDC;">
                         <img src="https://imgur.com/gTC7Egb.png" class="skill-icon" alt="Extra" /> Extra: CVs -
                         Portfolios - Presentations - PDFs
                     </div>
 
-                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#b669ee;">
+                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#E3AADD;">
                         <img src="https://imgur.com/syvuS1g.png" class="skill-icon" alt="Content" /> Graphic Design
                         (posts, logos, branding)
                     </div>
-                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#b669ee;">
+                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#E3AADD;">
                         <img src="https://imgur.com/01VkjrW.png" class="skill-icon" alt="Video" /> Reels / Video Filming
                         & Editing
                     </div>
-                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#b669ee;">
+                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#E3AADD;">
                         <img src="https://imgur.com/6020gKL.png" class="skill-icon" alt="Photo" /> Photography /
                         Photoshop / Photo Generation
                     </div>
 
-                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#14c9ff;">
+                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#C8A8E9;">
                         <img src="https://imgur.com/cqIs6gQ.png" class="skill-icon" alt="Social Media" /> Social Media
                         Management
                     </div>
-                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#14c9ff;">
+                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#C8A8E9;">
                         <img src="https://imgur.com/EaS7oTs.png" class="skill-icon" alt="Marketing" /> Digital Marketing
                         & Advertising
                     </div>
-                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#14c9ff;">
+                    <div class="rounded-xl p-6 shadow-lg font-semibold text-lg card-hover" style="color:#C8A8E9;">
                         <img src="https://imgur.com/Y0tmCOy.png" class="skill-icon" alt="Design" /> Content Writing +
                         Creation
                     </div>
@@ -817,20 +820,20 @@
                 <div class="cute-divider"></div>
                 <div class="space-y-10 max-w-4xl mx-auto">
                     <blockquote class="p-6 rounded-xl shadow-lg italic font-soft relative card-hover">
-                        <span style="color:#ff1da2; font-size:1.6em;">❝</span>
+                        <span style="color:#F20DDC; font-size:1.6em;">❝</span>
                         Honestly, the results were beyond our expectations. The outcome was amazing, and we gained more
                         followers. May God bless your work and make things easier for you; you’re truly talented. But
                         the job isn’t completely done yet. We'll give you a short break, and then we’ll continue if
                         that’s okay with you.
-                        <span style="color:#ff1da2; font-size:1.6em;">❞</span>
+                        <span style="color:#F20DDC; font-size:1.6em;">❞</span>
                         <footer class="mt-4 font-semibold">— Mahmoud C.</footer>
                     </blockquote>
                     <blockquote class="p-6 rounded-xl shadow-lg italic font-soft relative card-hover">
-                        <span style="color:#ff1da2; font-size:1.6em;">❝</span>
+                        <span style="color:#F20DDC; font-size:1.6em;">❝</span>
                         Hey love, I genuinely want to thank you from the bottom of my heart for your work on my CV and
                         cover letter. I absolutely loved them. Everything was so well-organized, polished, and delivered
                         right on time. I even ended up getting an A in the course, so thank you so much.
-                        <span style="color:#ff1da2; font-size:1.6em;">❞</span>
+                        <span style="color:#F20DDC; font-size:1.6em;">❞</span>
                         <footer class="mt-4 font-semibold">— Jana B.</footer>
                     </blockquote>
                 </div>
@@ -842,23 +845,23 @@
                 <div class="cute-divider"></div>
                 <form action="https://formspree.io/f/mzzgwkvk" method="POST"
                     class="max-w-xl mx-auto p-8 rounded-xl shadow-lg grid gap-6" style="background: none; color:#fff;">
-                    <label class="block font-semibold" style="color:#fff82f;">Name
+                    <label class="block font-semibold" style="color:#F6BCBA;">Name
                         <input required type="text" name="name"
                             class="mt-1 w-full rounded-md border border-accentDark px-3 py-2 font-soft focus:outline-none focus:ring-2 focus:ring-accent"
-                            style="background: #101014; color: #fff; border: 2.2px solid #b669ee;" />
+                            style="background: #15151a; color: #fff; border: 2.2px solid #E3AADD;" />
                     </label>
-                    <label class="block font-semibold" style="color:#fff82f;">Email
+                    <label class="block font-semibold" style="color:#F6BCBA;">Email
                         <input required type="email" name="email"
                             class="mt-1 w-full rounded-md border border-accentDark px-3 py-2 font-soft focus:outline-none focus:ring-2 focus:ring-accent"
-                            style="background: #101014; color: #fff; border: 2.2px solid #b669ee;" />
+                            style="background: #15151a; color: #fff; border: 2.2px solid #E3AADD;" />
                     </label>
-                    <label class="block font-semibold" style="color:#fff82f;">Message
+                    <label class="block font-semibold" style="color:#F6BCBA;">Message
                         <textarea required name="message" rows="5"
                             class="mt-1 w-full rounded-md border border-accentDark px-3 py-2 font-soft resize-y focus:outline-none focus:ring-2 focus:ring-accent"
-                            style="background: #101014; color: #fff; border: 2.2px solid #b669ee;"></textarea>
+                            style="background: #15151a; color: #fff; border: 2.2px solid #E3AADD;"></textarea>
                     </label>
                     <button type="submit" class="px-6 py-3 rounded-xl font-semibold text-lg"
-                        style="background: linear-gradient(90deg, #ff1da2 80%, #14c9ff 100%); color: #fff; box-shadow: 0 2px 14px #b669ee22; border:none">
+                        style="background: linear-gradient(90deg, #F20DDC 80%, #C3C7F4 100%); color: #fff; box-shadow: 0 2px 14px #E3AADD22; border:none">
                         Send Message ✦
                     </button>
                 </form>
@@ -882,25 +885,25 @@
         </a>
     </div>
     <footer class="text-center py-10 font-soft select-none">
-        &copy; 2025 Tala Chibli | Digitala ✦ Powered by Imagination &amp; <span style="color:#ff1da2;">Magic</span>
+        &copy; 2025 Tala Chibli | Digitala</span>
     </footer>
     <script>
-        // Animate sections on scroll
+        // Animate sections on scroll (faster, more responsive)
         const sections = document.querySelectorAll('section');
-        function revealOnScroll() {
+        const revealOnScroll = () => {
             const windowHeight = window.innerHeight;
-            const revealPoint = 120;
+            const revealPoint = 80;
             sections.forEach(section => {
                 const sectionTop = section.getBoundingClientRect().top;
                 if (sectionTop < windowHeight - revealPoint) {
                     section.classList.add('visible');
                 }
             });
-        }
-        window.addEventListener('scroll', revealOnScroll);
+        };
+        window.addEventListener('scroll', revealOnScroll, { passive: true });
         window.addEventListener('load', revealOnScroll);
 
-        // Highlight nav link on scroll
+        // Highlight nav link on scroll (optimized)
         window.addEventListener('scroll', () => {
             let scrollPos = window.scrollY + 130;
             document.querySelectorAll('nav a').forEach(link => {
@@ -913,21 +916,21 @@
             });
         });
 
-        // Extra: Sparkle animation on nav title on hover/focus & confetti easter egg
+        // Sparkle animation & confetti easter egg (optimized)
         const sparkle = document.querySelector("nav span .sparkle");
         sparkle.addEventListener("mouseenter", function () {
-            this.style.transform = "scale(1.3) rotate(-16deg)";
+            this.style.transform = "scale(1.25) rotate(-14deg)";
         });
         sparkle.addEventListener("mouseleave", function () {
             this.style.transform = "scale(1) rotate(0deg)";
         });
         sparkle.addEventListener("focus", function () {
-            this.style.transform = "scale(1.3) rotate(-16deg)";
+            this.style.transform = "scale(1.25) rotate(-14deg)";
         });
         sparkle.addEventListener("blur", function () {
             this.style.transform = "scale(1) rotate(0deg)";
         });
-        // Easter egg — confetti on sparkle click/focus
+        // Confetti on sparkle click/focus
         const confettiCanvas = document.getElementById("easter-confetti");
         let confettiActive = false;
         function launchConfetti() {
@@ -936,13 +939,13 @@
             confettiCanvas.width = window.innerWidth;
             confettiCanvas.height = window.innerHeight;
             let confetti = [];
-            for (let i = 0; i < 220; i++) {
+            for (let i = 0; i < 180; i++) {
                 confetti.push({
                     x: Math.random() * confettiCanvas.width,
                     y: Math.random() * -confettiCanvas.height,
                     r: 7 + Math.random() * 10,
                     d: Math.random() * 90,
-                    color: `hsl(${Math.random() * 360}, 85%, 70%)`,
+                    color: `hsl(${Math.random() * 360}, 85%, 85%)`,
                     tilt: Math.random() * 10 - 10,
                     tiltAngle: 0,
                     tiltAngleInc: (Math.random() * 0.09) + 0.05
@@ -955,7 +958,7 @@
                     ctx.beginPath();
                     ctx.ellipse(c.x, c.y, c.r, c.r * 0.45 + Math.cos(frame / 10), 0, 0, 2 * Math.PI);
                     ctx.fillStyle = c.color;
-                    ctx.globalAlpha = 0.8;
+                    ctx.globalAlpha = 0.7;
                     ctx.fill();
                     ctx.globalAlpha = 1;
                 });
@@ -980,7 +983,7 @@
             }
             confettiActive = true;
             loop();
-            setTimeout(() => { confettiActive = false; }, 1800);
+            setTimeout(() => { confettiActive = false; }, 1500);
         }
         sparkle.addEventListener("click", launchConfetti);
         sparkle.addEventListener("keydown", function (e) {
