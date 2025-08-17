@@ -23,6 +23,8 @@
             --radius-card: 14px;
             --shadow: 0 2px 22px 0 #1113;
             --transition: .21s cubic-bezier(.4, 0, .2, 1);
+            --file-tab: 44px;
+            --file-tab-radius: 11px;
         }
 
         html {
@@ -218,32 +220,6 @@
             border-radius: 10px;
         }
 
-        .about-stats {
-            display: flex;
-            gap: 2.5rem;
-            margin-top: 2.5rem;
-            flex-wrap: wrap;
-        }
-
-        .stat-box {
-            min-width: 140px;
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2.1rem;
-            font-weight: bold;
-            color: var(--black);
-            text-shadow: 0 2px 10px #16161611;
-            margin-bottom: 0.2em;
-        }
-
-        .stat-label {
-            font-size: 1.02rem;
-            color: #555;
-            letter-spacing: .04em;
-        }
-
         @media (max-width: 600px) {
             .about-photo-square {
                 width: 160px;
@@ -262,73 +238,50 @@
                 font-size: 1rem;
             }
 
-            .about-stats {
-                gap: 1rem;
-            }
-
             .about-container {
                 padding: 0 0.2rem;
             }
         }
 
-        /* Services */
-        .section-title {
-            font-family: 'Montserrat', 'Inter', Arial, sans-serif;
-            font-size: 2rem;
-            color: var(--black);
-            text-align: left;
-            margin-bottom: 2rem;
-            letter-spacing: .04em;
-        }
-
+        /* Services Section Cards */
         .services-grid {
             display: grid;
+            gap: 2rem;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2.1rem;
-            margin: 0 auto 0 auto;
-            max-width: 1000px;
+            max-width: 950px;
+            margin: 0 auto;
         }
 
-        .service-card.bg {
-            background-size: cover;
-            background-position: center;
-            color: var(--white);
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--radius-card);
-            min-height: 260px;
+        .service-card {
+            background: #f7f7f7;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px #16161622;
+            border: 1.2px solid #e5e5e5;
+            padding: 2rem 1.5rem;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
-            box-shadow: 0 6px 34px #16161644;
-            border: none;
-            margin-bottom: 0;
-            transition: transform var(--transition), box-shadow var(--transition);
-            /* NO GRAYSCALE: keep images in original colors */
+            align-items: flex-start;
+            transition: box-shadow .17s;
+            cursor: pointer;
         }
 
-        .service-card.bg:after {
-            content: "";
-            display: block;
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(36, 36, 36, 0.09) 38%, rgba(36, 36, 36, 0.55) 100%);
-            z-index: 0;
+        .service-card:hover {
+            box-shadow: 0 8px 32px #16161633;
+            background: #fff;
         }
 
-        .service-price {
-            background: rgba(36, 36, 36, 0.13);
-            border-radius: 9px;
-            color: var(--black);
+        .service-title {
             font-weight: 700;
-            font-size: 1.15rem;
-            margin: 1rem;
-            padding: 0.22rem 1.1rem;
-            display: inline-block;
-            align-self: flex-start;
-            box-shadow: 0 2px 8px #16161633;
-            position: relative;
-            z-index: 2;
+            font-size: 1.17rem;
+            color: #161616;
+            margin-bottom: .6em;
+            letter-spacing: .02em;
+        }
+
+        .service-desc {
+            font-size: 1.05rem;
+            color: #232323;
+            font-weight: 500;
         }
 
         /* Portfolio/Highlights */
@@ -494,10 +447,8 @@
         .contacts-social img {
             width: 22px;
             height: 22px;
-            /* No grayscale filter */
         }
 
-        /* Scroll to Top Button */
         #scrollTopBtn {
             display: none;
             position: fixed;
@@ -529,24 +480,6 @@
             border-top: 1px solid var(--gray-border);
             margin-top: 2.3rem;
             letter-spacing: 1px;
-        }
-
-        footer .footer-social {
-            margin: 1rem 0 0.5rem 0;
-            display: flex;
-            justify-content: center;
-            gap: 0.9rem;
-        }
-
-        footer .footer-social a {
-            color: var(--black);
-            font-size: 1.2em;
-            margin: 0 0.2rem;
-            transition: color var(--transition);
-        }
-
-        footer .footer-social a:hover {
-            color: var(--gray-dark);
         }
 
         @media (max-width: 700px) {
@@ -618,11 +551,7 @@
                 gap: 0.5rem;
             }
 
-            .skills-grid {
-                gap: 0.45rem 0.6rem;
-            }
-
-            .skill-card {
+            .service-card {
                 font-size: 0.97rem;
                 padding: 0.7rem 1.1rem;
             }
@@ -643,134 +572,109 @@
                 aspect-ratio: 4/5;
                 min-height: 110px;
             }
-        }
 
-        .graphics-section {
-            background: var(--gray);
-        }
-
-        .graphics-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 2.3rem 1rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            background: var(--white);
-        }
-
-        .graphics-title {
-            font-family: 'Montserrat', 'Inter', Arial, sans-serif;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--black);
-            letter-spacing: .04em;
-            text-align: left;
-        }
-
-        .graphics-grid {
-            display: grid;
-            gap: 2.2rem;
-            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-        }
-
-        .graphics-project-card {
-            background: var(--gray);
-            border-radius: var(--radius-card);
-            box-shadow: 0 2px 12px #16161622;
-            border: 1.3px solid var(--gray-border);
-            padding: 1.5rem 1.3rem;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .graphics-project-title {
-            font-size: 1.18rem;
-            font-weight: 700;
-            font-family: 'Montserrat', 'Inter', Arial, sans-serif;
-            margin-bottom: 0.7em;
-            color: var(--black);
-            letter-spacing: .01em;
-        }
-
-        .graphics-project-description {
-            font-size: 1.03rem;
-            color: #232323;
-            margin-bottom: 1.1em;
-            font-weight: 500;
-            background: var(--white);
-            border-radius: 7px;
-            padding: 0.7em 1em;
-            box-shadow: 0 2px 8px #16161611;
-        }
-
-        .graphics-images-list {
-            width: 100%;
-            display: flex;
-            gap: 1.2em;
-            flex-wrap: wrap;
-        }
-
-        .graphics-image-wrapper {
-            flex: 1 1 180px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 1.2em;
-            min-width: 0;
-        }
-
-        .graphics-image {
-            width: 100%;
-            max-width: 360px;
-            height: auto;
-            border-radius: 11px;
-            object-fit: contain;
-            box-shadow: 0 2px 10px #16161622;
-            background: #fff;
-            transition: transform .21s;
-            margin-bottom: 0.7em;
-        }
-
-        .graphics-image:hover {
-            transform: scale(1.04) rotate(-2deg);
-        }
-
-        .graphics-image-desc {
-            font-size: 0.97rem;
-            color: #444;
-            background: #f7f7f7;
-            border-radius: 7px;
-            padding: 0.5em 0.9em;
-            text-align: center;
-            min-width: 70px;
-            box-shadow: 0 1px 6px #16161607;
-        }
-
-        @media (max-width: 700px) {
-            .graphics-title {
-                font-size: 1.3rem;
+            .graphics-file-grid {
+                gap: 1rem;
             }
 
-            .graphics-container {
-                padding: 1.2rem 0.2rem;
+            .file-card {
+                min-height: 110px;
             }
 
-            .graphics-project-title {
+            .file-tab {
+                width: 30px;
+                height: 21px;
+                left: 11px;
+            }
+
+            .file-content {
+                padding: 0.7rem 0.4rem 0.9rem 0.4rem;
+                min-height: 50px;
+            }
+
+            .file-title {
                 font-size: 1rem;
             }
 
-            .graphics-project-description {
-                font-size: .97rem;
+            .file-desc {
+                font-size: 0.95rem;
             }
+        }
 
-            .graphics-images-list {
-                gap: 0.6em;
-            }
+        /* --- File-shaped cards for graphics portfolio --- */
+        .graphics-file-grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
 
-            .graphics-image {
-                max-width: 98vw;
-            }
+        .file-card {
+            background: var(--gray);
+            border-radius: var(--radius);
+            box-shadow: 0 2px 12px #16161622;
+            border: 1.3px solid var(--gray-border);
+            cursor: pointer;
+            text-decoration: none;
+            transition: box-shadow .17s, transform .18s, background .2s;
+            position: relative;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+        }
+
+        .file-card:hover {
+            box-shadow: 0 8px 32px #16161633;
+            transform: scale(1.04) translateY(-3px);
+            background: #fff;
+        }
+
+        .file-tab {
+            width: var(--file-tab);
+            height: 32px;
+            background: var(--white);
+            border-top-left-radius: var(--file-tab-radius);
+            border-top-right-radius: var(--file-tab-radius);
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
+            position: absolute;
+            top: -1.3px;
+            left: 18px;
+            box-shadow: 0 2px 7px #16161611;
+            border: 1px solid var(--gray-border);
+            z-index: 2;
+        }
+
+        .file-content {
+            width: 88%;
+            margin-top: 2.1rem;
+            padding: 1.1rem 1rem 1.4rem 1rem;
+            background: var(--white);
+            border-radius: 13px;
+            box-shadow: 0 1px 8px #16161608;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .file-title {
+            font-size: 1.19rem;
+            font-weight: 700;
+            color: var(--black);
+            text-align: center;
+            letter-spacing: .02em;
+            margin-top: 1.2em;
+        }
+
+        .file-desc {
+            margin-top: 0.7em;
+            font-size: 1.04rem;
+            color: #444;
+            text-align: center;
+            font-weight: 500;
         }
     </style>
 </head>
@@ -811,24 +715,71 @@
             </div>
         </div>
     </section>
-    <!-- SERVICES -->
+    <!-- SERVICES SECTION (With 6 WhatsApp Clickable Cards) -->
     <section class="tab-section" id="services">
-        <h2 class="section-title">Services</h2>
-        <div class="services-grid">
-            <div class="service-card bg" style="background-image:url('https://imgur.com/A9fIoUj.jpg');">
-                <div class="service-price">$5 - $20</div>
+        <div class="services-container">
+            <h2 class="section-title"
+                style="font-family:'Montserrat', 'Inter', Arial, sans-serif; font-size:2rem; color:#161616; margin-bottom:1.3rem; letter-spacing:.04em;">
+                Services</h2>
+            <div class="services-grid">
+                <a href="https://wa.me/71732045?text=Hi%20Tala!%20I'm%20interested%20in%20Branding%20%26%20Identity%20services.%20Can%20we%20discuss%20my%20project?"
+                    target="_blank" rel="noopener">
+                    <div class="service-card">
+                        <div style="font-size:2.3rem; margin-bottom:.8em;">🎨</div>
+                        <div class="service-title">Branding & Identity</div>
+                        <div class="service-desc">Crafting unique brand identities, logos, and visual systems that tell
+                            your story and connect with audiences.</div>
+                    </div>
+                </a>
+                <a href="https://wa.me/71732045?text=Hi%20Tala!%20I'm%20interested%20in%20Web%20Design%20%26%20Development.%20Can%20you%20help%20me%20build%20a%20website?"
+                    target="_blank" rel="noopener">
+                    <div class="service-card">
+                        <div style="font-size:2.3rem; margin-bottom:.8em;">🖥️</div>
+                        <div class="service-title">Web Design & Development</div>
+                        <div class="service-desc">Building modern, responsive websites and landing pages that convert
+                            visitors into loyal customers.</div>
+                    </div>
+                </a>
+                <a href="https://wa.me/71732045?text=Hi%20Tala!%20I'm%20interested%20in%20Social%20Media%20Management.%20Can%20we%20talk%20about%20my%20online%20presence?"
+                    target="_blank" rel="noopener">
+                    <div class="service-card">
+                        <div style="font-size:2.3rem; margin-bottom:.8em;">📱</div>
+                        <div class="service-title">Social Media Management</div>
+                        <div class="service-desc">Creating scroll-stopping content, managing accounts, and developing
+                            strategies that grow your online presence.</div>
+                    </div>
+                </a>
+                <a href="https://wa.me/71732045?text=Hi%20Tala!%20I'm%20interested%20in%20Creative%20Copywriting.%20Can%20you%20help%20me%20with%20content%20for%20my%20brand?"
+                    target="_blank" rel="noopener">
+                    <div class="service-card">
+                        <div style="font-size:2.3rem; margin-bottom:.8em;">✍️</div>
+                        <div class="service-title">Creative Copywriting</div>
+                        <div class="service-desc">Writing captivating copy for websites, campaigns, and brands that
+                            inspires action and builds trust.</div>
+                    </div>
+                </a>
+                <a href="https://wa.me/71732045?text=Hi%20Tala!%20I'm%20interested%20in%20Digital%20Strategy.%20Can%20you%20guide%20me%20on%20how%20to%20grow%20my%20business%20online?"
+                    target="_blank" rel="noopener">
+                    <div class="service-card">
+                        <div style="font-size:2.3rem; margin-bottom:.8em;">🔍</div>
+                        <div class="service-title">Digital Strategy</div>
+                        <div class="service-desc">Developing and executing tailored digital strategies to achieve your
+                            business goals and maximize impact.</div>
+                    </div>
+                </a>
+                <a href="https://wa.me/71732045?text=Hi%20Tala!%20I'm%20interested%20in%20Graphic%20Design.%20Can%20you%20create%20visuals%20for%20my%20brand%20or%20project?"
+                    target="_blank" rel="noopener">
+                    <div class="service-card">
+                        <div style="font-size:2.3rem; margin-bottom:.8em;">🖌️</div>
+                        <div class="service-title">Graphic Design</div>
+                        <div class="service-desc">Designing eye-catching graphics, social media posts, flyers, and more
+                            to visually elevate your brand.</div>
+                    </div>
+                </a>
             </div>
-            <div class="service-card bg" style="background-image:url('https://imgur.com/PG4fve0.jpg');">
-                <div class="service-price">$15</div>
+            <div style="margin-top:1rem; text-align:center; font-size:1rem; color:#555;">
+                <span>Click any card to chat on WhatsApp!</span>
             </div>
-            <div class="service-card bg" style="background-image:url('https://imgur.com/9fcVxXm.jpg');">
-                <div class="service-price">$20</div>
-            </div>
-            <div class="service-card bg" style="background-image:url('https://imgur.com/1TpWHje.jpg');">
-                <div class="service-price">$5 - $20</div>
-            </div>
-        </div>
-        <div style="margin:2.5rem 0 0 0;text-align:center;">
         </div>
     </section>
     <!-- PORTFOLIO -->
@@ -841,7 +792,7 @@
                     <div class="portfolio-gallery-images"></div>
                 </div>
                 <div class="portfolio-body">
-                    <div class="portfolio-title">My Postfolio 2025</div>
+                    <div class="portfolio-title">My Portfolio 2025</div>
                 </div>
             </div>
             <div class="portfolio-card">
@@ -854,34 +805,33 @@
             </div>
         </div>
     </section>
-    <!-- GRAPHICS PORTFOLIO (NEW SECTION) -->
+    <!-- GRAPHICS PORTFOLIO (FILE CARDS) -->
     <section class="tab-section graphics-section" id="graphics">
         <div class="graphics-container">
             <h2 class="graphics-title">Portfolio</h2>
-            <div class="graphics-grid">
-                <!-- Example Project - You can duplicate this .graphics-project-card and change its content/photos -->
-                <div class="graphics-project-card">
-                    <div class="graphics-project-title">Menu Project</div>
-                    <div class="graphics-project-description">
-                        Bas Pasta Menu – Crepeno
+            <div class="graphics-file-grid">
+                <a class="file-card" href="project-menu.html" target="_blank">
+                    <div class="file-tab"></div>
+                    <div class="file-content">
+                        <div class="file-title">Menu Project</div>
+                        <div class="file-desc">Bas Pasta Menu – Crepeno</div>
                     </div>
-                    <div class="graphics-images-list">
-                        <div class="graphics-image-wrapper">
-                            <img class="graphics-image" src="https://imgur.com/QYBRaU8.jpg" alt="Logo Design" />
-                            <div class="graphics-image-desc">Post 1</div>
-                        </div>
-                        <div class="graphics-image-wrapper">
-                            <img class="graphics-image" src="https://imgur.com/dzpdQEU.jpg" alt="Menu Design" />
-                            <div class="graphics-image-desc">Post 2</div>
-                        </div>
-                        <div class="graphics-image-wrapper">
-                            <img class="graphics-image" src="https://imgur.com/9uWScuA.jpg" alt="Poster" />
-                            <div class="graphics-image-desc">Full Menu</div>
-                        </div>
-                        <!-- Add more photos here as needed, each with its own .graphics-image-desc -->
+                </a>
+                <a class="file-card" href="project-branding.html" target="_blank">
+                    <div class="file-tab"></div>
+                    <div class="file-content">
+                        <div class="file-title">Branding Project</div>
+                        <div class="file-desc">Logo, colors, and identity for a startup.</div>
                     </div>
-                </div>
-                <!-- Duplicate above .graphics-project-card for more projects -->
+                </a>
+                <a class="file-card" href="project-social.html" target="_blank">
+                    <div class="file-tab"></div>
+                    <div class="file-content">
+                        <div class="file-title">Social Media Campaign</div>
+                        <div class="file-desc">Multi-platform campaign for growth.</div>
+                    </div>
+                </a>
+                <!-- Add more file cards for each project as needed -->
             </div>
         </div>
     </section>
@@ -943,84 +893,6 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
-
-        // TESTIMONIALS
-        const staticTestimonials = [
-            {
-                name: "Mahmoud C.",
-                review: "Honestly, the result were beyond our expectations. The outcome was amazing, and we gained more followers. May God bless your work and make things easier for you, you are truly talented."
-            },
-            {
-                name: "Jana B.",
-                review: "Hey love, I genuinely want to thank you from the bottom of my heart for your work on my CV and cover letter. I absolutely loved them. Everything was so well-organized, polished, and delivered right on time. I even ended up getting an A in the course, so thank you so much."
-            }
-        ];
-        function fetchDynamicTestimonials() {
-            return fetch("https://script.google.com/macros/s/AKfycbyenqpbGGv_XUtiorfXttYwV-BLVqoGUVcgHPC7Hi9GE68HRXDomeqDJifDMUgZuBjEUw/exec")
-                .then(response => response.json())
-                .catch(error => {
-                    console.error("Error fetching feedbacks:", error);
-                    return [];
-                });
-        }
-        function renderTestimonials(allTestimonials) {
-            const carousel = document.getElementById("testimonialCarousel");
-            carousel.innerHTML = "";
-            allTestimonials.forEach(({ name, review }, idx) => {
-                if (!name && !review) return;
-                const card = document.createElement("div");
-                card.className = "testimonial-card" + (idx === 0 ? " active" : "");
-                card.innerHTML = `<div class="review-text">${review}</div><div class="author">— ${name}</div>`;
-                carousel.appendChild(card);
-            });
-            updateTestimonialDots();
-        }
-        function updateTestimonialDots() {
-            const carousel = document.getElementById('testimonialCarousel');
-            const nav = document.getElementById('testimonialNav');
-            const cards = Array.from(carousel.querySelectorAll('.testimonial-card'));
-            nav.innerHTML = '';
-            cards.forEach((card, i) => {
-                const dot = document.createElement('button');
-                dot.className = 'testimonial-dot' + (card.classList.contains('active') ? ' active' : '');
-                dot.type = 'button';
-                dot.onclick = () => {
-                    cards.forEach(c => c.classList.remove('active'));
-                    card.classList.add('active');
-                    updateTestimonialDots();
-                };
-                nav.appendChild(dot);
-            });
-        }
-        function setupTestimonialCarousel() {
-            setInterval(() => {
-                const cards = Array.from(document.querySelectorAll('.testimonial-card'));
-                if (cards.length <= 1) return;
-                let idx = cards.findIndex(c => c.classList.contains('active'));
-                cards[idx].classList.remove('active');
-                idx = (idx + 1) % cards.length;
-                cards[idx].classList.add('active');
-                updateTestimonialDots();
-            }, 7000);
-        }
-        async function loadAllTestimonials() {
-            let googleTestimonials = await fetchDynamicTestimonials();
-            const allTestimonials = [...staticTestimonials, ...googleTestimonials.reverse()];
-            renderTestimonials(allTestimonials);
-        }
-        window.addEventListener('DOMContentLoaded', () => {
-            loadAllTestimonials();
-            setupTestimonialCarousel();
-        });
-        // Scroll to top
-        const scrollBtn = document.getElementById('scrollTopBtn');
-        window.onscroll = function () {
-            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-                scrollBtn.style.display = "block";
-            } else { scrollBtn.style.display = "none"; }
-        };
-        scrollBtn.onclick = function () { window.scrollTo({ top: 0, behavior: 'smooth' }); };
-
         // Portfolio Gallery Swiper (with fast loading and horizontal scroll support)
         function initPortfolioGallery(gallery) {
             const images = JSON.parse(gallery.getAttribute('data-images'));
@@ -1039,6 +911,14 @@
         window.addEventListener('DOMContentLoaded', function () {
             document.querySelectorAll('.portfolio-gallery').forEach(initPortfolioGallery);
         });
+        // Scroll to top
+        const scrollBtn = document.getElementById('scrollTopBtn');
+        window.onscroll = function () {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                scrollBtn.style.display = "block";
+            } else { scrollBtn.style.display = "none"; }
+        };
+        scrollBtn.onclick = function () { window.scrollTo({ top: 0, behavior: 'smooth' }); };
     </script>
 </body>
 
