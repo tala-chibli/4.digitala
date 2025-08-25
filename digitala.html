@@ -684,14 +684,23 @@
         }
 
         /* ====== Mobile Menu ====== */
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+        }
+
         @media (max-width: 768px) {
             nav.menu {
                 display: none;
                 flex-direction: column;
                 background: var(--gray);
                 position: absolute;
-                top: 55px;
-                /* نفس ارتفاع الهيدر عندك */
+                top: 70px;
+                /* حسب ارتفاع الهيدر عندك */
                 right: 0;
                 left: 0;
                 padding: 1rem;
@@ -712,11 +721,16 @@
 
 <body>
     <header>
+        <!-- اللوجو -->
         <a href="#about" class="logo">
-            <img src="https://imgur.com/KseW3Eo.png" alt="Logo" loading="lazy" />
+            <img src="https://imgur.com/KseW3Eo.png" alt="Logo" />
             Digitala
         </a>
+
+        <!-- زر الهامبرغر (بيبين بس على الموبايل) -->
         <button class="menu-toggle" aria-label="Open Menu">&#9776;</button>
+
+        <!-- قائمة الروابط -->
         <nav class="menu" aria-label="Main navigation">
             <a href="#about" class="active" data-tab="about">About</a>
             <a href="#portfolio" data-tab="portfolio">Certificates</a>
@@ -726,6 +740,7 @@
             <a href="#contacts" data-tab="contacts">Contact</a>
         </nav>
     </header>
+
 
     <script>
         const toggleBtn = document.querySelector(".menu-toggle");
@@ -1296,6 +1311,17 @@
         };
         scrollBtn.onclick = function () { window.scrollTo({ top: 0, behavior: 'smooth' }); };
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggleBtn = document.querySelector(".menu-toggle");
+            const menu = document.querySelector("nav.menu");
+
+            toggleBtn.addEventListener("click", () => {
+                menu.classList.toggle("show");
+            });
+        });
+    </script>
+
 </body>
 
 </html>
