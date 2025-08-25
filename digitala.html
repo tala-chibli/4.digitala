@@ -676,6 +676,27 @@
             text-align: center;
             font-weight: 500;
         }
+
+        .project-photo-block img {
+            display: block;
+            margin: 0 auto;
+            border-radius: 16px;
+            box-shadow: 0 2px 18px #16161610;
+            background: #fff;
+            max-width: 90%;
+            max-height: 70vh;
+            width: auto;
+            height: auto;
+        }
+
+        @media (max-width: 700px) {
+            .project-photo-block img {
+                max-width: 100%;
+                max-height: 50vh;
+                width: auto;
+                height: auto;
+            }
+        }
     </style>
 </head>
 
@@ -718,153 +739,187 @@
     </section>
     <!-- SERVICES SECTION (With 6 WhatsApp Clickable Cards) -->
     <!-- Replace the original SERVICES SECTION with this creative version -->
-
     <section class="tab-section" id="services">
         <div class="services-container">
             <h2 class="section-title"
                 style="font-family:'Montserrat', 'Inter', Arial, sans-serif; font-size:2rem; color:#161616; margin-bottom:1.3rem; letter-spacing:.04em;">
                 Services</h2>
             <div class="services-grid creative-services">
-                <!-- Example images used below, replace URLs as needed -->
-                <a href="https://wa.me/71732045?text=Hi!%20I%E2%80%99m%20excited%20to%20boost%20my%20brand%20with%20your%20Marketing%20%26%20Branding%20services!"
-                    target="_blank" rel="noopener">
-                    <div class="service-card creative-card" style="background-image:url('');">
-                        <div class="service-glass">
-                            <div class="service-title">Marketing & Branding</div>
-                            <div class="service-desc">I help businesses build strong brand identities and marketing
-                                strategies that connect with the right audience. From visual identity to creative
-                                campaigns,
-                                I make sure your brand stands out and leaves a lasting impact.</div>
+                <!-- 1. Build Your Visual Identity -->
+                <div class="service-card creative-card" style="background-image:url('');">
+                    <div class="service-glass">
+                        <div class="service-title">Build Your Visual Identity</div>
+                        <div class="service-desc">
+                            <ul class="service-list">
+                                <li><button class="service-plot" data-plot="Logo Design">Logo Design</button></li>
+                                <li><button class="service-plot" data-plot="Colour Palette">Colour Palette</button></li>
+                                <li><button class="service-plot" data-plot="Typography">Typography</button></li>
+                                <li><button class="service-plot" data-plot="Iconography">Iconography</button></li>
+                                <li><button class="service-plot"
+                                        data-plot="Patterns/Textures">Patterns/Textures</button></li>
+                                <li><button class="service-plot" data-plot="Layout Systems">Layout Systems</button></li>
+                                <li><button class="service-plot" data-plot="Shapes">Shapes</button></li>
+                                <li><button class="service-plot" data-plot="Packaging">Packaging</button></li>
+                                <li><button class="service-plot" data-plot="Signage">Signage</button></li>
+                                <li><button class="service-plot" data-plot="Merchandise">Merchandise</button></li>
+                            </ul>
                         </div>
                     </div>
-                </a>
-                <a href="https://wa.me/71732045?text=Hi!%20Can%20you%20help%20me%20grow%20my%20social%20media%20and%20engage%20my%20audience%3F"
-                    target="_blank" rel="noopener">
-                    <div class="service-card creative-card" style="background-image:url('');">
-                        <div class="service-glass">
-                            <div class="service-title">Social Media Management</div>
-                            <div class="service-desc">I create and manage content that builds engagement, grows
-                                communities,
-                                and strengthens your brand presence. From strategy to daily execution, I make sure your
-                                social media connects with the right audience and drives results.</div>
+                </div>
+                <!-- 2. Grow Your Social Presence -->
+                <div class="service-card creative-card" style="background-image:url('');">
+                    <div class="service-glass">
+                        <div class="service-title">Grow Your Social Presence</div>
+                        <div class="service-desc">
+                            <ul class="service-list">
+                                <li><button class="service-plot" data-plot="Content Creation">Content Creation</button>
+                                </li>
+                                <li><button class="service-plot" data-plot="Content Calendar">Content Calendar</button>
+                                </li>
+                                <li><button class="service-plot" data-plot="Engagement Strategy">Engagement
+                                        Strategy</button></li>
+                                <li><button class="service-plot" data-plot="Brand Consistency">Brand
+                                        Consistency</button></li>
+                                <li><button class="service-plot" data-plot="Trend Monitoring">Trend Monitoring</button>
+                                </li>
+                                <li><button class="service-plot" data-plot="Community Building">Community
+                                        Building</button></li>
+                            </ul>
                         </div>
                     </div>
-                </a>
-                <a href="https://wa.me/71732045?text=Hey!%20I%20need%20awesome%20content%20that%20really%20connects%20with%20my%20audience."
-                    target="_blank" rel="noopener">
-                    <div class="service-card creative-card" style="background-image:url('');">
-                        <div class="service-glass">
-                            <div class="service-title">Content Writing & Creation</div>
-                            <div class="service-desc">I craft compelling content that captures attention and tells your
-                                brand’s story with clarity and impact. From engaging copy to creative visuals, I make
-                                sure
-                                your message resonates and inspires action.</div>
+                </div>
+                <!-- 3. Stunning Frontend Websites -->
+                <div class="service-card creative-card" style="background-image:url('');">
+                    <div class="service-glass">
+                        <div class="service-title">Stunning Frontend Websites</div>
+                        <div class="service-desc">
+                            <ul class="service-list">
+                                <li><button class="service-plot" data-plot="Frontend Web Design">Frontend Web
+                                        Design</button></li>
+                                <li><button class="service-plot" data-plot="Content Writing for Web">Content Writing for
+                                        Web</button></li>
+                                <li><button class="service-plot" data-plot="User Interface (UI) Design">User Interface
+                                        (UI) Design</button></li>
+                            </ul>
                         </div>
                     </div>
-                </a>
-                <a href="https://wa.me/71732045?text=Hi!%20I%E2%80%99m%20looking%20for%20a%20website%20that%20looks%20great%20and%20works%20perfectly."
-                    target="_blank" rel="noopener">
-                    <div class="service-card creative-card" style="background-image:url('');">
-                        <div class="service-glass">
-                            <div class="service-title">Frontend Development</div>
-                            <div class="service-desc">I build responsive and visually appealing websites that combine
-                                design
-                                with functionality. With clean code and modern layouts, I ensure your site delivers a
-                                seamless experience across all devices.</div>
+                </div>
+                <!-- 4. Printed & Custom Designs -->
+                <div class="service-card creative-card" style="background-image:url('');">
+                    <div class="service-glass">
+                        <div class="service-title">Printed & Custom Designs</div>
+                        <div class="service-desc">
+                            <ul class="service-list">
+                                <li><button class="service-plot" data-plot="Print Materials">Print Materials</button>
+                                </li>
+                                <li><button class="service-plot" data-plot="Book Covers & Bookmarks">Book Covers &
+                                        Bookmarks</button></li>
+                                <li><button class="service-plot" data-plot="Custom Characters">Custom
+                                        Characters</button></li>
+                                <li><button class="service-plot" data-plot="Tailored Designs">Tailored Designs</button>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                </a>
-                <a href="https://wa.me/71732045?text=Hey!%20I%E2%80%99d%20love%20your%20help%20with%20CVs%2C%20resumes%2C%20portfolios%2C%20presentations%2C%20or%20custom%20designs."
-                    target="_blank" rel="noopener">
-                    <div class="service-card creative-card" style="background-image:url('');">
-                        <div class="service-glass">
-                            <div class="service-title">Extra Services</div>
-                            <div class="service-desc">Alongside my core services, I offer tailored support with CVs,
-                                resumes, cover letters, portfolios, presentations, PDFs, academic assignments, and
-                                custom
-                                design requests. Each piece is crafted with professionalism and creativity to highlight
-                                your
-                                strengths and make a lasting impression.</div>
+                </div>
+                <!-- 5. Photography & Video Production -->
+                <div class="service-card creative-card" style="background-image:url('');">
+                    <div class="service-glass">
+                        <div class="service-title">Photography & Video Production</div>
+                        <div class="service-desc">
+                            <ul class="service-list">
+                                <li><button class="service-plot" data-plot="Product Photography">Product
+                                        Photography</button></li>
+                                <li><button class="service-plot" data-plot="Promotional Videos">Promotional
+                                        Videos</button></li>
+                                <li><button class="service-plot" data-plot="Video Editing">Video Editing</button></li>
+                            </ul>
                         </div>
                     </div>
-                </a>
+                </div>
+                <!-- 6. Extra Services -->
+                <div class="service-card creative-card" style="background-image:url('');">
+                    <div class="service-glass">
+                        <div class="service-title">Extra Services</div>
+                        <div class="service-desc">
+                            <ul class="service-list">
+                                <li><button class="service-plot" data-plot="CV & Cover Letter">CV & Cover
+                                        Letter</button></li>
+                                <li><button class="service-plot" data-plot="Portfolio Design">Portfolio Design</button>
+                                </li>
+                                <li><button class="service-plot" data-plot="Presentations & PDFs">Presentations &
+                                        PDFs</button></li>
+                                <li><button class="service-plot" data-plot="Projects & Assignments">Projects &
+                                        Assignments</button></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div style="margin-top:1rem; text-align:center; font-size:1rem; color:#555;">
-                <span>Click any card to chat on WhatsApp!</span>
+                <span>Click any button to chat on WhatsApp about that service!</span>
             </div>
         </div>
     </section>
     <style>
-        .creative-services .creative-card {
-            position: relative;
-            min-height: 340px;
-            background-size: cover;
-            background-position: center;
-            overflow: hidden;
+        .service-list {
+            list-style: none;
+            padding: 0;
+            margin: 1em 0 0 0;
             display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            box-shadow: 0 8px 32px #16161633;
-            border-radius: 18px;
-            border: none;
-            transition: box-shadow .18s, transform .18s;
+            flex-wrap: wrap;
+            gap: 0.7em;
         }
 
-        .creative-services .creative-card:hover {
-            box-shadow: 0 12px 36px #16161655;
-            transform: scale(1.025) translateY(-5px);
+        .service-list li {
+            margin: 0;
+            padding: 0;
         }
 
-        .creative-services .service-glass {
-            width: 96%;
-            margin: 0 2% 3% 2%;
-            background: rgba(247, 247, 247, 0.70);
-            backdrop-filter: blur(14px) saturate(1.3);
-            box-shadow: 0 2px 22px #16161622, 0 0 0 1.5px #eee6;
-            border-radius: 16px;
-            padding: 1.3rem 1.1rem 1.2rem 1.1rem;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            transition: background .3s, box-shadow .2s;
-            position: relative;
+        .service-plot {
+            background: #fff;
+            border: 1.5px solid #23232322;
+            border-radius: 30px;
+            padding: 0.6em 1.3em;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 10px #16161612;
+            margin: 0;
+            transition: background .17s, box-shadow .17s, color .17s, border .18s;
         }
 
-        .creative-services .service-title {
-            color: #161616;
-            font-weight: 700;
-            font-size: 1.3rem;
-            margin-bottom: .7em;
-            letter-spacing: .04em;
-            text-shadow: 0 1px 12px #fff9;
-        }
-
-        .creative-services .service-desc {
-            color: #222;
-            font-size: 1.07rem;
-            font-weight: 500;
-            text-shadow: 0 1px 12px #fff8;
+        .service-plot:hover {
+            background: #161616;
+            color: #fff;
+            box-shadow: 0 6px 18px #16161622;
+            border: 1.5px solid #16161644;
         }
 
         @media (max-width:700px) {
-            .creative-services .creative-card {
-                min-height: 180px;
+            .service-list {
+                gap: 0.4em;
             }
 
-            .creative-services .service-glass {
-                padding: 0.7rem 0.5rem 0.8rem 0.5rem;
-                border-radius: 10px;
-            }
-
-            .creative-services .service-title {
-                font-size: 1.05rem;
-            }
-
-            .creative-services .service-desc {
-                font-size: 0.96rem;
+            .service-plot {
+                font-size: 0.92rem;
+                padding: 0.4em 0.9em;
             }
         }
     </style>
+    <script>
+        // WhatsApp redirection for service plots
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.service-plot').forEach(function (btn) {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    var plot = btn.getAttribute('data-plot');
+                    var waMsg = encodeURIComponent("I'm interested in '" + plot + "'. Can you tell me more?");
+                    window.open("https://wa.me/71732045?text=" + waMsg, "_blank");
+                });
+            });
+        });
+    </script>
     <!-- PORTFOLIO -->
     <section class="tab-section" id="portfolio">
         <h2 class="section-title">Highlights</h2>
@@ -906,27 +961,170 @@
             </div>
         </div>
     </section>
-    <!-- GRAPHICS PORTFOLIO (FILE CARDS) -->
+    <!-- PORTFOLIO SECTION WITH MULTIPLE PROJECTS -->
     <section class="tab-section graphics-section" id="graphics">
         <div class="graphics-container">
             <h2 class="graphics-title">Portfolio</h2>
             <div class="graphics-file-grid">
-                <!-- GRAPHICS PORTFOLIO (CARD 1) -->
-                <a class="file-card" href="https://tala-chibli11.github.io/projects/crepeno.html" target="_blank">
-                    <div class="file-tab"></div>
-                    <div class="file-content">
-                        <div class="file-title">Menu Project</div>
-                        <div class="file-desc">Bas Pasta Menu – Crepeno</div>
-                    </div>
-                </a>
-                <a class="file-card" href="https://tala-chibli11.github.io/projects/lamsa.html" target="_blank">
+                <!-- PROJECT 1 -->
+                <div class="file-card" id="open-modal-1">
                     <div class="file-tab"></div>
                     <div class="file-content">
                         <div class="file-title">Visual Identity Project</div>
                         <div class="file-desc">Lamsa Candles</div>
                     </div>
-                </a>
+                </div>
+                <!-- PROJECT 2 -->
+                <div class="file-card" id="open-modal-2">
+                    <div class="file-tab"></div>
+                    <div class="file-content">
+                        <div class="file-title">Menu Project</div>
+                        <div class="file-desc">Bas Pasta Menu – Crepeno</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
+
+    <!-- MODAL FOR PROJECT 1 -->
+    <div id="project-modal-1" class="modal-overlay" style="display:none;">
+        <div class="modal-content">
+            <span class="close-modal" data-close="1">&times;</span>
+            <div class="project-container">
+                <div class="project-title">Visual Identity Project</div>
+                <div class="project-company">Lamsa Candles</div>
+                <div class="project-desc">
+                    LAMSA Candles – Branding & Visual Identity
+                    For this project, I designed a complete branding package for LAMSA Candles, a handcrafted candle
+                    business
+                    that focuses on elegance, warmth, and a touch of luxury.<br><br>
+                    ✨ Logo Design: A soft, glowing aesthetic featuring a candle wrapped with a delicate pink bow, framed
+                    with
+                    floral illustrations.<br><br>
+                    ✨ Sticker Design: The logo was adapted into a sticker format for packaging.<br><br>
+                    ✨ Instagram Highlights: A custom set of icon designs for Instagram story highlights.<br><br>
+                    The overall branding emphasizes warmth, elegance, and personalization.
+                </div>
+                <div class="project-gallery">
+                    <div class="project-photo-block">
+                        <img src="https://imgur.com/sazMX5w.jpg" alt="Logo Design">
+                        <div class="photo-caption">Lamsa's Visual Identity</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL FOR PROJECT 2 -->
+    <div id="project-modal-2" class="modal-overlay" style="display:none;">
+        <div class="modal-content">
+            <span class="close-modal" data-close="2">&times;</span>
+            <div class="project-container">
+                <div class="project-title">Menu Project</div>
+                <div class="project-company">Bas Pasta Menu – Crepeno</div>
+                <div class="project-desc">
+                    I designed a full marketing collateral and menu for Crepeno and Bas Pasta, a food brand based in
+                    Tripoli.
+                    The project included creating a modern and appetizing menu layout.<br><br>
+                    The design combines Arabic and English text, uses strong yellow and black contrasts, and integrates
+                    food photography.<br><br>
+                    The result: professional, customer-friendly menus and posters.
+                </div>
+                <div class="project-gallery">
+                    <div class="project-photo-block">
+                        <img src="https://imgur.com/QYBRaU8.jpg" alt="Poster 1">
+                        <div class="photo-caption">Poster 1</div>
+                    </div>
+                    <div class="project-photo-block">
+                        <img src="https://imgur.com/dzpdQEU.jpg" alt="Poster 2">
+                        <div class="photo-caption">Poster 2</div>
+                    </div>
+                    <div class="project-photo-block">
+                        <img src="https://imgur.com/9uWScuA.jpg" alt="Menu">
+                        <div class="photo-caption">Menu</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL STYLES -->
+    <style>
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 6px 32px #16161633;
+            padding: 1.3rem 1.7rem;
+            max-width: 870px;
+            width: 95%;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            overflow-x: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 18px;
+            right: 22px;
+            font-size: 2rem;
+            color: #161616;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 1001;
+        }
+
+        /* IMAGE: SHOW AT ORIGINAL SIZE! */
+        .project-photo-block img {
+            display: block;
+            margin: 0 auto;
+            border-radius: 16px;
+            box-shadow: 0 2px 18px #16161610;
+            background: #fff;
+            width: auto;
+            height: auto;
+        }
+
+        .project-photo-block {
+            overflow-x: auto;
+            text-align: center;
+        }
+    </style>
+
+    <!-- MODAL SCRIPT -->
+    <script>
+        document.getElementById('open-modal-1').onclick = function () {
+            document.getElementById('project-modal-1').style.display = 'flex';
+        };
+        document.getElementById('open-modal-2').onclick = function () {
+            document.getElementById('project-modal-2').style.display = 'flex';
+        };
+        document.querySelectorAll('.close-modal').forEach(function (btn) {
+            btn.onclick = function () {
+                var idx = btn.getAttribute('data-close');
+                document.getElementById('project-modal-' + idx).style.display = 'none';
+            };
+        });
+        document.getElementById('project-modal-1').onclick = function (e) {
+            if (e.target === this) this.style.display = 'none';
+        };
+        document.getElementById('project-modal-2').onclick = function (e) {
+            if (e.target === this) this.style.display = 'none';
+        };
+    </script>
     <!-- FEEDBACKS SECTION -->
     <section class="tab-section" id="feedbacks">
         <div class="feedbacks-container">
@@ -1088,6 +1286,7 @@
             }
         }
     </style>
+
     <!-- CONTACT -->
     <section class="tab-section" id="contacts">
         <h2 class="section-title">Contact</h2>
