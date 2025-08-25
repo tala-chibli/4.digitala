@@ -683,70 +683,30 @@
             }
         }
 
-        <style>
-        /* ... your existing styles ... */
-
-        /* Hamburger Icon for Mobile */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.7rem;
-            margin-left: 1rem;
-            z-index: 1001;
-        }
-
-        .menu-toggle .hamburger-line {
-            display: block;
-            width: 30px;
-            height: 4px;
-            background: var(--white);
-            margin: 5px 0;
-            border-radius: 2px;
-            transition: background .19s;
-        }
-
-        @media (max-width: 700px) {
-            .menu-toggle {
-                display: block;
-            }
-
+        /* ====== Mobile Menu ====== */
+        @media (max-width: 768px) {
             nav.menu {
-                position: absolute;
-                top: 55px;
-                right: 0;
-                background: var(--black);
-                border: 1px solid var(--accent);
-                border-radius: 0 0 16px 16px;
-                box-shadow: 0 4px 20px #0006;
                 display: none;
                 flex-direction: column;
-                gap: 0;
-                width: 100%;
-                z-index: 1000;
-                animation: fadeIn .3s;
+                background: var(--gray);
+                position: absolute;
+                top: 55px;
+                /* نفس ارتفاع الهيدر عندك */
+                right: 0;
+                left: 0;
+                padding: 1rem;
+                border-top: 1px solid var(--border);
+                z-index: 998;
             }
 
-            nav.menu.open {
+            nav.menu.show {
                 display: flex;
             }
 
-            nav.menu a {
-                padding: 1rem;
-                border-bottom: 1px solid var(--accent);
-                font-size: 1.09rem;
-                text-align: left;
-                width: 100%;
-            }
-
-            nav.menu a:last-child {
-                border-bottom: none;
+            .menu-toggle {
+                display: block;
             }
         }
-
-        /* ... rest of your styles ... */
-    </style>
     </style>
 </head>
 
@@ -756,12 +716,8 @@
             <img src="https://imgur.com/KseW3Eo.png" alt="Logo" loading="lazy" />
             Digitala
         </a>
-        <button class="menu-toggle" aria-label="Open Menu" id="menuToggleBtn">
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-        </button>
-        <nav class="menu" aria-label="Main navigation" id="mainMenu">
+        <button class="menu-toggle" aria-label="Open Menu">&#9776;</button>
+        <nav class="menu" aria-label="Main navigation">
             <a href="#about" class="active" data-tab="about">About</a>
             <a href="#portfolio" data-tab="portfolio">Certificates</a>
             <a href="#services" data-tab="services">Services</a>
@@ -770,6 +726,16 @@
             <a href="#contacts" data-tab="contacts">Contact</a>
         </nav>
     </header>
+
+    <script>
+        const toggleBtn = document.querySelector(".menu-toggle");
+        const menu = document.querySelector("nav.menu");
+
+        toggleBtn.addEventListener("click", () => {
+            menu.classList.toggle("show");
+        });
+    </script>
+
     <!-- ABOUT -->
     <section class="tab-section active about-section" id="about">
         <div class="about-container">
@@ -1329,24 +1295,6 @@
             } else { scrollBtn.style.display = "none"; }
         };
         scrollBtn.onclick = function () { window.scrollTo({ top: 0, behavior: 'smooth' }); };
-    </script>
-    <script>
-        // Hamburger menu toggle for mobile
-        document.addEventListener('DOMContentLoaded', function () {
-            var menuToggleBtn = document.getElementById('menuToggleBtn');
-            var mainMenu = document.getElementById('mainMenu');
-
-            menuToggleBtn.addEventListener('click', function () {
-                mainMenu.classList.toggle('open');
-            });
-
-            // Optional: close menu when a navigation link is clicked (mobile UX best practice)
-            mainMenu.querySelectorAll('a').forEach(function (link) {
-                link.addEventListener('click', function () {
-                    mainMenu.classList.remove('open');
-                });
-            });
-        });
     </script>
 </body>
 
