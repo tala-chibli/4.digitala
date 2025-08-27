@@ -705,19 +705,43 @@
                 max-width: 99vw;
             }
         }
+
+        .translate-switch {
+            background: #807f7f;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 0.5em 1em;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 16px;
+            box-shadow: 0 2px 8px #0001;
+            transition: background 0.16s;
+        }
+
+        .translate-switch:hover {
+            background: #807f7f;
+        }
+
+        @media (max-width: 768px) {
+            .translate-switch {
+                font-size: 0.93rem;
+                margin-left: 8px;
+            }
+        }
     </style>
 </head>
 
 <body>
     <header>
-        <!-- Logo -->
         <a href="#about" class="logo">
             <img src="https://imgur.com/KseW3Eo.png" alt="Logo" />
             Digitala
         </a>
-        <!-- Hamburger -->
+        <!-- زر الترجمة بجانب العناوين -->
+        <button id="langToggle" class="translate-switch">العربية</button>
         <button class="menu-toggle" aria-label="Open Menu">&#9776;</button>
-        <!-- Navigation -->
         <nav class="menu" aria-label="Main navigation">
             <a href="#about" class="active" data-tab="about">About</a>
             <a href="#portfolio" data-tab="portfolio">Certificates</a>
@@ -1186,6 +1210,65 @@
         //         menu.classList.toggle("show");
         //     });
         // });
+    </script>
+    <!-- جوجل ترانسليت (مخفي) -->
+    <div id="google_translate_element" style="display:none;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'ar,en',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript"
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
+        function changeLanguage(lang) {
+            var frame = document.querySelector('iframe.goog-te-menu-frame');
+            if (frame) {
+                var innerDoc = frame.contentDocument || frame.contentWindow.document;
+                var langAnchor = innerDoc.querySelector("a[lang='" + lang + "']");
+                if (langAnchor) langAnchor.click();
+            } else {
+                var combo = document.querySelector('.goog-te-combo');
+                if (combo) {
+                    combo.value = lang;
+                    var event = document.createEvent("HTMLEvents");
+                    event.initEvent("change", false, true);
+                    combo.dispatchEvent(event);
+                }
+            }
+        }
+        const langToggle = document.getElementById('langToggle');
+        let currentLang = 'en';
+        langToggle.addEventListener('click', function () {
+            if (currentLang === 'en') {
+                langToggle.textContent = 'ENGLISH';
+                currentLang = 'ar';
+                setTimeout(function () { changeLanguage('ar'); }, 500);
+            } else {
+                langToggle.textContent = 'العربية';
+                currentLang = 'en';
+                setTimeout(function () { changeLanguage('en'); }, 500);
+            }
+        });
+        // مراقبة لغة الصفحة وتغيير الزر تلقائياً إذا اختار المستخدم من شريط جوجل مباشرة
+        function observeTranslate() {
+            const observer = new MutationObserver(function () {
+                let htmlLang = document.documentElement.getAttribute('lang');
+                if (htmlLang === 'ar') {
+                    langToggle.textContent = 'ENGLISH';
+                    currentLang = 'ar';
+                } else {
+                    langToggle.textContent = 'العربية';
+                    currentLang = 'en';
+                }
+            });
+            observer.observe(document.documentElement, { attributes: true });
+        }
+        window.addEventListener('DOMContentLoaded', observeTranslate);
     </script>
 </body>
 
