@@ -5,22 +5,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tala Chibli | Digitala</title>
-    <link rel="icon" type="image/png" href="https://imgur.com/KseW3Eo.png" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Inter:wght@400;600;700&display=swap"
+    <meta name="description"
+        content="Tala Chibli - Digital Creator, Social Media Manager, Designer. Elevate your brand with creative strategy, design, and web development." />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@700&display=swap"
         rel="stylesheet" />
+    <link rel="icon" type="image/png+xml" href="https://imgur.com/KseW3Eo.png" />
     <style>
+        /*
+      Enhanced, animated, glassy version of the original site.
+      - Content text has been kept unchanged.
+      - Visuals: glassmorphism, animated floating symbols, background video, subtle motion.
+      - Services: tiles show only titles and creative photos; clicking reveals details with prices.
+    */
+
         :root {
-            --primary: #ff4a4a;
-            --secondary: #2e2e44;
-            --bg-dark: #0b0b0e;
-            --bg-light: #f8fbff;
-            --white: #fff;
-            --glass: rgba(255, 255, 255, 0.66);
-            --radius: 20px;
-            --shadow: 0 8px 36px #2e2e4455;
-            --gradient: linear-gradient(135deg, #fff6f6 0%, #f8fbff 100%);
-            --hero-gradient: linear-gradient(120deg, #ff4a4a22 0, #f8fbff 70%);
-            --transition: all .3s cubic-bezier(.4, 0, .2, 1);
+            --white: #ffffff;
+            --black: #111111;
+            --muted: #666;
+            --accent: #0d0d0d;
+            --glass-1: rgba(255, 255, 255, 0.55);
+            --glass-2: rgba(17, 17, 17, 0.06);
+            --card-border: rgba(255, 255, 255, 0.25);
+            --glass-blur: 12px;
+            --radius: 16px;
+            --shadow-1: 0 8px 30px rgba(2, 6, 23, 0.08);
+            --transition: 300ms cubic-bezier(.22, .9, .32, 1);
+            --accent-soft: #222;
+            --glass-border-strong: rgba(0, 0, 0, 0.06);
+            --glass-highlight: rgba(255, 255, 255, 0.18);
+            --glow: 0 6px 30px rgba(13, 13, 13, 0.08);
         }
 
         * {
@@ -29,1151 +42,991 @@
 
         html,
         body {
+            height: 100%;
             margin: 0;
-            padding: 0;
             font-family: 'Inter', 'Montserrat', Arial, sans-serif;
-            background: var(--gradient);
-            color: var(--bg-dark);
-            font-size: 18px;
-            scroll-behavior: smooth;
+            background: linear-gradient(180deg, #f7f9fb 0%, #ffffff 60%);
+            color: var(--black);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Background decorative shapes */
+        .bg-canvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .float-shape {
+            position: absolute;
+            opacity: 0.12;
+            filter: blur(12px);
+            transform: translate3d(0, 0, 0);
+            animation: float 12s ease-in-out infinite;
+        }
+
+        .float-shape.s1 {
+            width: 420px;
+            height: 420px;
+            left: -6%;
+            top: -4%;
+            background: radial-gradient(circle at 20% 20%, #ffd6e0, transparent 30%), linear-gradient(45deg, #ffd6e0, #ffd6e0);
+            animation-duration: 18s;
+        }
+
+        .float-shape.s2 {
+            width: 360px;
+            height: 360px;
+            right: -8%;
+            top: 10%;
+            background: radial-gradient(circle at 80% 20%, #e9f5ff, transparent 30%), linear-gradient(45deg, #e9f5ff, #cfe9ff);
+            animation-duration: 14s;
+        }
+
+        .float-shape.s3 {
+            width: 260px;
+            height: 260px;
+            left: 10%;
+            bottom: -6%;
+            background: radial-gradient(circle at 50% 50%, #fff7d6, transparent 25%), linear-gradient(135deg, #fff7d6, #ffe5a3);
+            animation-duration: 20s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-18px) rotate(8deg);
+            }
+
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
         }
 
         header {
             position: sticky;
             top: 0;
-            z-index: 100;
-            background: var(--white);
-            box-shadow: var(--shadow);
+            z-index: 999;
+            backdrop-filter: blur(6px) saturate(110%);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.5));
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 3vw;
-            height: 90px;
-            border-bottom: 3px solid var(--primary);
-            animation: fadeInDown .9s;
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-32px)
-            }
-
-            to {
-                opacity: 1;
-                transform: none;
-            }
+            padding: 0 1.6rem;
+            height: 84px;
+            box-shadow: var(--glow);
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-            font-family: 'Montserrat', sans-serif;
+            gap: .8rem;
+            font-family: 'Montserrat', 'Inter', Arial, sans-serif;
+            font-size: 1.45rem;
             font-weight: 700;
-            font-size: 2.5rem;
-            color: var(--primary);
-            letter-spacing: .13em;
+            letter-spacing: .08em;
+            color: var(--accent);
+            text-decoration: none;
+            z-index: 20;
         }
 
         .logo img {
-            width: 60px;
-            height: 60px;
-            border-radius: 15px;
-            background: var(--white);
-            border: 3px solid var(--primary);
-            box-shadow: 0 3px 18px #ff4a4a55;
-            transition: transform .18s;
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #fff, #f3f3f3);
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+            border: 2px solid var(--accent-soft);
         }
 
-        .logo:hover img {
-            transform: rotate(-8deg) scale(1.07);
-        }
-
-        nav {
+        nav.menu {
             display: flex;
-            gap: 2.7rem;
+            gap: 1.4rem;
             align-items: center;
+            z-index: 20;
         }
 
-        nav a {
+        nav.menu a {
             font-weight: 600;
-            color: var(--secondary);
-            background: none;
-            font-size: 1.15rem;
+            color: var(--accent);
             text-decoration: none;
-            outline: none;
-            padding: 7px 0;
-            border-bottom: 3px solid transparent;
-            transition: color var(--transition), border var(--transition);
+            padding: .6rem .2rem;
+            border-radius: 10px;
+            transition: color var(--transition), transform var(--transition), background var(--transition);
             position: relative;
         }
 
-        nav a.active,
-        nav a:hover {
-            color: var(--primary);
-            border-bottom: 3px solid var(--primary);
-        }
-
-        .lang-switch {
-            background: var(--primary);
-            color: var(--white);
-            border: none;
-            border-radius: 24px;
-            padding: .5em 1.4em;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            margin-left: 18px;
-            box-shadow: 0 2px 10px #ff4a4a22;
-            transition: background var(--transition);
-        }
-
-        .lang-switch:hover {
-            background: var(--secondary);
-        }
-
-        /* Hamburger styles */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 45px;
-            height: 45px;
-            background: var(--primary);
-            border-radius: 12px;
-            cursor: pointer;
-            margin-left: 12px;
-            z-index: 200;
-            border: none;
-        }
-
-        .hamburger span {
-            display: block;
-            width: 28px;
-            height: 4px;
-            background: #fff;
-            border-radius: 3px;
-            margin: 3.5px 0;
-            transition: all .32s cubic-bezier(.4, 0, .2, 1);
-        }
-
-        .hamburger.open span:nth-child(1) {
-            transform: rotate(45deg) translate(7px, 7px);
-        }
-
-        .hamburger.open span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.open span:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -7px);
-        }
-
-        @media (max-width:800px) {
-            nav {
-                position: fixed;
-                top: var(--nav-height);
-                right: -100vw;
-                width: 70vw;
-                height: calc(100vh - var(--nav-height));
-                background: var(--white);
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: flex-start;
-                gap: 2.6rem;
-                box-shadow: 0 0 40px #ff4a4a33;
-                padding: 50px 30px 0 30px;
-                z-index: 150;
-                transition: right .37s cubic-bezier(.4, 0, .2, 1);
-            }
-
-            nav.open {
-                right: 0;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .lang-switch {
-                margin-top: 20px;
-            }
-        }
-
-        /* HERO */
-        .hero {
-            background: var(--hero-gradient);
-            width: 100vw;
-            min-height: 500px;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            padding: 4.2rem 2.2rem 1rem 2.2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-img {
-            flex: 0 0 340px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            z-index: 1;
-            animation: fadeInLeft 1.1s;
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-40px);
-            }
-
-            to {
-                opacity: 1;
-                transform: none;
-            }
-        }
-
-        .hero-img img {
-            width: 270px;
-            height: 270px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 8px solid var(--primary);
-            box-shadow: 0 10px 60px #ff4a4a33, 0 0px 0px #fff;
-            background: var(--glass);
-            filter: drop-shadow(0 4px 24px #ff4a4a66);
-            transition: box-shadow .22s;
-        }
-
-        .hero-img img:hover {
-            box-shadow: 0 16px 80px #ff4a4a55;
-        }
-
-        .hero-content {
-            flex: 1 1 450px;
-            padding: 2.6rem;
-            animation: fadeInRight 1.1s;
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(46px);
-            }
-
-            to {
-                opacity: 1;
-                transform: none;
-            }
-        }
-
-        .hero-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.8rem;
-            color: var(--primary);
-            margin-bottom: 1.3rem;
-            font-weight: 700;
-            letter-spacing: .04em;
-            text-shadow: 0 3px 22px #ff4a4a33;
-            line-height: 1.1;
-            background: linear-gradient(90deg, #ff4a4a, #2e2e44);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-fill-color: transparent;
-            animation: gradientSlide .9s alternate;
-        }
-
-        @keyframes gradientSlide {
-            0% {
-                background-position: 0
-            }
-
-            100% {
-                background-position: 100%
-            }
-        }
-
-        .hero-desc {
-            font-size: 1.17rem;
-            color: var(--secondary);
-            font-weight: 500;
-            background: var(--white);
-            border-radius: 15px;
-            padding: 1.4rem 1.3rem;
-            box-shadow: var(--shadow);
-            border: 2.5px solid var(--primary);
-            animation: fadeInUp 2s;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-
-            to {
-                opacity: 1;
-                transform: none;
-            }
-        }
-
-        /* SERVICES */
-        section {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .section-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.1rem;
-            color: var(--primary);
-            text-align: left;
-            margin-bottom: 2.9rem;
-            font-weight: 700;
-            letter-spacing: .03em;
-            border-left: 10px solid var(--primary);
-            padding-left: 22px;
-            animation: fadeInUp .8s;
-        }
-
-        .services-grid {
-            display: grid;
-            gap: 2.6rem;
-            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-            margin-bottom: 1.1rem;
-        }
-
-        .service-card {
-            background: var(--glass);
-            border-radius: var(--radius);
-            border: 2.5px solid var(--secondary);
-            box-shadow: var(--shadow);
-            padding: 2.2rem 1.3rem 1.3rem 1.3rem;
-            transition: transform .22s, box-shadow .22s;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            animation: serviceFade .6s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        @keyframes serviceFade {
-            from {
-                opacity: 0;
-                transform: scale(.94);
-            }
-
-            to {
-                opacity: 1;
-                transform: none;
-            }
-        }
-
-        .service-card:hover {
-            box-shadow: 0 16px 36px #ff4a4a44;
-            transform: translateY(-10px) scale(1.04);
-        }
-
-        .service-photo {
-            width: 100%;
-            max-width: 240px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 14px;
-            margin-bottom: 1em;
-            box-shadow: 0 4px 18px #ff4a4a33;
-            animation: fadeInUp 1.2s;
-        }
-
-        .service-title {
-            font-weight: 700;
-            font-size: 1.22rem;
-            color: var(--primary);
-            margin-bottom: .4em;
-            letter-spacing: .02em;
-            border-bottom: 2.5px solid var(--primary);
-            padding-bottom: 7px;
-            text-align: center;
-        }
-
-        .service-price {
-            font-weight: 600;
-            color: var(--secondary);
-            font-size: 1.11rem;
-            background: #fff6f6;
-            border-radius: 15px;
-            padding: .3em 1.2em;
-            margin-bottom: .9em;
-            margin-top: .2em;
-            border: 2px solid var(--primary);
-            box-shadow: 0 2px 8px #ff4a4a22;
-            text-align: center;
-        }
-
-        .service-desc ul {
-            padding: 0;
-            margin: 1em 0 0 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: .8em;
-            justify-content: center;
-        }
-
-        .service-desc li {
-            list-style: none;
-            margin: 0;
-        }
-
-        .service-plot {
-            background: var(--primary);
-            color: #fff;
-            border: none;
-            border-radius: 34px;
-            padding: .7em 1.4em;
-            font-size: 1.06rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background .17s, color .17s, box-shadow .17s;
-            box-shadow: 0 2px 8px #ff4a4a22;
-            margin-right: .6em;
-        }
-
-        .service-plot:hover {
-            background: var(--secondary);
-            color: var(--primary);
-            box-shadow: 0 8px 20px #2e2e4433;
-        }
-
-        .service-tooltip {
-            display: none;
+        nav.menu a::after {
+            content: "";
             position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            bottom: 130%;
-            padding: 1em;
-            background: var(--white);
-            color: var(--secondary);
-            border-radius: 7px;
-            box-shadow: var(--shadow);
-            border: 2px solid var(--primary);
-            font-size: 1rem;
-            z-index: 10;
-            min-width: 210px;
-            text-align: left;
-            animation: fadeInUp .36s;
+            left: 0;
+            right: 0;
+            bottom: -8px;
+            height: 3px;
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+            transition: all var(--transition);
+            border-radius: 4px;
         }
 
-        .service-card:hover .service-tooltip {
+        nav.menu a.active,
+        nav.menu a:hover {
+            color: var(--black);
+            transform: translateY(-2px);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2.2rem;
+            color: var(--accent);
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+
+        /* Hero / About Section */
+        .hero {
+            position: relative;
+            max-width: 1100px;
+            margin: 1.6rem auto 0;
+            z-index: 10;
+            padding: 2.2rem;
+            border-radius: calc(var(--radius) + 6px);
+            backdrop-filter: blur(var(--glass-blur)) saturate(120%);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.42));
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            box-shadow: 0 12px 40px rgba(2, 6, 23, 0.06);
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 1.6rem;
+            align-items: center;
+        }
+
+        .hero-photo {
+            width: 220px;
+            height: 220px;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 3px solid rgba(0, 0, 0, 0.07);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transform: translateZ(0);
+            background: linear-gradient(135deg, #fff, #fafafa);
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+
+        .hero-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             display: block;
         }
 
-        /* PORTFOLIO */
-        .graphics-section {
-            background: linear-gradient(120deg, #f8fbff 80%, #ff4a4a22 100%);
-            box-shadow: 0 2px 12px #ff4a4a22;
-            border-radius: var(--radius);
-            margin-bottom: 4rem;
+        .hero-photo:hover {
+            transform: rotate(-3deg) scale(1.02);
+            box-shadow: 0 18px 44px rgba(0, 0, 0, 0.12);
         }
 
-        .graphics-title {
-            font-family: 'Montserrat', sans-serif;
+        .about-heading {
+            margin: 0;
+            font-family: 'Montserrat', 'Inter', Arial, sans-serif;
             font-size: 2.1rem;
-            color: var(--primary);
-            text-align: left;
-            margin-bottom: 2.4rem;
-            font-weight: 700;
-            letter-spacing: .03em;
-            border-left: 10px solid var(--primary);
-            padding-left: 22px;
-            animation: fadeInUp .8s;
+            color: var(--accent);
+            letter-spacing: .02em;
         }
 
+        .about-paragraph {
+            margin-top: .8rem;
+            font-size: 1.02rem;
+            color: var(--black);
+            font-weight: 500;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.0));
+            padding: 0.4rem 0;
+        }
+
+        /* Section common */
+        .section {
+            max-width: 1100px;
+            margin: 2.4rem auto;
+            padding: 1.2rem;
+            z-index: 10;
+        }
+
+        h2.section-title {
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 1.35rem;
+            color: var(--accent);
+            margin: 0 0 1rem 0;
+            letter-spacing: .03em;
+            border-left: 5px solid var(--accent);
+            padding-left: 14px;
+            display: inline-block;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+            border-radius: 8px;
+        }
+
+        /* Services creative tiles */
+        .services-wrap {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.1rem;
+            align-items: stretch;
+        }
+
+        .service-tile {
+            position: relative;
+            height: 160px;
+            border-radius: 14px;
+            overflow: hidden;
+            cursor: pointer;
+            display: flex;
+            align-items: flex-end;
+            padding: 14px;
+            transition: transform var(--transition), box-shadow var(--transition);
+            box-shadow: var(--shadow-1);
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            z-index: 10;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(4px);
+        }
+
+        .service-tile::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.36));
+            transition: opacity var(--transition);
+            pointer-events: none;
+        }
+
+        .service-symbol {
+            position: absolute;
+            right: -20%;
+            top: -6%;
+            font-size: 8.2rem;
+            color: rgba(255, 255, 255, 0.08);
+            transform: rotate(-12deg);
+            pointer-events: none;
+            transition: transform var(--transition);
+        }
+
+        .service-title-large {
+            position: relative;
+            font-weight: 700;
+            font-size: 1.12rem;
+            z-index: 5;
+            text-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            letter-spacing: .02em;
+        }
+
+        .service-sub {
+            font-size: .92rem;
+            opacity: .92;
+            margin-top: 6px;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .service-tile:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 18px 54px rgba(2, 6, 23, 0.12);
+        }
+
+        .service-details {
+            position: fixed;
+            inset: auto 10% 8% 10%;
+            max-width: 880px;
+            margin: 0 auto;
+            border-radius: 14px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.88));
+            box-shadow: 0 28px 80px rgba(2, 6, 23, 0.18);
+            padding: 1.2rem 1.4rem;
+            z-index: 1200;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            animation: popIn .22s ease-out;
+        }
+
+        @keyframes popIn {
+            from {
+                transform: translateY(18px) scale(0.98);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .details-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .details-head h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+
+        .details-list {
+            margin-top: 10px;
+            display: grid;
+            gap: 8px;
+        }
+
+        .details-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass-1);
+            border-radius: 10px;
+            padding: 10px 12px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .price {
+            font-weight: 800;
+            color: var(--accent);
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.02));
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: .98rem;
+        }
+
+        .close-details {
+            border: none;
+            background: rgba(0, 0, 0, 0.06);
+            color: var(--accent);
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        /* Portfolio grid glass cards */
         .graphics-file-grid {
             display: grid;
-            gap: 1.7rem;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         }
 
         .file-card {
-            background: var(--glass);
-            border-radius: var(--radius);
-            border: 2.5px solid var(--secondary);
-            box-shadow: var(--shadow);
-            padding: 2.2rem 1.3rem 1.3rem 1.3rem;
-            transition: transform .22s, box-shadow .22s;
             position: relative;
+            border-radius: 12px;
             overflow: hidden;
+            height: 180px;
+            display: flex;
+            align-items: end;
+            padding: 14px;
+            color: #fff;
             cursor: pointer;
-            animation: serviceFade .6s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            background-size: cover;
+            background-position: center;
+            box-shadow: var(--shadow-1);
+            transition: transform var(--transition), filter var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .file-card:hover {
-            box-shadow: 0 14px 32px #0002;
-            background: var(--white);
+        .file-card .file-content {
+            z-index: 5;
+            transform: translateY(0);
         }
 
-        .file-content {
-            width: 100%;
-            margin-top: 2rem;
-            padding: .9rem .7rem 1.2rem .7rem;
-            background: var(--white);
-            border-radius: 10px;
-            box-shadow: 0 1px 8px #0001;
-            min-height: 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        .file-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.36));
+            transition: opacity var(--transition);
         }
 
         .file-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.25rem;
-            color: var(--primary);
             font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 6px;
         }
 
         .file-desc {
-            margin-top: .7em;
-            font-size: 1.03rem;
-            color: #222;
-            text-align: center;
-            font-weight: 500;
+            font-size: .95rem;
+            color: rgba(255, 255, 255, 0.95);
         }
 
-        /* MODAL */
+        .file-card:hover {
+            transform: translateY(-8px);
+            filter: saturate(1.06);
+        }
+
+        /* Modal overlay for projects & lightbox */
         .modal-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(245, 245, 245, .94);
-            display: flex;
+            inset: 0;
+            display: none;
             align-items: center;
             justify-content: center;
-            z-index: 1000;
-            animation: fadeInUp .28s;
+            background: rgba(10, 12, 20, 0.56);
+            z-index: 2000;
         }
 
         .modal-content {
-            background: var(--white);
-            border-radius: 16px;
-            box-shadow: 0 8px 36px #ff4a4a22;
-            padding: 2.1rem 2.2rem;
-            max-width: 720px;
-            width: 96%;
-            position: relative;
-            max-height: 90vh;
+            width: min(980px, 96%);
+            max-height: 92vh;
             overflow-y: auto;
-            border: 2px solid var(--primary);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.96));
+            border-radius: 12px;
+            padding: 1.2rem;
+            box-shadow: 0 24px 80px rgba(2, 6, 23, 0.3);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            position: relative;
         }
 
         .close-modal {
             position: absolute;
-            top: 20px;
-            right: 26px;
-            font-size: 2.1rem;
-            color: var(--secondary);
-            cursor: pointer;
-            font-weight: bold;
-            z-index: 1001;
+            top: 12px;
+            right: 12px;
+            font-size: 1.8rem;
             background: none;
             border: none;
-            transition: color .19s;
-        }
-
-        .close-modal:hover {
-            color: var(--primary);
+            color: var(--accent);
+            cursor: pointer;
         }
 
         .project-photo-block img {
-            background: var(--white);
-            border-radius: 14px;
-            max-width: 90%;
-            margin: 0 auto;
+            width: 100%;
+            border-radius: 10px;
             display: block;
-            box-shadow: 0 2px 12px #ff4a4a22;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
         }
 
-        .photo-caption {
-            color: #555;
-            font-size: .98rem;
-            margin-top: 4px;
-            text-align: center;
+        .project-desc {
+            color: var(--muted);
+            margin-top: .6rem;
+            line-height: 1.5;
         }
 
-        /* FEEDBACKS */
-        .feedbacks-container {
-            background: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 2rem 1.5rem;
-            border: 2px solid var(--primary);
-            animation: fadeInUp .7s;
-        }
-
-        .feedbacks-wrapper {
-            position: relative;
-        }
-
-        .feedbacks-scroll {
-            display: flex;
-            gap: 1.5rem;
-            overflow-x: auto;
-            padding-bottom: .4em;
-            scroll-snap-type: x mandatory;
-            margin-bottom: 1.1rem;
-            animation: fadeInUp .8s;
+        /* Feedbacks */
+        .feedbacks-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
         }
 
         .feedback-card {
-            min-width: 320px;
-            max-width: 360px;
-            flex: 0 0 320px;
-            background: var(--white);
-            border-radius: var(--radius);
-            border: 2px solid var(--secondary);
-            box-shadow: var(--shadow);
-            padding: 2rem 1.3rem;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.65));
+            border-radius: 12px;
+            padding: 14px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            box-shadow: var(--shadow-1);
             display: flex;
             flex-direction: column;
-            transition: box-shadow .19s;
-            scroll-snap-align: start;
+            gap: .6rem;
         }
 
-        .feedback-card:hover {
-            box-shadow: 0 11px 36px #ff4a4a33;
+        .feedback-photo {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
         }
 
         .feedback-header {
             display: flex;
+            gap: 12px;
             align-items: center;
-            gap: 1.2rem;
-            margin-bottom: .7rem;
-        }
-
-        .feedback-photo {
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            object-fit: cover;
-            background: #eee;
-            border: 2px solid var(--primary);
         }
 
         .feedback-name {
             font-weight: 700;
-            font-size: 1.11rem;
-            color: var(--primary);
+            color: var(--accent);
         }
 
         .feedback-role {
-            font-size: 1rem;
+            font-size: .95rem;
             color: #555;
             font-weight: 500;
-            margin-top: .1em;
         }
 
         .feedback-content blockquote {
-            font-size: 1.14rem;
-            color: var(--secondary);
-            font-weight: 500;
-            background: #fff6f6;
-            padding: 1.1rem 1.2rem;
-            border-radius: 12px;
-            border-left: 7px solid var(--primary);
             margin: 0;
-            box-shadow: 0 1px 11px #ff4a4a22;
+            background: rgba(255, 255, 255, 0.92);
+            padding: 10px;
+            border-left: 4px solid var(--accent);
+            border-radius: 8px;
+            color: var(--accent);
+            font-weight: 500;
         }
 
-        .feedback-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: var(--primary);
-            color: #fff;
-            border: none;
-            border-radius: 50%;
-            width: 46px;
-            height: 46px;
-            font-size: 1.8rem;
-            box-shadow: 0 2px 8px #ff4a4a33;
-            cursor: pointer;
-            transition: background .19s;
-            z-index: 11;
-            opacity: 0.7;
-        }
-
-        .feedback-arrow.left {
-            left: -22px;
-        }
-
-        .feedback-arrow.right {
-            right: -22px;
-        }
-
-        .feedback-arrow:hover {
-            background: var(--secondary);
-        }
-
-        /* CONTACT */
-        .contact-wrap {
-            background: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 2.2rem 1.7rem;
-            border: 2px solid var(--primary);
-            max-width: 750px;
-            margin: 0 auto;
-            animation: fadeInUp 1.1s;
+        /* Contact */
+        .contacts-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 1rem;
+            align-items: start;
         }
 
         .contact-form {
             display: flex;
             flex-direction: column;
-            gap: 1.2rem;
-            margin-bottom: 1.6rem;
+            gap: 1rem;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.6));
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            box-shadow: var(--shadow-1);
         }
 
         .contact-form input,
         .contact-form textarea {
-            padding: 1.1rem;
-            border: 2.5px solid var(--secondary);
+            padding: .9rem;
+            border: 1px solid rgba(0, 0, 0, 0.06);
             border-radius: 10px;
-            font-size: 1.08rem;
-            background: var(--white);
-            color: var(--primary);
+            font-size: .97rem;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--accent);
             font-family: inherit;
-            transition: border var(--transition), background var(--transition);
         }
 
         .contact-form input:focus,
         .contact-form textarea:focus {
-            border: 3px solid var(--primary);
-            background: #fff6f6;
             outline: none;
+            border-color: rgba(13, 13, 13, 0.12);
+            box-shadow: 0 10px 30px rgba(13, 13, 13, 0.04);
         }
 
         .contact-form button {
-            padding: 1.2rem;
-            background: var(--primary);
-            color: #fff;
+            padding: .95rem;
+            background: var(--accent);
+            color: var(--white);
             border: none;
             border-radius: 10px;
-            font-size: 1.15rem;
-            font-weight: 700;
+            font-size: 1.02rem;
+            font-weight: 800;
             cursor: pointer;
-            transition: background var(--transition);
-            margin-top: .5rem;
-            box-shadow: 0 2px 8px #ff4a4a22;
-        }
-
-        .contact-form button:hover {
-            background: var(--secondary);
         }
 
         .contacts-social {
             display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            margin-top: 1.2rem;
+            flex-direction: column;
+            gap: .8rem;
+            align-items: stretch;
+            margin-top: 0.5rem;
         }
 
         .contacts-social a {
             display: flex;
             align-items: center;
             gap: .6rem;
-            background: #fff;
-            color: var(--primary);
-            padding: .8rem 1.5rem;
-            font-size: 1.07rem;
-            font-weight: 600;
-            border-radius: 12px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.86));
+            color: var(--accent);
+            padding: .6rem .9rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 10px;
             text-decoration: none;
-            border: 2.5px solid var(--primary);
-            transition: background .18s, color .18s;
-            min-width: 120px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
             justify-content: center;
-            box-shadow: 0 2px 8px #ff4a4a22;
+            box-shadow: 0 10px 30px rgba(2, 6, 23, 0.04);
         }
 
-        .contacts-social a:hover {
-            background: var(--primary);
-            color: #fff;
-            border-color: var(--primary);
-        }
-
-        .contacts-social img {
-            width: 26px;
-            height: 26px;
-        }
-
-        /* Scroll-to-top */
+        /* Scroll top */
         #scrollTopBtn {
             display: none;
             position: fixed;
-            bottom: 38px;
-            right: 38px;
+            bottom: 28px;
+            right: 28px;
             z-index: 9999;
-            background: var(--primary);
-            color: #fff;
+            background: var(--accent);
+            color: var(--white);
             border: none;
             border-radius: 50%;
-            width: 54px;
-            height: 54px;
-            font-size: 2.1rem;
-            box-shadow: var(--shadow);
+            width: 48px;
+            height: 48px;
+            font-size: 1.4rem;
+            box-shadow: 0 8px 30px rgba(2, 6, 23, 0.12);
             cursor: pointer;
-            transition: background .22s;
         }
 
-        #scrollTopBtn:hover {
-            background: var(--secondary);
-        }
-
-        /* Footer */
         footer {
             text-align: center;
-            padding: 1.2rem 0 1rem 0;
-            font-size: 1.12rem;
-            background: var(--white);
-            color: var(--primary);
-            border-top: 2.5px solid var(--primary);
-            margin-top: 2.4rem;
+            padding: 1.2rem 0 .9rem 0;
+            font-size: 1.02rem;
+            background: transparent;
+            color: var(--accent);
+            border-top: 1px solid rgba(0, 0, 0, 0.04);
+            margin-top: 2rem;
             letter-spacing: 1px;
         }
 
         /* Responsive */
-        @media (max-width:800px) {
+        @media (max-width: 1000px) {
+            .hero-grid {
+                grid-template-columns: 160px 1fr;
+            }
+
+            .hero-photo {
+                width: 160px;
+                height: 160px;
+                border-radius: 14px;
+            }
+
+            .contacts-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0 .8rem;
+                height: 64px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav.menu {
+                display: none;
+                position: absolute;
+                right: 12px;
+                top: 64px;
+                background: rgba(255, 255, 255, 0.95);
+                padding: 10px;
+                border-radius: 10px;
+                box-shadow: var(--shadow-1);
+            }
+
             .hero {
-                flex-direction: column;
-                gap: 1.7rem;
-                padding: 2.5rem 1rem;
+                margin: 0.9rem .6rem;
+                padding: 1rem;
             }
 
-            .hero-content {
-                padding: 1.2rem;
+            .hero-grid {
+                grid-template-columns: 120px 1fr;
+                gap: 1rem;
             }
 
-            .hero-title {
-                font-size: 1.65rem;
+            .hero-photo {
+                width: 120px;
+                height: 120px;
             }
 
-            .hero-img img {
-                width: 140px;
+            .service-tile {
                 height: 140px;
             }
 
-            .section-title,
-            .graphics-title {
-                font-size: 1.2rem;
-                padding-left: 10px;
+            .services-wrap {
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             }
 
-            .services-grid,
-            .portfolio-grid {
-                gap: .8rem;
-            }
-
-            .service-card,
             .file-card {
-                font-size: .97rem;
-                padding: .9rem;
+                height: 160px;
             }
 
-            .service-photo,
-            .file-thumbnail {
-                height: 90px;
-                max-width: 140px;
+            .service-details {
+                left: 6%;
+                right: 6%;
+                bottom: 6%;
+                top: auto;
             }
+        }
 
-            .file-details {
-                padding: 1em .5em;
-            }
+        /* subtle entrance for sections */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(16px);
+            animation: fadeUp 0.6s forwards;
+        }
 
-            .feedbacks-scroll {
-                gap: .7rem;
-            }
+        .fade-in-up.delay-1 {
+            animation-delay: 0.08s;
+        }
 
-            .feedback-card {
-                min-width: 220px;
-                max-width: 260px;
-                padding: .7rem;
+        .fade-in-up.delay-2 {
+            animation-delay: 0.16s;
+        }
+
+        .fade-in-up.delay-3 {
+            animation-delay: 0.24s;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: none;
             }
         }
     </style>
 </head>
 
 <body>
+    <div class="bg-canvas" aria-hidden="true">
+        <div class="float-shape s1"></div>
+        <div class="float-shape s2"></div>
+        <div class="float-shape s3"></div>
+    </div>
+
     <header>
-        <a href="#hero" class="logo"><img src="https://imgur.com/KseW3Eo.png" alt="Logo" />Digitala</a>
-        <nav>
-            <a href="#hero" class="active" data-tab="hero">About</a>
+        <a href="#about" class="logo" aria-label="Digitala - Home">
+            <img src="https://imgur.com/KseW3Eo.png" alt="Logo" />
+            Digitala
+        </a>
+
+        <!-- Translation toggle (keeps original behavior) -->
+        <button id="langToggle" class="translate-switch" aria-pressed="false">ترجمة</button>
+
+        <button class="menu-toggle" aria-label="Open Menu">&#9776;</button>
+
+        <nav class="menu" aria-label="Main navigation">
+            <a href="#about" class="active" data-tab="about">About</a>
             <a href="#services" data-tab="services">Services</a>
-            <a href="#portfolio" data-tab="portfolio">Portfolio</a>
+            <a href="#graphics" data-tab="graphics">Portfolio</a>
             <a href="#feedbacks" data-tab="feedbacks">Feedbacks</a>
-            <a href="#contact" data-tab="contact">Contact</a>
+            <a href="#contacts" data-tab="contacts">Contact</a>
         </nav>
-        <button class="lang-switch" id="langToggle">زر الترجمة</button>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
     </header>
+
     <!-- HERO / ABOUT -->
-    <section id="hero" class="hero">
-        <div class="hero-img">
-            <img src="https://imgur.com/KseW3Eo.png" alt="Tala Chibli Photo">
-        </div>
-        <div class="hero-content">
-            <h1 class="hero-title">Digitala | Branding & Marketing Agency</h1>
-            <p class="hero-desc">
-                Digitala is a creative and professional agency, created by Tala Chibli, that provides businesses and
-                individuals with everything they need for a powerful digital presence.<br>
-                From branding and visual identity, to social media management, web design, and content creation — we
-                offer a complete suite of services under one roof.<br>
-                Our mission is to transform ideas into impactful digital experiences, ensuring every brand we work with
-                stands out with creativity, elegance, and professionalism.
-            </p>
-        </div>
-    </section>
-    <!-- SERVICES -->
-    <section id="services">
-        <h2 class="section-title">Services</h2>
-        <div class="services-grid">
-            <!-- Visual Identity -->
-            <div class="service-card wow">
-                <img src="https://imgur.com/sazMX5w.jpg" alt="Visual Identity" class="service-photo" />
-                <div class="service-title">Build Your Visual Identity</div>
-                <div class="service-price">$200</div>
-                <div class="service-desc">
-                    <ul>
-                        <li><button class="service-plot" data-plot="Logo Design">Logo Design</button></li>
-                        <li><button class="service-plot" data-plot="Colour Palette">Colour Palette</button></li>
-                        <li><button class="service-plot" data-plot="Typography">Typography</button></li>
-                        <li><button class="service-plot" data-plot="Iconography">Iconography</button></li>
-                        <li><button class="service-plot" data-plot="Patterns/Textures">Patterns/Textures</button></li>
-                        <li><button class="service-plot" data-plot="Layout Systems">Layout Systems</button></li>
-                        <li><button class="service-plot" data-plot="Shapes">Shapes</button></li>
-                        <li><button class="service-plot" data-plot="Packaging">Packaging</button></li>
-                        <li><button class="service-plot" data-plot="Signage">Signage</button></li>
-                        <li><button class="service-plot" data-plot="Merchandise">Merchandise</button></li>
-                    </ul>
+    <main>
+        <section id="about" class="hero fade-in-up delay-1" aria-labelledby="about-heading">
+            <div class="hero-grid">
+                <div class="hero-photo" aria-hidden="false">
+                    <img src="https://imgur.com/KseW3Eo.png" alt="Digitala - Tala Chibli" />
+                </div>
+                <div>
+                    <h1 id="about-heading" class="about-heading">Digitala | Branding & Marketing Agency</h1>
+                    <p class="about-paragraph">
+                        Digitala is a creative and professional agency, created by Tala Chibli, that provides businesses
+                        and
+                        individuals with
+                        everything they need for a powerful digital presence. From branding and visual identity, to
+                        social
+                        media management, web design, and content creation — we offer a complete suite of services under
+                        one
+                        roof. Our mission is to transform ideas into impactful digital experiences, ensuring every brand
+                        we
+                        work with stands out with creativity, elegance, and professionalism.
+                    </p>
                 </div>
             </div>
-            <!-- Social Presence -->
-            <div class="service-card wow">
-                <img src="https://imgur.com/QYBRaU8.jpg" alt="Social Media" class="service-photo" />
-                <div class="service-title">Grow Your Social Presence</div>
-                <div class="service-price">$120</div>
-                <div class="service-desc">
-                    <ul>
-                        <li><button class="service-plot" data-plot="Content Creation">Content Creation</button></li>
-                        <li><button class="service-plot" data-plot="Content Calendar">Content Calendar</button></li>
-                        <li><button class="service-plot" data-plot="Engagement Strategy">Engagement Strategy</button>
-                        </li>
-                        <li><button class="service-plot" data-plot="Brand Consistency">Brand Consistency</button></li>
-                        <li><button class="service-plot" data-plot="Trend Monitoring">Trend Monitoring</button></li>
-                        <li><button class="service-plot" data-plot="Community Building">Community Building</button></li>
-                    </ul>
+        </section>
+
+        <!-- SERVICES SECTION -->
+        <section id="services" class="section fade-in-up delay-2" aria-labelledby="services-title">
+            <h2 id="services-title" class="section-title">Services</h2>
+
+            <div class="services-wrap" id="servicesWrap" aria-hidden="false">
+                <!-- Tiles: only titles + photo + big symbol behind -->
+                <!-- Keep textual content the same — buttons and subitems added will reveal details with prices -->
+                <div class="service-tile" data-service="visual-identity" role="button" tabindex="0"
+                    style="background-image: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.28)), url('https://images.unsplash.com/photo-1534080564583-6be75777b70a?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=5c0666a06d7fb6b2d6f1e0b8f2f2b579');">
+                    <div class="service-symbol">✦</div>
+                    <div>
+                        <div class="service-title-large">Build Your Visual Identity</div>
+                        <div class="service-sub">Logo Design · Colour Palette · Typography & more</div>
+                    </div>
+                </div>
+
+                <div class="service-tile" data-service="social-presence" role="button" tabindex="0"
+                    style="background-image: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.28)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=0b7a4f3b5d2c3fae2f92c1ae2ab6f2da');">
+                    <div class="service-symbol">♫</div>
+                    <div>
+                        <div class="service-title-large">Grow Your Social Presence</div>
+                        <div class="service-sub">Content Creation · Calendars · Strategy</div>
+                    </div>
+                </div>
+
+                <div class="service-tile" data-service="frontend-websites" role="button" tabindex="0"
+                    style="background-image: linear-gradient(180deg, rgba(0,0,0,0.14), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=3a0a1b7ed2e7b4fb2e8a0f72b2eea3b8');">
+                    <div class="service-symbol">⧉</div>
+                    <div>
+                        <div class="service-title-large">Stunning Frontend Websites</div>
+                        <div class="service-sub">UI Design · Content Writing · Frontend</div>
+                    </div>
+                </div>
+
+                <div class="service-tile" data-service="printed-custom" role="button" tabindex="0"
+                    style="background-image: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.28)), url('https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=fd9d7d2e68a0c6d7c9a0a2d7c7b5f6de');">
+                    <div class="service-symbol">✂</div>
+                    <div>
+                        <div class="service-title-large">Printed & Custom Designs</div>
+                        <div class="service-sub">Print Materials · Characters · Tailored Designs</div>
+                    </div>
+                </div>
+
+                <div class="service-tile" data-service="photo-video" role="button" tabindex="0"
+                    style="background-image: linear-gradient(180deg, rgba(0,0,0,0.16), rgba(0,0,0,0.34)), url('https://images.unsplash.com/photo-1517263904808-5dc0d1d3f5f7?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=1a7c4b5c1b2a4b5e6a3b6c7d8e9f1234');">
+                    <div class="service-symbol">📸</div>
+                    <div>
+                        <div class="service-title-large">Photography & Video Production</div>
+                        <div class="service-sub">Photographs · Promotional Videos · Editing</div>
+                    </div>
+                </div>
+
+                <div class="service-tile" data-service="extra-services" role="button" tabindex="0"
+                    style="background-image: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.28)), url('https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=ff8c9a2b3c4d5e6f7a8b9c0d1e2f3a4b');">
+                    <div class="service-symbol">✦</div>
+                    <div>
+                        <div class="service-title-large">Extra Services</div>
+                        <div class="service-sub">CV · Portfolios · Presentations</div>
+                    </div>
                 </div>
             </div>
-            <!-- Frontend Websites -->
-            <div class="service-card wow">
-                <img src="https://imgur.com/9uWScuA.jpg" alt="Frontend Design" class="service-photo" />
-                <div class="service-title">Stunning Frontend Websites</div>
-                <div class="service-price">$250</div>
-                <div class="service-desc">
-                    <ul>
-                        <li><button class="service-plot" data-plot="Frontend Web Design">Frontend Web Design</button>
-                        </li>
-                        <li><button class="service-plot" data-plot="Content Writing for Web">Content Writing for
-                                Web</button></li>
-                        <li><button class="service-plot" data-plot="User Interface (UI) Design">User Interface (UI)
-                                Design</button></li>
-                    </ul>
-                </div>
+
+            <div style="margin-top:1rem; text-align:center; font-size:.97rem; color:#555;">
+                <span>Click any tile to chat on WhatsApp about that service!</span>
             </div>
-            <!-- Printed & Custom -->
-            <div class="service-card wow">
-                <img src="https://imgur.com/dzpdQEU.jpg" alt="Printed Design" class="service-photo" />
-                <div class="service-title">Printed & Custom Designs</div>
-                <div class="service-price">$90</div>
-                <div class="service-desc">
-                    <ul>
-                        <li><button class="service-plot" data-plot="Print Materials">Print Materials</button></li>
-                        <li><button class="service-plot" data-plot="Custom Characters">Custom Characters</button></li>
-                        <li><button class="service-plot" data-plot="Tailored Designs">Tailored Designs</button></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Photography -->
-            <div class="service-card wow">
-                <img src="https://imgur.com/0BO1tFS.jpg" alt="Photography" class="service-photo" />
-                <div class="service-title">Photography & Video Production</div>
-                <div class="service-price">$180</div>
-                <div class="service-desc">
-                    <ul>
-                        <li><button class="service-plot" data-plot="Product Photography">Product Photography</button>
-                        </li>
-                        <li><button class="service-plot" data-plot="Promotional Videos">Promotional Videos</button></li>
-                        <li><button class="service-plot" data-plot="Video Editing">Video Editing</button></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Extra Services -->
-            <div class="service-card wow">
-                <img src="https://imgur.com/XWagJpO.jpg" alt="Extra Services" class="service-photo" />
-                <div class="service-title">Extra Services</div>
-                <div class="service-price">$60</div>
-                <div class="service-desc">
-                    <ul>
-                        <li><button class="service-plot" data-plot="CV & Cover Letter">CV & Cover Letter</button></li>
-                        <li><button class="service-plot" data-plot="Portfolio Design">Portfolio Design</button></li>
-                        <li><button class="service-plot" data-plot="Presentations & PDFs">Presentations & PDFs</button>
-                        </li>
-                        <li><button class="service-plot" data-plot="Projects & Assignments">Projects &
-                                Assignments</button></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div style="margin-top:1.2rem;text-align:center;font-size:1rem;color:#555;">
-            <span>Click any button to chat on WhatsApp about that service!</span>
-        </div>
-    </section>
-    <!-- PORTFOLIO -->
-    <section class="tab-section graphics-section" id="portfolio">
-        <div class="graphics-container">
-            <h2 class="graphics-title">Portfolio</h2>
+        </section>
+
+        <!-- PORTFOLIO -->
+        <section id="graphics" class="section fade-in-up delay-3" aria-labelledby="portfolio-title">
+            <h2 id="portfolio-title" class="section-title">Portfolio</h2>
             <div class="graphics-file-grid">
-                <div class="file-card" id="open-modal-1">
+                <div class="file-card" data-modal="project-modal-1"
+                    style="background-image: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.36)), url('https://imgur.com/sazMX5w.jpg');"
+                    role="button" tabindex="0">
                     <div class="file-content">
                         <div class="file-title">Visual Identity Project</div>
                         <div class="file-desc">Lamsa Candles</div>
                     </div>
                 </div>
-                <div class="file-card" id="open-modal-2">
+
+                <div class="file-card" data-modal="project-modal-2"
+                    style="background-image: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.36)), url('https://imgur.com/QYBRaU8.jpg');"
+                    role="button" tabindex="0">
                     <div class="file-content">
                         <div class="file-title">Menu Project</div>
                         <div class="file-desc">Bas Pasta Menu – Crepeno</div>
                     </div>
                 </div>
-                <div class="file-card" id="open-modal-3">
+
+                <div class="file-card" data-modal="project-modal-3"
+                    style="background-image: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.36)), url('https://imgur.com/0BO1tFS.jpg');"
+                    role="button" tabindex="0">
                     <div class="file-content">
                         <div class="file-title">Product Photography & Digital Marketing Project</div>
                         <div class="file-desc">Khait w Hkaya – YALA Association</div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- MODALS -->
-    <div id="project-modal-1" class="modal-overlay" style="display:none;">
-        <div class="modal-content">
-            <button class="close-modal" data-close="1">&times;</button>
-            <div class="project-container">
-                <div class="project-title">Visual Identity Project</div>
-                <div class="project-company">Lamsa Candles</div>
-                <div class="project-desc">
-                    LAMSA Candles – Branding & Visual Identity<br>
-                    For this project, I designed a complete branding package for LAMSA Candles, a handcrafted candle
-                    business that focuses on elegance, warmth, and a touch of luxury.<br><br>
-                    ✨ Logo Design: A soft, glowing aesthetic featuring a candle wrapped with a delicate pink bow, framed
-                    with floral illustrations.<br><br>
-                    ✨ Sticker Design: The logo was adapted into a sticker format for packaging.<br><br>
-                    ✨ Instagram Highlights: A custom set of icon designs for Instagram story highlights.<br><br>
-                    The overall branding emphasizes warmth, elegance, and personalization.
-                </div>
-                <div class="project-gallery">
-                    <div class="project-photo-block">
-                        <img src="https://imgur.com/sazMX5w.jpg" alt="Logo Design">
-                        <div class="photo-caption">Lamsa's Visual Identity</div>
+        </section>
+
+        <!-- PROJECT MODALS (preserve the original textual content) -->
+        <div id="project-modal-1" class="modal-overlay" aria-hidden="true">
+            <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="proj1-title">
+                <button class="close-modal" data-close="1" aria-label="Close">&times;</button>
+                <div class="project-container">
+                    <h3 id="proj1-title">Visual Identity Project</h3>
+                    <div class="project-company">Lamsa Candles</div>
+                    <div class="project-desc">
+                        LAMSA Candles – Branding & Visual Identity
+                        For this project, I designed a complete branding package for LAMSA Candles, a handcrafted candle
+                        business
+                        that focuses on elegance, warmth, and a touch of luxury.<br><br>
+                        ✨ Logo Design: A soft, glowing aesthetic featuring a candle wrapped with a delicate pink bow,
+                        framed
+                        with
+                        floral illustrations.<br><br>
+                        ✨ Sticker Design: The logo was adapted into a sticker format for packaging.<br><br>
+                        ✨ Instagram Highlights: A custom set of icon designs for Instagram story highlights.<br><br>
+                        The overall branding emphasizes warmth, elegance, and personalization.
+                    </div>
+                    <div class="project-gallery" style="margin-top:12px;">
+                        <div class="project-photo-block">
+                            <img src="https://imgur.com/sazMX5w.jpg" alt="Lamsa's Visual Identity">
+                            <div class="photo-caption">Lamsa's Visual Identity</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="project-modal-2" class="modal-overlay" style="display:none;">
-        <div class="modal-content">
-            <button class="close-modal" data-close="2">&times;</button>
-            <div class="project-container">
-                <div class="project-title">Menu Project</div>
-                <div class="project-company">Bas Pasta Menu – Crepeno</div>
-                <div class="project-desc">
-                    I designed a full marketing collateral and menu for Crepeno and Bas Pasta, a food brand based in
-                    Tripoli.
-                    The project included creating a modern and appetizing menu layout.<br><br>
-                    The design combines Arabic and English text, uses strong yellow and black contrasts, and integrates
-                    food photography.<br><br>
-                    The result: professional, customer-friendly menus and posters.
-                </div>
-                <div class="project-gallery">
-                    <div class="project-photo-block">
-                        <img src="https://imgur.com/QYBRaU8.jpg" alt="Poster 1">
-                        <div class="photo-caption">Poster 1</div>
+
+        <div id="project-modal-2" class="modal-overlay" aria-hidden="true">
+            <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="proj2-title">
+                <button class="close-modal" data-close="2" aria-label="Close">&times;</button>
+                <div class="project-container">
+                    <h3 id="proj2-title">Menu Project</h3>
+                    <div class="project-company">Bas Pasta Menu – Crepeno</div>
+                    <div class="project-desc">
+                        I designed a full marketing collateral and menu for Crepeno and Bas Pasta, a food brand based in
+                        Tripoli.
+                        The project included creating a modern and appetizing menu layout.<br><br>
+                        The design combines Arabic and English text, uses strong yellow and black contrasts, and
+                        integrates
+                        food photography.<br><br>
+                        The result: professional, customer-friendly menus and posters.
                     </div>
-                    <div class="project-photo-block">
-                        <img src="https://imgur.com/dzpdQEU.jpg" alt="Poster 2">
-                        <div class="photo-caption">Poster 2</div>
-                    </div>
-                    <div class="project-photo-block">
-                        <img src="https://imgur.com/9uWScuA.jpg" alt="Menu">
-                        <div class="photo-caption">Menu</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="project-modal-3" class="modal-overlay" style="display:none;">
-        <div class="modal-content">
-            <button class="close-modal" data-close="3">&times;</button>
-            <div class="project-container">
-                <div class="project-title">Product Photography & Digital Marketing Project</div>
-                <div class="project-company">Khait w Hkaya – YALA Association</div>
-                <div class="project-desc">
-                    Role: Product Photographer & Digital Marketer<br>
-                    Year: 2023<br>
-                    • Photographed handmade products (bags, wallets, keychains) highlighting the Palestinian heritage
-                    style.<br>
-                    • Conducted a professional photoshoot with multiple setups suitable for digital display.<br>
-                    • Created visual content tailored for social media platforms.<br>
-                    • Marketed the products online, increasing reach and engagement with the target audience.<br>
-                    Skills gained:<br>
-                    Photography · Visual Storytelling · Digital Marketing · Social Media Management
-                </div>
-                <div class="project-gallery">
-                    <div class="project-photo-block">
-                        <img src="https://imgur.com/0BO1tFS.jpg" alt="Logo Design">
-                        <div class="photo-caption">Khait w Hkaya Collection</div>
+                    <div class="project-gallery" style="margin-top:12px;">
+                        <div class="project-photo-block">
+                            <img src="https://imgur.com/QYBRaU8.jpg" alt="Poster 1">
+                            <div class="photo-caption">Poster 1</div>
+                        </div>
+                        <div class="project-photo-block" style="margin-top:12px;">
+                            <img src="https://imgur.com/dzpdQEU.jpg" alt="Poster 2">
+                            <div class="photo-caption">Poster 2</div>
+                        </div>
+                        <div class="project-photo-block" style="margin-top:12px;">
+                            <img src="https://imgur.com/9uWScuA.jpg" alt="Menu">
+                            <div class="photo-caption">Menu</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- FEEDBACKS -->
-    <section id="feedbacks">
-        <h2 class="section-title">Feedbacks</h2>
-        <div class="feedbacks-wrapper">
-            <button class="feedback-arrow left" aria-label="Previous feedback">&lt;</button>
-            <div class="feedbacks-scroll">
-                <div class="feedback-card wow">
+
+        <div id="project-modal-3" class="modal-overlay" aria-hidden="true">
+            <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="proj3-title">
+                <button class="close-modal" data-close="3" aria-label="Close">&times;</button>
+                <div class="project-container">
+                    <h3 id="proj3-title">Product Photography & Digital Marketing Project</h3>
+                    <div class="project-company">Khait w Hkaya – YALA Association</div>
+                    <div class="project-desc">
+                        <br>Role: Product Photographer & Digital Marketer</br>
+                        <br>Year: 2023</br>
+                        <br>• Photographed handmade products (bags, wallets, keychains) highlighting the Palestinian
+                        heritage
+                        style.</br>
+                        <br>• Conducted a professional photoshoot with multiple setups suitable for digital
+                        display.</br>
+                        <br>• Created visual content tailored for social media platforms.</br>
+                        <br>• Marketed the products online, increasing reach and engagement with the target
+                        audience.</br>
+
+                        <br>Skills gained:</br>
+                        <br>Photography · Visual Storytelling · Digital Marketing · Social Media Management</br>
+                    </div>
+                    <div class="project-gallery" style="margin-top:12px;">
+                        <div class="project-photo-block">
+                            <img src="https://imgur.com/0BO1tFS.jpg" alt="Khait w Hkaya Collection">
+                            <div class="photo-caption">Khait w Hkaya Collection</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FEEDBACKS -->
+        <section id="feedbacks" class="section fade-in-up delay-3" aria-labelledby="feedbacks-title">
+            <h2 id="feedbacks-title" class="section-title">Feedbacks</h2>
+            <div class="feedbacks-grid">
+                <div class="feedback-card">
                     <div class="feedback-header">
-                        <img src="https://imgur.com/XWagJpO.jpg" alt="Client Photo" class="feedback-photo"
+                        <img src="https://imgur.com/XWagJpO.jpg" alt="Mahmoud Cherham" class="feedback-photo"
                             loading="lazy" />
                         <div>
                             <div class="feedback-name">Mahmoud Cherham</div>
@@ -1188,9 +1041,10 @@
                         </blockquote>
                     </div>
                 </div>
-                <div class="feedback-card wow">
+
+                <div class="feedback-card">
                     <div class="feedback-header">
-                        <img src="https://imgur.com/CbwDanL.jpg" alt="Client Photo" class="feedback-photo"
+                        <img src="https://imgur.com/CbwDanL.jpg" alt="Jana Bakir" class="feedback-photo"
                             loading="lazy" />
                         <div>
                             <div class="feedback-name">Jana Bakir</div>
@@ -1200,14 +1054,17 @@
                     <div class="feedback-content">
                         <blockquote>
                             “Hey love, I genuinely want to thank you from the bottom of my heart for your work on my CV
-                            and cover letter. I absolutely loved them. Everything was so well-organized, polished, and
-                            delivered right on time. I even ended up getting an A in the course, so thank you so much.”
+                            and cover
+                            letter. I absolutely loved them. Everything was so well-organized, polished, and delivered
+                            right on time.
+                            I even ended up getting an A in the course, so thank you so much.”
                         </blockquote>
                     </div>
                 </div>
-                <div class="feedback-card wow">
+
+                <div class="feedback-card">
                     <div class="feedback-header">
-                        <img src="https://imgur.com/CbwDanL.jpg" alt="Client Photo" class="feedback-photo"
+                        <img src="https://imgur.com/CbwDanL.jpg" alt="Raghad Nasser" class="feedback-photo"
                             loading="lazy" />
                         <div>
                             <div class="feedback-name">Raghad Nasser</div>
@@ -1217,170 +1074,266 @@
                     <div class="feedback-content">
                         <blockquote>
                             “I am beyond impressed with your work! Your designs are truly exceptional and stand out in
-                            every way. The creativity, attention to detail, and overall quality are unmatched. I
-                            absolutely loved the results and couldn’t be happier with them”
-                        </blockquote>
-                    </div>
-                </div>
-                <div class="feedback-card wow">
-                    <div class="feedback-header">
-                        <img src="https://imgur.com/7fA7NjH.jpg" alt="Client Photo" class="feedback-photo"
-                            loading="lazy" />
-                        <div>
-                            <div class="feedback-name">Sara Khalil</div>
-                            <div class="feedback-role">Entrepreneur</div>
-                        </div>
-                    </div>
-                    <div class="feedback-content">
-                        <blockquote>
-                            “Working with Digitala was a pleasure! The branding and social media strategy helped us
-                            reach new customers and build trust. Highly recommended.”
-                        </blockquote>
-                    </div>
-                </div>
-                <div class="feedback-card wow">
-                    <div class="feedback-header">
-                        <img src="https://imgur.com/8WGKcCq.jpg" alt="Client Photo" class="feedback-photo"
-                            loading="lazy" />
-                        <div>
-                            <div class="feedback-name">Mohamed Youssef</div>
-                            <div class="feedback-role">Marketing Specialist</div>
-                        </div>
-                    </div>
-                    <div class="feedback-content">
-                        <blockquote>
-                            “Tala’s creative approach and attention to detail made our project a huge success. The
-                            designs were modern and effective. Thank you!”
+                            every way. The
+                            creativity, attention to detail, and overall quality are unmatched. I absolutely loved the
+                            results and
+                            couldn’t be happier with them”
                         </blockquote>
                     </div>
                 </div>
             </div>
-            <button class="feedback-arrow right" aria-label="Next feedback">&gt;</button>
-        </div>
-    </section>
-    <!-- CONTACT -->
-    <section id="contact">
-        <h2 class="section-title">Contact</h2>
-        <div class="contact-wrap">
-            <form class="contact-form" action="https://formspree.io/f/mzzgwkvk" method="POST">
-                <input type="text" name="name" placeholder="Your Name" required />
-                <input type="email" name="email" placeholder="Your Email" required />
-                <textarea rows="4" name="message" placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-            <div class="contacts-social">
-                <a href="https://wa.me/447917789739" target="_blank" rel="noopener">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/whatsapp.svg" alt="WhatsApp"
-                        loading="lazy" />
-                    WhatsApp
-                </a>
-                <a href="https://www.instagram.com/tala.chibli" target="_blank" rel="noopener">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/instagram.svg" alt="Instagram"
-                        loading="lazy" />
-                    Instagram
-                </a>
-                <a href="https://www.linkedin.com/in/tala-chibli-89a8632ab" target="_blank" rel="noopener">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/linkedin.svg" alt="LinkedIn"
-                        loading="lazy" />
-                    LinkedIn
-                </a>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contacts" class="section fade-in-up delay-3" aria-labelledby="contacts-title">
+            <h2 id="contacts-title" class="section-title">Contact</h2>
+            <div class="contacts-wrapper">
+                <form class="contact-form" action="https://formspree.io/f/mzzgwkvk" method="POST">
+                    <input type="text" name="name" placeholder="Your Name" required />
+                    <input type="email" name="email" placeholder="Your Email" required />
+                    <textarea rows="4" name="message" placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+
+                <div>
+                    <div class="contacts-social" aria-label="social links">
+                        <a href="https://wa.me/447917789739" target="_blank" rel="noopener">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/whatsapp.svg" alt="WhatsApp"
+                                loading="lazy" style="width:20px;height:20px" />
+                            WhatsApp
+                        </a>
+                        <a href="https://www.instagram.com/tala.chibli" target="_blank" rel="noopener">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/instagram.svg" alt="Instagram"
+                                loading="lazy" style="width:20px;height:20px" />
+                            Instagram
+                        </a>
+                        <a href="https://www.linkedin.com/in/tala-chibli-89a8632ab" target="_blank" rel="noopener">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/linkedin.svg" alt="LinkedIn"
+                                loading="lazy" style="width:20px;height:20px" />
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
+
     <button id="scrollTopBtn" aria-label="Scroll to top">↑</button>
+
     <footer>
         &copy; 2025 Tala Chibli. All rights reserved.<br>
     </footer>
-    <!-- Interactive JS -->
+
+    <!-- Hidden Google translate (keeps original behavior) -->
+    <div id="google_translate_element" style="display:none;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'ar,en',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript"
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <script>
-        // Navigation scroll & active
-        const navLinks = document.querySelectorAll('nav a');
-        navLinks.forEach(link => {
+        // Basic UI interactions: menu toggle, tab navigation, scroll top
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('nav.menu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('show'));
+
+        const tabLinks = document.querySelectorAll('.menu a');
+        const sections = document.querySelectorAll('main > section, main > div.hero, section');
+        tabLinks.forEach(link => {
             link.addEventListener('click', function (e) {
-                navLinks.forEach(l => l.classList.remove('active'));
+                tabLinks.forEach(l => l.classList.remove('active'));
                 this.classList.add('active');
+                const href = this.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    const el = document.querySelector(href);
+                    if (el) {
+                        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+                if (window.innerWidth <= 768) navMenu.classList.remove('show');
             });
         });
+
         // Scroll to top button
         const scrollBtn = document.getElementById('scrollTopBtn');
-        window.onscroll = function () {
-            if (window.scrollY > 200) scrollBtn.style.display = "block";
-            else scrollBtn.style.display = "none";
+        window.addEventListener('scroll', () => {
+            if (document.documentElement.scrollTop > 200) scrollBtn.style.display = 'block';
+            else scrollBtn.style.display = 'none';
+        });
+        scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Preserve original WhatsApp quick chat behavior for service items when showing details
+        function openWhatsApp(message) {
+            const waMsg = encodeURIComponent(message);
+            window.open("https://wa.me/447917789739?text=" + waMsg, "_blank");
+        }
+
+        // SERVICE DETAILS DATA (keeps original service names)
+        const servicesData = {
+            "visual-identity": {
+                title: "Build Your Visual Identity",
+                items: [
+                    { name: "Logo Design", price: "From $120" },
+                    { name: "Colour Palette", price: "From $50" },
+                    { name: "Typography", price: "From $40" },
+                    { name: "Iconography", price: "From $60" },
+                    { name: "Patterns/Textures", price: "From $80" },
+                    { name: "Layout Systems", price: "From $100" },
+                    { name: "Shapes", price: "From $40" },
+                    { name: "Packaging", price: "From $140" },
+                    { name: "Signage", price: "From $90" },
+                    { name: "Merchandise", price: "From $120" }
+                ]
+            },
+            "social-presence": {
+                title: "Grow Your Social Presence",
+                items: [
+                    { name: "Content Creation", price: "From $150 / month" },
+                    { name: "Content Calendar", price: "From $80" },
+                    { name: "Engagement Strategy", price: "From $120" },
+                    { name: "Brand Consistency", price: "From $90" },
+                    { name: "Trend Monitoring", price: "From $60" },
+                    { name: "Community Building", price: "From $140 / month" }
+                ]
+            },
+            "frontend-websites": {
+                title: "Stunning Frontend Websites",
+                items: [
+                    { name: "Frontend Web Design", price: "From $450" },
+                    { name: "Content Writing for Web", price: "From $80/page" },
+                    { name: "User Interface (UI) Design", price: "From $300" }
+                ]
+            },
+            "printed-custom": {
+                title: "Printed & Custom Designs",
+                items: [
+                    { name: "Print Materials", price: "From $90" },
+                    { name: "Custom Characters", price: "From $120" },
+                    { name: "Tailored Designs", price: "From $110" }
+                ]
+            },
+            "photo-video": {
+                title: "Photography & Video Production",
+                items: [
+                    { name: "Product Photography", price: "From $200 / session" },
+                    { name: "Promotional Videos", price: "From $350" },
+                    { name: "Video Editing", price: "From $80 / video" }
+                ]
+            },
+            "extra-services": {
+                title: "Extra Services",
+                items: [
+                    { name: "CV & Cover Letter", price: "From $35" },
+                    { name: "Portfolio Design", price: "From $120" },
+                    { name: "Presentations & PDFs", price: "From $50" },
+                    { name: "Projects & Assignments", price: "From $60" }
+                ]
+            }
         };
-        scrollBtn.onclick = function () {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        };
-        // Hamburger menu
-        const hamburger = document.getElementById('hamburger');
-        const nav = document.querySelector('nav');
-        hamburger.addEventListener('click', function () {
-            hamburger.classList.toggle('open');
-            nav.classList.toggle('open');
-            if (nav.classList.contains('open')) {
-                gsap.from(nav, { x: 100, opacity: 0, duration: 0.6 });
+
+        // Create details overlay (single reusable element)
+        function buildDetailsOverlay() {
+            const overlay = document.createElement('div');
+            overlay.className = 'service-details';
+            overlay.setAttribute('role', 'dialog');
+            overlay.setAttribute('aria-modal', 'true');
+            overlay.innerHTML = `
+        <div class="details-head">
+          <h3 id="details-title"></h3>
+          <div>
+            <button class="close-details" aria-label="Close details">Close</button>
+          </div>
+        </div>
+        <div class="details-list" id="details-list"></div>
+        <div style="margin-top:12px; display:flex; gap:10px; justify-content:flex-end;">
+          <button id="contact-whatsapp" class="close-details" style="background:linear-gradient(90deg,#00a884,#128C7E); color:#fff;">Chat on WhatsApp</button>
+        </div>
+      `;
+            document.body.appendChild(overlay);
+            overlay.querySelector('.close-details').addEventListener('click', () => overlay.remove());
+            overlay.querySelector('#contact-whatsapp').addEventListener('click', () => {
+                const title = overlay.querySelector('#details-title').textContent || 'Service';
+                openWhatsApp(`I'm interested in "${title}". Can you tell me more?`);
+            });
+            return overlay;
+        }
+
+        // Wire up the service tiles
+        document.querySelectorAll('.service-tile').forEach(tile => {
+            tile.addEventListener('click', () => {
+                const key = tile.getAttribute('data-service');
+                const data = servicesData[key];
+                if (!data) return;
+                const overlay = buildDetailsOverlay();
+                overlay.querySelector('#details-title').textContent = data.title;
+                const listBlock = overlay.querySelector('#details-list');
+                listBlock.innerHTML = '';
+                data.items.forEach(it => {
+                    const row = document.createElement('div');
+                    row.className = 'details-item';
+                    row.innerHTML = `<div>${it.name}</div><div class="price">${it.price}</div>`;
+                    row.addEventListener('click', () => openWhatsApp(`I'm interested in '${it.name}' from "${data.title}". Can you tell me more?`));
+                    listBlock.appendChild(row);
+                });
+                // accessibility focus
+                overlay.querySelector('.close-details').focus();
+            });
+
+            // keyboard support
+            tile.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    tile.click();
+                }
+            });
+        });
+
+        // Portfolio modals
+        document.querySelectorAll('.file-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const id = card.getAttribute('data-modal');
+                const modal = document.getElementById(id);
+                if (modal) {
+                    modal.style.display = 'flex';
+                    modal.setAttribute('aria-hidden', 'false');
+                }
+            });
+            card.addEventListener('keydown', e => {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
+            });
+        });
+
+        document.querySelectorAll('.close-modal').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const idx = btn.getAttribute('data-close');
+                const modal = document.getElementById('project-modal-' + idx);
+                if (modal) { modal.style.display = 'none'; modal.setAttribute('aria-hidden', 'true'); }
+            });
+        });
+
+        // Close modal on click outside
+        ['project-modal-1', 'project-modal-2', 'project-modal-3'].forEach(id => {
+            const modal = document.getElementById(id);
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                        modal.setAttribute('aria-hidden', 'true');
+                    }
+                });
             }
         });
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', function () {
-                hamburger.classList.remove('open');
-                nav.classList.remove('open');
-            });
-        });
-        // WhatsApp service buttons
-        document.querySelectorAll('.service-plot').forEach(function (btn) {
-            btn.addEventListener('click', function (e) {
-                e.preventDefault();
-                var plot = btn.getAttribute('data-plot');
-                var waMsg = encodeURIComponent("I'm interested in '" + plot + "'. Can you tell me more?");
-                window.open("https://wa.me/447917789739?text=" + waMsg, "_blank");
-            });
-        });
-        // Portfolio Modals
-        document.getElementById('open-modal-1').onclick = function () {
-            document.getElementById('project-modal-1').style.display = 'flex';
-        };
-        document.getElementById('open-modal-2').onclick = function () {
-            document.getElementById('project-modal-2').style.display = 'flex';
-        };
-        document.getElementById('open-modal-3').onclick = function () {
-            document.getElementById('project-modal-3').style.display = 'flex';
-        };
-        document.querySelectorAll('.close-modal').forEach(function (btn) {
-            btn.onclick = function () {
-                var idx = btn.getAttribute('data-close');
-                document.getElementById('project-modal-' + idx).style.display = 'none';
-            };
-        });
-        document.getElementById('project-modal-1').onclick = function (e) {
-            if (e.target === this) this.style.display = 'none';
-        };
-        document.getElementById('project-modal-2').onclick = function (e) {
-            if (e.target === this) this.style.display = 'none';
-        };
-        document.getElementById('project-modal-3').onclick = function (e) {
-            if (e.target === this) this.style.display = 'none';
-        };
-        // Feedbacks horizontal scroll
-        const feedbacksScroll = document.querySelector('.feedbacks-scroll');
-        document.querySelector('.feedback-arrow.left').onclick = function () {
-            feedbacksScroll.scrollBy({ left: -340, behavior: "smooth" });
-        };
-        document.querySelector('.feedback-arrow.right').onclick = function () {
-            feedbacksScroll.scrollBy({ left: 340, behavior: "smooth" });
-        };
-        // Animate sections on scroll (simple wow-in-view)
-        function inViewport(el) {
-            const rect = el.getBoundingClientRect();
-            return rect.top < window.innerHeight && rect.bottom > 0;
-        }
-        function animateWow() {
-            document.querySelectorAll('.wow').forEach(function (el) {
-                if (inViewport(el)) el.style.opacity = 1;
-            });
-        }
-        window.addEventListener('scroll', animateWow);
-        window.addEventListener('DOMContentLoaded', animateWow);
-        // Language Switcher and Google Translate
+
+        // Language toggle (preserves original behavior)
+        const langToggle = document.getElementById('langToggle');
+        let currentLang = 'en';
         function changeLanguage(lang) {
             var frame = document.querySelector('iframe.goog-te-menu-frame');
             if (frame) {
@@ -1397,15 +1350,13 @@
                 }
             }
         }
-        const langToggle = document.getElementById('langToggle');
-        let currentLang = 'en';
         langToggle.addEventListener('click', function () {
             if (currentLang === 'en') {
                 langToggle.textContent = 'ENGLISH';
                 currentLang = 'ar';
                 setTimeout(function () { changeLanguage('ar'); }, 500);
             } else {
-                langToggle.textContent = 'زر الترجمة';
+                langToggle.textContent = 'ترجمة';
                 currentLang = 'en';
                 setTimeout(function () { changeLanguage('en'); }, 500);
             }
@@ -1417,26 +1368,54 @@
                     langToggle.textContent = 'ENGLISH';
                     currentLang = 'ar';
                 } else {
-                    langToggle.textContent = 'زر الترجمة';
+                    langToggle.textContent = 'ترجمة';
                     currentLang = 'en';
                 }
             });
             observer.observe(document.documentElement, { attributes: true });
         }
         window.addEventListener('DOMContentLoaded', observeTranslate);
-    </script>
-    <div id="google_translate_element" style="display:none;"></div>
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'ar,en',
-                autoDisplay: false
-            }, 'google_translate_element');
+
+        // small accessibility: trap focus in modals when open
+        function trapFocus(modal) {
+            const focusable = modal.querySelectorAll('a[href], button, textarea, input, [tabindex]:not([tabindex="-1"])');
+            if (!focusable.length) return;
+            const first = focusable[0], last = focusable[focusable.length - 1];
+            modal.addEventListener('keydown', function (e) {
+                if (e.key === 'Tab') {
+                    if (e.shiftKey) {
+                        if (document.activeElement === first) {
+                            e.preventDefault(); last.focus();
+                        }
+                    } else {
+                        if (document.activeElement === last) {
+                            e.preventDefault(); first.focus();
+                        }
+                    }
+                }
+                if (e.key === 'Escape') {
+                    modal.style.display = 'none';
+                }
+            });
+            first.focus();
         }
+        // when show modal, call trapFocus
+        ['project-modal-1', 'project-modal-2', 'project-modal-3'].forEach(id => {
+            const m = document.getElementById(id);
+            const observer = new MutationObserver(() => {
+                if (m.style.display === 'flex') trapFocus(m);
+            });
+            observer.observe(m, { attributes: true, attributeFilter: ['style'] });
+        });
+
+        // small optimization: pre-connect to WA and fonts for quicker interaction
+        (function preconnects() {
+            const l = document.createElement('link');
+            l.rel = 'preconnect';
+            l.href = 'https://wa.me';
+            document.head.appendChild(l);
+        })();
     </script>
-    <script type="text/javascript"
-        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 
 </html>
