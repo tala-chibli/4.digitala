@@ -11,13 +11,6 @@
         rel="stylesheet" />
     <link rel="icon" type="image/png+xml" href="https://imgur.com/KseW3Eo.png" />
     <style>
-        /*
-      Enhanced, animated, glassy version of the original site.
-      - Content text has been kept unchanged.
-      - Visuals: glassmorphism, animated floating symbols, background video, subtle motion.
-      - Services: tiles show only titles and creative photos; clicking reveals details with prices.
-    */
-
         :root {
             --white: #ffffff;
             --black: #111111;
@@ -34,6 +27,11 @@
             --glass-border-strong: rgba(0, 0, 0, 0.06);
             --glass-highlight: rgba(255, 255, 255, 0.18);
             --glow: 0 6px 30px rgba(13, 13, 13, 0.08);
+            --card-min-width: 260px;
+
+            /* mobile fixed photo defaults (will be overwritten inline if needed) */
+            --mobile-photo-size: 88px;
+            --mobile-photo-top: 72px;
         }
 
         * {
@@ -49,6 +47,7 @@
             color: var(--black);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
         }
 
         /* Background decorative shapes */
@@ -144,6 +143,7 @@
             background: linear-gradient(135deg, #fff, #f3f3f3);
             box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
             border: 2px solid var(--accent-soft);
+            display: block;
         }
 
         nav.menu {
@@ -191,6 +191,11 @@
             margin-left: 1rem;
         }
 
+        /* show/hide menu for mobile when toggled */
+        nav.menu.show {
+            display: flex !important;
+        }
+
         /* Hero / About Section */
         .hero {
             position: relative;
@@ -203,7 +208,8 @@
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.42));
             border: 1px solid rgba(255, 255, 255, 0.35);
             box-shadow: 0 12px 40px rgba(2, 6, 23, 0.06);
-            overflow: hidden;
+            overflow: visible;
+            transition: padding-top .28s ease;
         }
 
         .hero-grid {
@@ -222,7 +228,7 @@
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
             transform: translateZ(0);
             background: linear-gradient(135deg, #fff, #fafafa);
-            transition: transform var(--transition), box-shadow var(--transition);
+            transition: transform var(--transition), box-shadow var(--transition), width .18s ease, height .18s ease, top .18s ease;
         }
 
         .hero-photo img {
@@ -235,6 +241,25 @@
         .hero-photo:hover {
             transform: rotate(-3deg) scale(1.02);
             box-shadow: 0 18px 44px rgba(0, 0, 0, 0.12);
+        }
+
+        /* MOBILE FIXED HERO PHOTO (activated only on small screens when "fixed-mobile" class is added) */
+        .hero-photo.fixed-mobile {
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%);
+            width: var(--mobile-photo-size);
+            height: var(--mobile-photo-size);
+            border-radius: 12px;
+            z-index: 120;
+            box-shadow: 0 12px 44px rgba(0, 0, 0, 0.18);
+            transition: transform .28s ease, top .18s ease, width .18s ease, height .18s ease;
+            will-change: top, transform;
+        }
+
+        /* when fixed, add extra top padding to hero section to avoid content jump */
+        .hero.hero-fixed-photo {
+            /* this will be set inline from JS to match the photo height + spacing */
         }
 
         .about-heading {
@@ -275,11 +300,37 @@
             border-radius: 8px;
         }
 
+        /* Carousel behavior for services, portfolio, feedbacks */
+        .carousel {
+            display: flex;
+            gap: 1.1rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+            padding-bottom: 6px;
+            align-items: stretch;
+        }
+
+        .carousel::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .carousel::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.12);
+            border-radius: 999px;
+        }
+
+        .service-tile,
+        .file-card,
+        .feedback-card {
+            flex: 0 0 var(--card-min-width);
+            scroll-snap-align: start;
+            min-width: var(--card-min-width);
+        }
+
         /* Services creative tiles */
         .services-wrap {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.1rem;
             align-items: stretch;
         }
 
@@ -422,9 +473,7 @@
 
         /* Portfolio grid glass cards */
         .graphics-file-grid {
-            display: grid;
-            gap: 1rem;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            align-items: stretch;
         }
 
         .file-card {
@@ -522,9 +571,7 @@
 
         /* Feedbacks */
         .feedbacks-grid {
-            display: grid;
-            gap: 1rem;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            align-items: stretch;
         }
 
         .feedback-card {
@@ -644,6 +691,41 @@
             box-shadow: 0 10px 30px rgba(2, 6, 23, 0.04);
         }
 
+        /* Carousel nav buttons (desktop) */
+        .carousel-wrap {
+            position: relative;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 30px rgba(2, 6, 23, 0.08);
+            cursor: pointer;
+            z-index: 60;
+            transition: transform .18s ease;
+        }
+
+        .carousel-nav:hover {
+            transform: translateY(-50%) scale(1.04);
+        }
+
+        .carousel-nav.left {
+            left: -18px;
+        }
+
+        .carousel-nav.right {
+            right: -18px;
+        }
+
         /* Scroll top */
         #scrollTopBtn {
             display: none;
@@ -688,6 +770,10 @@
             .contacts-wrapper {
                 grid-template-columns: 1fr;
             }
+
+            :root {
+                --card-min-width: 220px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -709,6 +795,11 @@
                 padding: 10px;
                 border-radius: 10px;
                 box-shadow: var(--shadow-1);
+                flex-direction: column;
+            }
+
+            nav.menu.show {
+                display: flex;
             }
 
             .hero {
@@ -731,11 +822,13 @@
             }
 
             .services-wrap {
-                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                grid-template-columns: none;
             }
 
-            .file-card {
-                height: 160px;
+            .services-wrap,
+            .graphics-file-grid,
+            .feedbacks-grid {
+                padding: 6px 2px;
             }
 
             .service-details {
@@ -743,6 +836,15 @@
                 right: 6%;
                 bottom: 6%;
                 top: auto;
+            }
+
+            :root {
+                --card-min-width: 240px;
+            }
+
+            /* hide desktop carousel arrows on small screens */
+            .carousel-nav {
+                display: none;
             }
         }
 
@@ -783,14 +885,14 @@
 
     <header>
         <a href="#about" class="logo" aria-label="Digitala - Home">
-            <img src="https://imgur.com/KseW3Eo.png" alt="Logo" />
+            <img id="headerLogo" src="https://imgur.com/KseW3Eo.png" alt="Logo" />
             Digitala
         </a>
 
         <!-- Translation toggle (keeps original behavior) -->
         <button id="langToggle" class="translate-switch" aria-pressed="false">ترجمة</button>
 
-        <button class="menu-toggle" aria-label="Open Menu">&#9776;</button>
+        <button class="menu-toggle" aria-label="Open Menu" aria-expanded="false">&#9776;</button>
 
         <nav class="menu" aria-label="Main navigation">
             <a href="#about" class="active" data-tab="about">About</a>
@@ -809,18 +911,21 @@
                     <img src="https://imgur.com/KseW3Eo.png" alt="Digitala - Tala Chibli" />
                 </div>
                 <div>
-                    <h1 id="about-heading" class="about-heading">Digitala | Branding & Marketing Agency</h1>
+                    <h1 id="about-heading" class="about-heading">Digitala | complete suite of digital services under one
+                        roof</h1>
                     <p class="about-paragraph">
-                        Digitala is a creative and professional agency, created by Tala Chibli, that provides businesses
-                        and
-                        individuals with
-                        everything they need for a powerful digital presence. From branding and visual identity, to
-                        social
-                        media management, web design, and content creation — we offer a complete suite of services under
-                        one
-                        roof. Our mission is to transform ideas into impactful digital experiences, ensuring every brand
-                        we
-                        work with stands out with creativity, elegance, and professionalism.
+                        Tala is a multi-passionate girl. She started designing by accident in 2017, and over the years
+                        she explored graphic design, web development, content creation... And then she drowned in love
+                        with everything digital. Her major in Management Information Systems enhanced her confidence in
+                        technology, entrepreneurship, and data analysis, as well as her understanding of customer needs,
+                        which enabled her to launch her own agency <u>“DIGITALA”</u>.<br>
+                        Digitala is a creative and professional agency that provides businesses and individuals with
+                        everything they need for a powerful digital presence. From branding and visual identity to
+                        social media management, web design, and content creation. We offer a complete suite of
+                        services under one roof. <br>
+                        <b><i>My mission is to transform ideas into impactful digital experiences, ensuring every brand
+                                we
+                                work with stands out with creativity, elegance, and professionalism.</i></b>
                     </p>
                 </div>
             </div>
@@ -830,62 +935,67 @@
         <section id="services" class="section fade-in-up delay-2" aria-labelledby="services-title">
             <h2 id="services-title" class="section-title">Services</h2>
 
-            <div class="services-wrap" id="servicesWrap" aria-hidden="false">
-                <!-- Tiles: only titles + photo + big symbol behind -->
-                <!-- Keep textual content the same — buttons and subitems added will reveal details with prices -->
-                <div class="service-tile" data-service="visual-identity" role="button" tabindex="0"
-                    style="background-image: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.28)), url('https://images.unsplash.com/photo-1534080564583-6be75777b70a?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=5c0666a06d7fb6b2d6f1e0b8f2f2b579');">
-                    <div class="service-symbol">✦</div>
-                    <div>
-                        <div class="service-title-large">Build Your Visual Identity</div>
-                        <div class="service-sub">Logo Design · Colour Palette · Typography & more</div>
+            <div class="carousel-wrap" style="margin-top:8px;">
+                <div class="services-wrap carousel" id="servicesWrap" aria-hidden="false">
+                    <div class="service-tile" data-service="visual-identity" role="button" tabindex="0"
+                        style="background-image: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.28)), url('https://images.unsplash.com/photo-1534080564583-6be75777b70a?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=5c0666a06d7fb6b2d6f1e0b8f2f2b579');">
+                        <div class="service-symbol">✦</div>
+                        <div>
+                            <div class="service-title-large">Build Your Visual Identity</div>
+                            <div class="service-sub">Logo Design · Colour Palette · Typography & more</div>
+                        </div>
+                    </div>
+
+                    <div class="service-tile" data-service="social-presence" role="button" tabindex="0"
+                        style="background-image: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.28)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=0b7a4f3b5d2c3fae2f92c1ae2ab6f2da');">
+                        <div class="service-symbol">♫</div>
+                        <div>
+                            <div class="service-title-large">Grow Your Social Presence</div>
+                            <div class="service-sub">Content Creation · Calendars · Strategy</div>
+                        </div>
+                    </div>
+
+                    <div class="service-tile" data-service="frontend-websites" role="button" tabindex="0"
+                        style="background-image: linear-gradient(180deg, rgba(0,0,0,0.14), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=3a0a1b7ed2e7b4fb2e8a0f72b2eea3b8');">
+                        <div class="service-symbol">⧉</div>
+                        <div>
+                            <div class="service-title-large">Stunning Frontend Websites</div>
+                            <div class="service-sub">UI Design · Content Writing · Frontend</div>
+                        </div>
+                    </div>
+
+                    <div class="service-tile" data-service="printed-custom" role="button" tabindex="0"
+                        style="background-image: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.28)), url('https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=fd9d7d2e68a0c6d7c9a0a2d7c7b5f6de');">
+                        <div class="service-symbol">✂</div>
+                        <div>
+                            <div class="service-title-large">Printed & Custom Designs</div>
+                            <div class="service-sub">Print Materials · Characters · Tailored Designs</div>
+                        </div>
+                    </div>
+
+                    <div class="service-tile" data-service="photo-video" role="button" tabindex="0"
+                        style="background-image: linear-gradient(180deg, rgba(0,0,0,0.16), rgba(0,0,0,0.34)), url('https://images.unsplash.com/photo-1517263904808-5dc0d1d3f5f7?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=1a7c4b5c1b2a4b5e6a3b6c7d8e9f1234');">
+                        <div class="service-symbol">📸</div>
+                        <div>
+                            <div class="service-title-large">Photography & Video Production</div>
+                            <div class="service-sub">Photographs · Promotional Videos · Editing</div>
+                        </div>
+                    </div>
+
+                    <div class="service-tile" data-service="extra-services" role="button" tabindex="0"
+                        style="background-image: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.28)), url('https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=ff8c9a2b3c4d5e6f7a8b9c0d1e2f3a4b');">
+                        <div class="service-symbol">✦</div>
+                        <div>
+                            <div class="service-title-large">Extra Services</div>
+                            <div class="service-sub">CV · Portfolios · Presentations</div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="service-tile" data-service="social-presence" role="button" tabindex="0"
-                    style="background-image: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.28)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=0b7a4f3b5d2c3fae2f92c1ae2ab6f2da');">
-                    <div class="service-symbol">♫</div>
-                    <div>
-                        <div class="service-title-large">Grow Your Social Presence</div>
-                        <div class="service-sub">Content Creation · Calendars · Strategy</div>
-                    </div>
-                </div>
-
-                <div class="service-tile" data-service="frontend-websites" role="button" tabindex="0"
-                    style="background-image: linear-gradient(180deg, rgba(0,0,0,0.14), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=3a0a1b7ed2e7b4fb2e8a0f72b2eea3b8');">
-                    <div class="service-symbol">⧉</div>
-                    <div>
-                        <div class="service-title-large">Stunning Frontend Websites</div>
-                        <div class="service-sub">UI Design · Content Writing · Frontend</div>
-                    </div>
-                </div>
-
-                <div class="service-tile" data-service="printed-custom" role="button" tabindex="0"
-                    style="background-image: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.28)), url('https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=fd9d7d2e68a0c6d7c9a0a2d7c7b5f6de');">
-                    <div class="service-symbol">✂</div>
-                    <div>
-                        <div class="service-title-large">Printed & Custom Designs</div>
-                        <div class="service-sub">Print Materials · Characters · Tailored Designs</div>
-                    </div>
-                </div>
-
-                <div class="service-tile" data-service="photo-video" role="button" tabindex="0"
-                    style="background-image: linear-gradient(180deg, rgba(0,0,0,0.16), rgba(0,0,0,0.34)), url('https://images.unsplash.com/photo-1517263904808-5dc0d1d3f5f7?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=1a7c4b5c1b2a4b5e6a3b6c7d8e9f1234');">
-                    <div class="service-symbol">📸</div>
-                    <div>
-                        <div class="service-title-large">Photography & Video Production</div>
-                        <div class="service-sub">Photographs · Promotional Videos · Editing</div>
-                    </div>
-                </div>
-
-                <div class="service-tile" data-service="extra-services" role="button" tabindex="0"
-                    style="background-image: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.28)), url('https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=ff8c9a2b3c4d5e6f7a8b9c0d1e2f3a4b');">
-                    <div class="service-symbol">✦</div>
-                    <div>
-                        <div class="service-title-large">Extra Services</div>
-                        <div class="service-sub">CV · Portfolios · Presentations</div>
-                    </div>
-                </div>
+                <button class="carousel-nav left" aria-label="Scroll left" data-target="#servicesWrap"
+                    title="Scroll left">&larr;</button>
+                <button class="carousel-nav right" aria-label="Scroll right" data-target="#servicesWrap"
+                    title="Scroll right">&rarr;</button>
             </div>
 
             <div style="margin-top:1rem; text-align:center; font-size:.97rem; color:#555;">
@@ -896,33 +1006,38 @@
         <!-- PORTFOLIO -->
         <section id="graphics" class="section fade-in-up delay-3" aria-labelledby="portfolio-title">
             <h2 id="portfolio-title" class="section-title">Portfolio</h2>
-            <div class="graphics-file-grid">
-                <div class="file-card" data-modal="project-modal-1"
-                    style="background-image: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.36)), url('https://imgur.com/sazMX5w.jpg');"
-                    role="button" tabindex="0">
-                    <div class="file-content">
-                        <div class="file-title">Visual Identity Project</div>
-                        <div class="file-desc">Lamsa Candles</div>
+
+            <div class="carousel-wrap" style="margin-top:8px;">
+                <div class="graphics-file-grid carousel">
+                    <div class="file-card" data-modal="project-modal-1" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.36)), url('https://imgur.com/sazMX5w.jpg');"
+                        role="button" tabindex="0">
+                        <div class="file-content">
+                            <div class="file-title">Visual Identity Project</div>
+                            <div class="file-desc">Lamsa Candles</div>
+                        </div>
+                    </div>
+
+                    <div class="file-card" data-modal="project-modal-2" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.36)), url('https://imgur.com/QYBRaU8.jpg');"
+                        role="button" tabindex="0">
+                        <div class="file-content">
+                            <div class="file-title">Menu Project</div>
+                            <div class="file-desc">Bas Pasta Menu – Crepeno</div>
+                        </div>
+                    </div>
+
+                    <div class="file-card" data-modal="project-modal-3" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.36)), url('https://imgur.com/0BO1tFS.jpg');"
+                        role="button" tabindex="0">
+                        <div class="file-content">
+                            <div class="file-title">Product Photography & Digital Marketing Project</div>
+                            <div class="file-desc">Khait w Hkaya – YALA Association</div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="file-card" data-modal="project-modal-2"
-                    style="background-image: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.36)), url('https://imgur.com/QYBRaU8.jpg');"
-                    role="button" tabindex="0">
-                    <div class="file-content">
-                        <div class="file-title">Menu Project</div>
-                        <div class="file-desc">Bas Pasta Menu – Crepeno</div>
-                    </div>
-                </div>
-
-                <div class="file-card" data-modal="project-modal-3"
-                    style="background-image: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.36)), url('https://imgur.com/0BO1tFS.jpg');"
-                    role="button" tabindex="0">
-                    <div class="file-content">
-                        <div class="file-title">Product Photography & Digital Marketing Project</div>
-                        <div class="file-desc">Khait w Hkaya – YALA Association</div>
-                    </div>
-                </div>
+                <button class="carousel-nav left" aria-label="Scroll left" data-target=".graphics-file-grid"
+                    title="Scroll left">&larr;</button>
+                <button class="carousel-nav right" aria-label="Scroll right" data-target=".graphics-file-grid"
+                    title="Scroll right">&rarr;</button>
             </div>
         </section>
 
@@ -1023,64 +1138,72 @@
         <!-- FEEDBACKS -->
         <section id="feedbacks" class="section fade-in-up delay-3" aria-labelledby="feedbacks-title">
             <h2 id="feedbacks-title" class="section-title">Feedbacks</h2>
-            <div class="feedbacks-grid">
-                <div class="feedback-card">
-                    <div class="feedback-header">
-                        <img src="https://imgur.com/XWagJpO.jpg" alt="Mahmoud Cherham" class="feedback-photo"
-                            loading="lazy" />
-                        <div>
-                            <div class="feedback-name">Mahmoud Cherham</div>
-                            <div class="feedback-role">Founder of Crepeno Restaurant</div>
+
+            <div class="carousel-wrap" style="margin-top:8px;">
+                <div class="feedbacks-grid carousel">
+                    <div class="feedback-card">
+                        <div class="feedback-header">
+                            <img src="https://imgur.com/XWagJpO.jpg" alt="Mahmoud Cherham" class="feedback-photo"
+                                loading="lazy" />
+                            <div>
+                                <div class="feedback-name">Mahmoud Cherham</div>
+                                <div class="feedback-role">Founder of Crepeno Restaurant</div>
+                            </div>
+                        </div>
+                        <div class="feedback-content">
+                            <blockquote>
+                                “Honestly, the result were beyond our expectations. The outcome was amazing, and we gained
+                                more followers.
+                                May God bless your work and make things easier for you, you are truly talented.”
+                            </blockquote>
                         </div>
                     </div>
-                    <div class="feedback-content">
-                        <blockquote>
-                            “Honestly, the result were beyond our expectations. The outcome was amazing, and we gained
-                            more followers.
-                            May God bless your work and make things easier for you, you are truly talented.”
-                        </blockquote>
+
+                    <div class="feedback-card">
+                        <div class="feedback-header">
+                            <img src="https://imgur.com/CbwDanL.jpg" alt="Jana Bakir" class="feedback-photo"
+                                loading="lazy" />
+                            <div>
+                                <div class="feedback-name">Jana Bakir</div>
+                                <div class="feedback-role">Business Management Student</div>
+                            </div>
+                        </div>
+                        <div class="feedback-content">
+                            <blockquote>
+                                “Hey love, I genuinely want to thank you from the bottom of my heart for your work on my CV
+                                and cover
+                                letter. I absolutely loved them. Everything was so well-organized, polished, and delivered
+                                right on time.
+                                I even ended up getting an A in the course, so thank you so much.”
+                            </blockquote>
+                        </div>
+                    </div>
+
+                    <div class="feedback-card">
+                        <div class="feedback-header">
+                            <img src="https://imgur.com/CbwDanL.jpg" alt="Raghad Nasser" class="feedback-photo"
+                                loading="lazy" />
+                            <div>
+                                <div class="feedback-name">Raghad Nasser</div>
+                                <div class="feedback-role">Founder of Lamsa Candles Store</div>
+                            </div>
+                        </div>
+                        <div class="feedback-content">
+                            <blockquote>
+                                “I am beyond impressed with your work! Your designs are truly exceptional and stand out in
+                                every way. The
+                                creativity, attention to detail, and overall quality are unmatched. I absolutely loved the
+                                results and
+                                couldn’t be happier with them”
+                            </blockquote>
+                        </div>
                     </div>
                 </div>
 
-                <div class="feedback-card">
-                    <div class="feedback-header">
-                        <img src="https://imgur.com/CbwDanL.jpg" alt="Jana Bakir" class="feedback-photo"
-                            loading="lazy" />
-                        <div>
-                            <div class="feedback-name">Jana Bakir</div>
-                            <div class="feedback-role">Business Management Student</div>
-                        </div>
-                    </div>
-                    <div class="feedback-content">
-                        <blockquote>
-                            “Hey love, I genuinely want to thank you from the bottom of my heart for your work on my CV
-                            and cover
-                            letter. I absolutely loved them. Everything was so well-organized, polished, and delivered
-                            right on time.
-                            I even ended up getting an A in the course, so thank you so much.”
-                        </blockquote>
-                    </div>
-                </div>
-
-                <div class="feedback-card">
-                    <div class="feedback-header">
-                        <img src="https://imgur.com/CbwDanL.jpg" alt="Raghad Nasser" class="feedback-photo"
-                            loading="lazy" />
-                        <div>
-                            <div class="feedback-name">Raghad Nasser</div>
-                            <div class="feedback-role">Founder of Lamsa Candles Store</div>
-                        </div>
-                    </div>
-                    <div class="feedback-content">
-                        <blockquote>
-                            “I am beyond impressed with your work! Your designs are truly exceptional and stand out in
-                            every way. The
-                            creativity, attention to detail, and overall quality are unmatched. I absolutely loved the
-                            results and
-                            couldn’t be happier with them”
-                        </blockquote>
-                    </div>
-                </div>
+                <button class="carousel-nav left" aria-label="Scroll left" data-target=".feedbacks-grid"
+                    title="Scroll left">&larr;</button>
+                <button class="carousel-nav right" aria-label="Scroll right" data-target=".feedbacks-grid"
+                    title="Scroll right">&rarr;</button>
             </div>
         </section>
 
@@ -1142,10 +1265,14 @@
         // Basic UI interactions: menu toggle, tab navigation, scroll top
         const menuToggle = document.querySelector('.menu-toggle');
         const navMenu = document.querySelector('nav.menu');
-        menuToggle.addEventListener('click', () => navMenu.classList.toggle('show'));
+
+        menuToggle.addEventListener('click', () => {
+            const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', String(!expanded));
+            navMenu.classList.toggle('show');
+        });
 
         const tabLinks = document.querySelectorAll('.menu a');
-        const sections = document.querySelectorAll('main > section, main > div.hero, section');
         tabLinks.forEach(link => {
             link.addEventListener('click', function (e) {
                 tabLinks.forEach(l => l.classList.remove('active'));
@@ -1154,10 +1281,21 @@
                 if (href && href.startsWith('#')) {
                     const el = document.querySelector(href);
                     if (el) {
-                        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // On mobile, if linking to about, fix the about image at the top then scroll
+                        if (window.innerWidth <= 768 && href === '#about') {
+                            fixHeroImageToTopOnMobile(() => {
+                                // after we fix the photo, scroll the section to show it at top
+                                setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+                            });
+                        } else {
+                            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
                     }
                 }
-                if (window.innerWidth <= 768) navMenu.classList.remove('show');
+                if (window.innerWidth <= 768) {
+                    navMenu.classList.remove('show');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
             });
         });
 
@@ -1169,7 +1307,7 @@
         });
         scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-        // Preserve original WhatsApp quick chat behavior for service items when showing details
+        // WhatsApp quick chat
         function openWhatsApp(message) {
             const waMsg = encodeURIComponent(message);
             window.open("https://wa.me/447917789739?text=" + waMsg, "_blank");
@@ -1265,7 +1403,7 @@
             return overlay;
         }
 
-        // Wire up the service tiles
+        // Wire up the service tiles (click & keyboard)
         document.querySelectorAll('.service-tile').forEach(tile => {
             tile.addEventListener('click', () => {
                 const key = tile.getAttribute('data-service');
@@ -1376,12 +1514,12 @@
         }
         window.addEventListener('DOMContentLoaded', observeTranslate);
 
-        // small accessibility: trap focus in modals when open
+        // focus trap for modals
         function trapFocus(modal) {
             const focusable = modal.querySelectorAll('a[href], button, textarea, input, [tabindex]:not([tabindex="-1"])');
             if (!focusable.length) return;
             const first = focusable[0], last = focusable[focusable.length - 1];
-            modal.addEventListener('keydown', function (e) {
+            function keyHandler(e) {
                 if (e.key === 'Tab') {
                     if (e.shiftKey) {
                         if (document.activeElement === first) {
@@ -1396,7 +1534,8 @@
                 if (e.key === 'Escape') {
                     modal.style.display = 'none';
                 }
-            });
+            }
+            modal.addEventListener('keydown', keyHandler);
             first.focus();
         }
         // when show modal, call trapFocus
@@ -1408,6 +1547,60 @@
             observer.observe(m, { attributes: true, attributeFilter: ['style'] });
         });
 
+        // CAROUSEL - allow mouse drag + touch + nav buttons
+        function enableDragScroll(container) {
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+            container.addEventListener('mousedown', (e) => {
+                isDown = true;
+                container.classList.add('dragging');
+                startX = e.pageX - container.offsetLeft;
+                scrollLeft = container.scrollLeft;
+                e.preventDefault();
+            });
+            container.addEventListener('mouseleave', () => {
+                isDown = false;
+                container.classList.remove('dragging');
+            });
+            container.addEventListener('mouseup', () => {
+                isDown = false;
+                container.classList.remove('dragging');
+            });
+            container.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - container.offsetLeft;
+                const walk = (x - startX) * 1; // scroll-fast multiplier
+                container.scrollLeft = scrollLeft - walk;
+            });
+
+            // touch support: native scrolling covers mobile swipes
+            container.addEventListener('touchstart', () => { /* placeholder - native works well */ }, { passive: true });
+        }
+
+        document.querySelectorAll('.carousel').forEach(c => {
+            enableDragScroll(c);
+        });
+
+        // carousel nav arrows behavior
+        document.querySelectorAll('.carousel-nav').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetSelector = btn.getAttribute('data-target');
+                // allow id or selector
+                let container;
+                if (targetSelector.startsWith('#')) container = document.querySelector(targetSelector);
+                else container = document.querySelector(targetSelector);
+                if (!container) return;
+                const amount = Math.round(container.clientWidth * 0.76);
+                if (btn.classList.contains('left')) {
+                    container.scrollBy({ left: -amount, behavior: 'smooth' });
+                } else {
+                    container.scrollBy({ left: amount, behavior: 'smooth' });
+                }
+            });
+        });
+
         // small optimization: pre-connect to WA and fonts for quicker interaction
         (function preconnects() {
             const l = document.createElement('link');
@@ -1415,6 +1608,145 @@
             l.href = 'https://wa.me';
             document.head.appendChild(l);
         })();
+
+        /* ============================
+           NEW: Fix hero-photo to top on mobile
+           Behavior:
+           - When user opens the About section on mobile (clicks About link or lands on #about),
+             the .hero-photo inside the about section is transformed into a fixed element placed
+             directly under the header (so the image appears at the top of the viewport).
+           - The hero section receives padding-top equal to the photo height + spacing to avoid layout jumps.
+           - The fixed state is removed when user scrolls away, resizes to desktop, or after timeout.
+           ============================ */
+
+        const aboutSection = document.getElementById('about');
+        const heroPhoto = aboutSection.querySelector('.hero-photo');
+        const headerEl = document.querySelector('header');
+
+        // Utility: apply the fixed-photo behavior and optionally call a callback when done
+        function fixHeroImageToTopOnMobile(callback) {
+            if (!heroPhoto || window.innerWidth > 768) {
+                if (typeof callback === 'function') callback();
+                return;
+            }
+
+            // set size for the mobile photo (choose 88 or keep smaller if original smaller)
+            const desiredSize = 88; // px (you can adjust)
+            // compute top based on header height + small gap
+            const headerH = headerEl ? headerEl.offsetHeight : 64;
+            const topValue = headerH + 8; // 8px gap
+
+            // set custom CSS variables (used by .fixed-mobile)
+            heroPhoto.style.setProperty('--mobile-photo-size', desiredSize + 'px');
+            heroPhoto.style.top = topValue + 'px';
+
+            // ensure we set width/height to desired values
+            heroPhoto.classList.add('fixed-mobile');
+
+            // set hero padding-top so content stays below the fixed image
+            const extraPadding = desiredSize + 22; // photo + some spacing
+            aboutSection.classList.add('hero-fixed-photo');
+            aboutSection.style.paddingTop = extraPadding + 'px';
+
+            // focus handling: move focus to heading for screen readers
+            const heading = aboutSection.querySelector('#about-heading');
+            if (heading) heading.setAttribute('tabindex', '-1'), heading.focus();
+
+            // cleanup handler: remove fixed image when scrolling away or after timeout
+            setupHeroFixedRemoval();
+
+            if (typeof callback === 'function') callback();
+        }
+
+        let _heroRemovalTimeout = null;
+        function setupHeroFixedRemoval() {
+            // remove after 6.5s automatically
+            clearTimeout(_heroRemovalTimeout);
+            _heroRemovalTimeout = setTimeout(() => {
+                removeHeroImageFixed();
+            }, 6500);
+
+            // remove when user scrolls away (about's top becomes < -50% of viewport)
+            function onScrollHide() {
+                const rect = aboutSection.getBoundingClientRect();
+                const hideThreshold = window.innerHeight * 0.5;
+                if (rect.top < -hideThreshold || rect.bottom < 0) {
+                    removeHeroImageFixed();
+                }
+            }
+            window.addEventListener('scroll', onScrollHide, { passive: true });
+
+            // remove on resize to desktop
+            function onResizeHide() {
+                if (window.innerWidth > 768) {
+                    removeHeroImageFixed();
+                } else {
+                    // update top value based on header height in case header changed
+                    const headerH = headerEl ? headerEl.offsetHeight : 64;
+                    heroPhoto.style.top = (headerH + 8) + 'px';
+                }
+            }
+            window.addEventListener('resize', onResizeHide);
+
+            // store references so we can remove listeners on cleanup
+            aboutSection._heroScrollHide = onScrollHide;
+            aboutSection._heroResizeHide = onResizeHide;
+        }
+
+        function removeHeroImageFixed() {
+            clearTimeout(_heroRemovalTimeout);
+            if (!heroPhoto) return;
+            // remove event listeners added during setup
+            if (aboutSection._heroScrollHide) {
+                window.removeEventListener('scroll', aboutSection._heroScrollHide);
+                delete aboutSection._heroScrollHide;
+            }
+            if (aboutSection._heroResizeHide) {
+                window.removeEventListener('resize', aboutSection._heroResizeHide);
+                delete aboutSection._heroResizeHide;
+            }
+            heroPhoto.classList.remove('fixed-mobile');
+            heroPhoto.style.top = '';
+            // clear hero padding
+            aboutSection.classList.remove('hero-fixed-photo');
+            aboutSection.style.paddingTop = '';
+        }
+
+        // If page loads with #about on mobile, fix the image immediately
+        window.addEventListener('load', () => {
+            if (window.location.hash === '#about' && window.innerWidth <= 768) {
+                // small delay so layout stabilizes
+                setTimeout(() => {
+                    fixHeroImageToTopOnMobile(() => {
+                        document.getElementById('about').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    });
+                }, 80);
+            }
+        });
+
+        // Accessibility: allow keyboard arrow control for carousel containers
+        document.querySelectorAll('.carousel').forEach(container => {
+            container.setAttribute('tabindex', '0');
+            container.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') {
+                    container.scrollBy({ left: Math.round(container.clientWidth * 0.5), behavior: 'smooth' });
+                } else if (e.key === 'ArrowLeft') {
+                    container.scrollBy({ left: -Math.round(container.clientWidth * 0.5), behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Ensure menu closes when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                const target = e.target;
+                if (!navMenu.contains(target) && !menuToggle.contains(target)) {
+                    navMenu.classList.remove('show');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            }
+        });
+
     </script>
 </body>
 
