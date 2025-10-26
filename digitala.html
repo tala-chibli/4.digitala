@@ -29,7 +29,7 @@
             --glow: 0 6px 30px rgba(13, 13, 13, 0.08);
             --card-min-width: 260px;
 
-            /* mobile fixed photo defaults (will be overwritten inline if needed) */
+
             --mobile-photo-size: 88px;
             --mobile-photo-top: 72px;
             --header-height: 64px;
@@ -51,7 +51,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Background decorative shapes */
+
         .bg-canvas {
             position: fixed;
             inset: 0;
@@ -147,7 +147,7 @@
             display: block;
         }
 
-        /* Improved translate switch styling */
+
         .translate-switch {
             appearance: none;
             -webkit-appearance: none;
@@ -236,12 +236,12 @@
             margin-left: 1rem;
         }
 
-        /* show/hide menu for mobile when toggled */
+
         nav.menu.show {
             display: flex !important;
         }
 
-        /* Hero / About Section */
+
         .hero {
             position: relative;
             max-width: 1100px;
@@ -288,7 +288,6 @@
             box-shadow: 0 18px 44px rgba(0, 0, 0, 0.12);
         }
 
-        /* MOBILE: when JS sets .mobile-photo-top, make the image fixed and centered under header */
         .mobile-photo-top .hero-photo {
             position: fixed;
             left: 50%;
@@ -301,18 +300,16 @@
             top: calc(var(--header-height) + 8px);
         }
 
-        /* when mobile-photo-top is set, push the about content down so the photo appears above it */
         .mobile-photo-top #about {
             padding-top: calc(var(--header-height) + var(--mobile-photo-size) + 22px);
         }
 
-        /* when photo is fixed, keep internal hero layout normal (no rotation) */
         .mobile-photo-top .hero-photo:hover {
             transform: translateX(-50%);
             box-shadow: 0 12px 44px rgba(0, 0, 0, 0.18);
         }
 
-        /* fallback stacked layout (when JS simply adds photo-above class) */
+
         .hero.photo-above {
             padding-top: 1rem;
         }
@@ -355,7 +352,7 @@
             padding: 0.4rem 0;
         }
 
-        /* Section common */
+
         .section {
             max-width: 1100px;
             margin: 2.4rem auto;
@@ -376,7 +373,7 @@
             border-radius: 8px;
         }
 
-        /* Carousel behavior for services, portfolio, feedbacks */
+
         .carousel {
             display: flex;
             gap: 1.1rem;
@@ -405,7 +402,7 @@
             min-width: var(--card-min-width);
         }
 
-        /* Services creative tiles */
+
         .services-wrap {
             align-items: stretch;
         }
@@ -470,9 +467,11 @@
             box-shadow: 0 18px 54px rgba(2, 6, 23, 0.12);
         }
 
+        /* UPDATED: make overlay scrollable and keep header (close button) visible on small screens */
         .service-details {
             position: fixed;
-            inset: auto 10% 8% 10%;
+            /* ensure it fits well on short screens */
+            inset: 8% 10%;
             max-width: 880px;
             margin: 0 auto;
             border-radius: 14px;
@@ -483,6 +482,10 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(0, 0, 0, 0.06);
             animation: popIn .22s ease-out;
+
+            /* allow internal scrolling when content is tall */
+            max-height: calc(100vh - 64px);
+            overflow-y: auto;
         }
 
         @keyframes popIn {
@@ -497,11 +500,20 @@
             }
         }
 
+        /* make the header inside the overlay stick to the top so close button is always visible */
         .details-head {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 12px;
+
+            /* keep header visible when scrolling inside the overlay */
+            position: sticky;
+            top: 0;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.98));
+            padding-top: 8px;
+            padding-bottom: 8px;
+            z-index: 5;
         }
 
         .details-head h3 {
@@ -547,7 +559,6 @@
             font-weight: 700;
         }
 
-        /* Portfolio grid glass cards */
         .graphics-file-grid {
             align-items: stretch;
         }
@@ -598,7 +609,7 @@
             filter: saturate(1.06);
         }
 
-        /* Modal overlay for projects & lightbox */
+
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -645,7 +656,7 @@
             line-height: 1.5;
         }
 
-        /* Feedbacks */
+
         .feedbacks-grid {
             align-items: stretch;
         }
@@ -695,7 +706,7 @@
             font-weight: 500;
         }
 
-        /* Contact */
+
         .contacts-wrapper {
             display: grid;
             grid-template-columns: 1fr 320px;
@@ -767,7 +778,7 @@
             box-shadow: 0 10px 30px rgba(2, 6, 23, 0.04);
         }
 
-        /* Carousel nav buttons (desktop) */
+
         .carousel-wrap {
             position: relative;
         }
@@ -802,7 +813,7 @@
             right: -18px;
         }
 
-        /* Scroll top */
+
         #scrollTopBtn {
             display: none;
             position: fixed;
@@ -831,7 +842,7 @@
             letter-spacing: 1px;
         }
 
-        /* Responsive */
+
         @media (max-width: 1000px) {
             .hero-grid {
                 grid-template-columns: 160px 1fr;
@@ -917,21 +928,24 @@
                 right: 6%;
                 bottom: 6%;
                 top: auto;
+                /* smaller margins on mobile */
+                inset: 6% 6%;
+                max-height: calc(100vh - 48px);
             }
 
             :root {
                 --card-min-width: 240px;
             }
 
-            /* hide desktop carousel arrows on small screens */
+
             .carousel-nav {
                 display: none;
             }
 
-            /* fallback stacked layout (already present above) is kept */
+
         }
 
-        /* subtle entrance for sections */
+
         .fade-in-up {
             opacity: 0;
             transform: translateY(16px);
@@ -994,7 +1008,7 @@
                     <img src="https://imgur.com/KseW3Eo.png" alt="Digitala - Tala Chibli" />
                 </div>
                 <div>
-                    <h1 id="about-heading" class="about-heading">Digitala | complete suite of digital services under one
+                    <h1 id="about-heading" class="about-heading">Digitala | Complete suite of digital services under one
                         roof</h1>
                     <p class="about-paragraph">
                         Tala is a multi-passionate girl. She started designing by accident in 2017, and over the years
@@ -1003,8 +1017,8 @@
                         technology, entrepreneurship, and data analysis, as well as her understanding of customer needs,
                         which enabled her to launch her own agency <u>“DIGITALA”</u>.<br>
                         Digitala is a creative and professional agency that provides businesses and individuals with
-                        everything they need for a powerful digital presence. From branding and visual identity to
-                        social media management, web design, and content creation. We offer a complete suite of
+                        everything they need for a powerful digital presence. From branding and marketing designs to
+                        social media management, web development and content creation. We offer a complete suite of
                         services under one roof. <br>
                         <b><i>My mission is to transform ideas into impactful digital experiences, ensuring every brand
                                 we
@@ -1024,8 +1038,8 @@
                         style="background-image: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.28)), url('https://images.unsplash.com/photo-1534080564583-6be75777b70a?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=5c0666a06d7fb6b2d6f1e0b8f2f2b579');">
                         <div class="service-symbol">✦</div>
                         <div>
-                            <div class="service-title-large">Build Your Visual Identity</div>
-                            <div class="service-sub">Logo Design · Colour Palette · Typography & more</div>
+                            <div class="service-title-large">Visual Branding & Identity Design</div>
+                            <div class="service-sub">Logo Design · Visual Identity · Social Media & more</div>
                         </div>
                     </div>
 
@@ -1353,7 +1367,7 @@
         src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script>
-        // Basic UI interactions: menu toggle, tab navigation, scroll top
+
         const menuToggle = document.querySelector('.menu-toggle');
         const navMenu = document.querySelector('nav.menu');
 
@@ -1366,7 +1380,7 @@
         const tabLinks = document.querySelectorAll('.menu a');
         tabLinks.forEach(link => {
             link.addEventListener('click', function (e) {
-                // prevent default navigation to control the mobile behavior reliably
+
                 e.preventDefault();
 
                 tabLinks.forEach(l => l.classList.remove('active'));
@@ -1375,18 +1389,16 @@
                 if (href && href.startsWith('#')) {
                     const el = document.querySelector(href);
                     if (el) {
-                        // On mobile, if linking to about, show the fixed-top photo before scrolling
+
                         if (window.innerWidth <= 768 && href === '#about') {
-                            // push hash to URL so back-button works
+
                             history.replaceState(null, '', '#about');
                             showPhotoTopOnMobile(() => {
-                                // after we set photo position, scroll the about section into view
                                 setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 90);
                             });
                         } else {
-                            // default behavior for other links and desktop
+
                             el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            // keep URL hash consistent
                             history.replaceState(null, '', href);
                         }
                     }
@@ -1398,7 +1410,6 @@
             });
         });
 
-        // Scroll to top button
         const scrollBtn = document.getElementById('scrollTopBtn');
         window.addEventListener('scroll', () => {
             if (document.documentElement.scrollTop > 200) scrollBtn.style.display = 'block';
@@ -1406,81 +1417,80 @@
         });
         scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-        // WhatsApp quick chat
         function openWhatsApp(message) {
             const waMsg = encodeURIComponent(message);
             window.open("https://wa.me/447917789739?text=" + waMsg, "_blank");
         }
 
-        // SERVICE DETAILS DATA (keeps original service names)
         const servicesData = {
             "visual-identity": {
                 title: "Build Your Visual Identity",
                 items: [
-                    { name: "Logo Design", price: "From $120" },
-                    { name: "Colour Palette", price: "From $50" },
-                    { name: "Typography", price: "From $40" },
-                    { name: "Iconography", price: "From $60" },
-                    { name: "Patterns/Textures", price: "From $80" },
-                    { name: "Layout Systems", price: "From $100" },
-                    { name: "Shapes", price: "From $40" },
-                    { name: "Packaging", price: "From $140" },
-                    { name: "Signage", price: "From $90" },
-                    { name: "Merchandise", price: "From $120" }
+                    { name: "Logo Design", price: "From $120", description: "Custom logo options with revisions and final files for web and print." },
+                    { name: "Colour Palette", price: "From $50", description: "Curated brand color palettes suited to your identity." },
+                    { name: "Typography", price: "From $40", description: "Typeface pairing and recommended usage for headings and body." },
+                    { name: "Iconography", price: "From $60", description: "Set of custom icons tailored to your brand language." },
+                    { name: "Patterns/Textures", price: "From $80", description: "Repeatable patterns and textures for backgrounds and packaging." },
+                    { name: "Layout Systems", price: "From $100", description: "Grid and layout guidelines for digital and print usage." },
+                    { name: "Shapes", price: "From $40", description: "Signature shapes and elements for brand recognition." },
+                    { name: "Packaging", price: "From $140", description: "Packaging concepts and dielines ready for production." },
+                    { name: "Signage", price: "From $90", description: "Design for in-store signage and exterior branding." },
+                    { name: "Merchandise", price: "From $120", description: "Branded merchandise mockups and print-ready files." }
                 ]
             },
             "social-presence": {
                 title: "Grow Your Social Presence",
                 items: [
-                    { name: "Content Creation", price: "From $150 / month" },
-                    { name: "Content Calendar", price: "From $80" },
-                    { name: "Engagement Strategy", price: "From $120" },
-                    { name: "Brand Consistency", price: "From $90" },
-                    { name: "Trend Monitoring", price: "From $60" },
-                    { name: "Community Building", price: "From $140 / month" }
+                    { name: "Content Creation", price: "From $150 / month", description: "Visuals and captions tailored for your target audience." },
+                    { name: "Content Calendar", price: "From $80", description: "Planned posting schedule and content themes." },
+                    { name: "Engagement Strategy", price: "From $120", description: "Tactics to increase interactions and community growth." },
+                    { name: "Brand Consistency", price: "From $90", description: "Guidelines to keep the brand voice and visuals cohesive." },
+                    { name: "Trend Monitoring", price: "From $60", description: "Ongoing trend checks to keep content relevant." },
+                    { name: "Community Building", price: "From $140 / month", description: "Support and tactics to grow active followers." }
                 ]
             },
             "frontend-websites": {
                 title: "Stunning Frontend Websites",
                 items: [
-                    { name: "Frontend Web Design", price: "From $450" },
-                    { name: "Content Writing for Web", price: "From $80/page" },
-                    { name: "User Interface (UI) Design", price: "From $300" }
+                    { name: "Frontend Web Design", price: "From $450", description: "Responsive pages with clean, modern UI." },
+                    { name: "Content Writing for Web", price: "From $80/page", description: "SEO-friendly copy for pages and CTAs." },
+                    { name: "User Interface (UI) Design", price: "From $300", description: "High-fidelity UI mockups and prototypes." }
                 ]
             },
             "printed-custom": {
                 title: "Printed & Custom Designs",
                 items: [
-                    { name: "Print Materials", price: "From $90" },
-                    { name: "Custom Characters", price: "From $120" },
-                    { name: "Tailored Designs", price: "From $110" }
+                    { name: "Print Materials", price: "From $90", description: "Flyers, posters, business cards and more, print-ready." },
+                    { name: "Custom Characters", price: "From $120", description: "Unique character illustrations for branding or mascots." },
+                    { name: "Tailored Designs", price: "From $110", description: "Custom visual assets for special campaigns or events." }
                 ]
             },
             "photo-video": {
                 title: "Photography & Video Production",
                 items: [
-                    { name: "Product Photography", price: "From $200 / session" },
-                    { name: "Promotional Videos", price: "From $350" },
-                    { name: "Video Editing", price: "From $80 / video" }
+                    { name: "Product Photography", price: "From $200 / session", description: "Studio-style product shots for e-commerce and socials." },
+                    { name: "Promotional Videos", price: "From $350", description: "Short promo videos optimized for social platforms." },
+                    { name: "Video Editing", price: "From $80 / video", description: "Post-production edits, color grading and export." }
                 ]
             },
             "extra-services": {
                 title: "Extra Services",
                 items: [
-                    { name: "CV & Cover Letter", price: "From $35" },
-                    { name: "Portfolio Design", price: "From $120" },
-                    { name: "Presentations & PDFs", price: "From $50" },
-                    { name: "Projects & Assignments", price: "From $60" }
+                    { name: "CV & Cover Letter", price: "From $35", description: "Polished CV and tailored cover letter for job applications." },
+                    { name: "Portfolio Design", price: "From $120", description: "Professional portfolio layout ready for sharing." },
+                    { name: "Presentations & PDFs", price: "From $50", description: "Branded slide decks and printable PDFs." },
+                    { name: "Projects & Assignments", price: "From $60", description: "Support with academic or professional projects." }
                 ]
             }
         };
 
-        // Create details overlay (single reusable element)
         function buildDetailsOverlay() {
             const overlay = document.createElement('div');
             overlay.className = 'service-details';
             overlay.setAttribute('role', 'dialog');
             overlay.setAttribute('aria-modal', 'true');
+            overlay.tabIndex = -1; // ensure it can receive focus
+
             overlay.innerHTML = `
         <div class="details-head">
           <h3 id="details-title"></h3>
@@ -1489,20 +1499,41 @@
           </div>
         </div>
         <div class="details-list" id="details-list"></div>
-        <div style="margin-top:12px; display:flex; gap:10px; justify-content:flex-end;">
-          <button id="contact-whatsapp" class="close-details" style="background:linear-gradient(90deg,#00a884,#128C7E); color:#fff;">Chat on WhatsApp</button>
-        </div>
       `;
             document.body.appendChild(overlay);
-            overlay.querySelector('.close-details').addEventListener('click', () => overlay.remove());
-            overlay.querySelector('#contact-whatsapp').addEventListener('click', () => {
-                const title = overlay.querySelector('#details-title').textContent || 'Service';
-                openWhatsApp(`I'm interested in "${title}". Can you tell me more?`);
+
+            // close behavior
+            const closeBtn = overlay.querySelector('.close-details');
+            closeBtn.addEventListener('click', () => {
+                overlay.remove();
             });
+
+            // keep focus inside overlay (basic trap)
+            overlay.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') overlay.remove();
+
+                // basic tab trap
+                if (e.key === 'Tab') {
+                    const focusables = overlay.querySelectorAll('button, [href], input, textarea, select, [tabindex]:not([tabindex="-1"])');
+                    if (!focusables.length) return;
+                    const first = focusables[0];
+                    const last = focusables[focusables.length - 1];
+                    if (e.shiftKey && document.activeElement === first) {
+                        e.preventDefault();
+                        last.focus();
+                    } else if (!e.shiftKey && document.activeElement === last) {
+                        e.preventDefault();
+                        first.focus();
+                    }
+                }
+            });
+
+            // focus overlay for keyboard scrolling and accessibility
+            overlay.focus();
+
             return overlay;
         }
 
-        // Wire up the service tiles (click & keyboard)
         document.querySelectorAll('.service-tile').forEach(tile => {
             tile.addEventListener('click', () => {
                 const key = tile.getAttribute('data-service');
@@ -1512,15 +1543,59 @@
                 overlay.querySelector('#details-title').textContent = data.title;
                 const listBlock = overlay.querySelector('#details-list');
                 listBlock.innerHTML = '';
+
+                // For each item show title, detailed line (description), price and a WhatsApp button
                 data.items.forEach(it => {
-                    const row = document.createElement('div');
-                    row.className = 'details-item';
-                    row.innerHTML = `<div>${it.name}</div><div class="price">${it.price}</div>`;
-                    row.addEventListener('click', () => openWhatsApp(`I'm interested in '${it.name}' from "${data.title}". Can you tell me more?`));
-                    listBlock.appendChild(row);
+                    const itemRow = document.createElement('div');
+                    itemRow.className = 'details-item';
+                    itemRow.style.display = 'flex';
+                    itemRow.style.justifyContent = 'space-between';
+                    itemRow.style.alignItems = 'center';
+                    itemRow.style.gap = '12px';
+
+                    const left = document.createElement('div');
+                    left.style.flex = '1';
+                    left.innerHTML = `<div style="font-weight:700; color:var(--accent);">${it.name}</div>
+                                      <div style="font-weight:600; font-size:.92rem; color:var(--muted); margin-top:6px;">${it.description || ''}</div>`;
+
+                    const right = document.createElement('div');
+                    right.style.display = 'flex';
+                    right.style.flexDirection = 'column';
+                    right.style.alignItems = 'flex-end';
+                    right.style.gap = '8px';
+
+                    const price = document.createElement('div');
+                    price.className = 'price';
+                    price.textContent = it.price;
+
+                    const waBtn = document.createElement('button');
+                    waBtn.type = 'button';
+                    waBtn.className = 'close-details';
+                    waBtn.style.background = 'linear-gradient(90deg,#00a884,#128C7E)';
+                    waBtn.style.color = '#fff';
+                    waBtn.style.border = 'none';
+                    waBtn.style.padding = '8px 12px';
+                    waBtn.style.borderRadius = '8px';
+                    waBtn.style.cursor = 'pointer';
+                    waBtn.style.fontWeight = '700';
+                    waBtn.textContent = 'Chat on WhatsApp';
+
+                    waBtn.addEventListener('click', () => {
+                        openWhatsApp(`I'm interested in "${it.name}" from "${data.title}". Can you tell me more?`);
+                    });
+
+                    right.appendChild(price);
+                    right.appendChild(waBtn);
+
+                    itemRow.appendChild(left);
+                    itemRow.appendChild(right);
+
+                    listBlock.appendChild(itemRow);
                 });
-                // accessibility focus
-                overlay.querySelector('.close-details').focus();
+
+                // accessibility: focus close button
+                const firstClose = overlay.querySelector('.close-details');
+                if (firstClose) firstClose.focus();
             });
 
             // keyboard support
@@ -1748,8 +1823,7 @@
             document.documentElement.style.setProperty('--mobile-photo-size', desiredSize + 'px');
             document.documentElement.style.setProperty('--header-height', headerH + 'px');
 
-            // add class to body so CSS can make the hero-photo fixed, centered, and add padding to #about
-            // when pinning as fixed we remove the stacked layout to avoid conflicts
+
             document.body.classList.add('mobile-photo-top');
             const hero = document.querySelector('.hero');
             if (hero) hero.classList.remove('photo-above');
